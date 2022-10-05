@@ -53,9 +53,7 @@ public class VistaTabla extends Application {
         return escenario;
     }
 
-
     public TableView<Personaje> rellenarTablaPersonajes(TableView<Personaje> tvPersonajes) {
-        //TableView<Personaje> tvPersonajes = new TableView<>();
         final ObservableList<Personaje> personajes = FXCollections.observableArrayList(
                 new Personaje("Pepito", "Grillo"),
                 new Personaje("Bob", "Esponja"),
