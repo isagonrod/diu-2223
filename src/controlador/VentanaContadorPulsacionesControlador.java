@@ -19,7 +19,7 @@ public class VentanaContadorPulsacionesControlador {
         pulsacionesLabel.setAlignment(Pos.CENTER);
     //Aquí podemos asignar modelos a controles
     //También podemos registrar manejadores de eventos
-}
+    }
 
     @FXML
     private void botonPulsado() {

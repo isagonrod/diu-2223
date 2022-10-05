@@ -30,7 +30,7 @@ public class MainVentanaContadorPulsaciones extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainVentanaContadorPulsaciones.class.getResource("../sample/VentanaContadorPulsaciones.fxml"));
+            loader.setLocation(MainVentanaContadorPulsaciones.class.getResource("../vista/VentanaContadorPulsaciones.fxml"));
             rootLayout = (AnchorPane) loader.load();
             // Show the scene containing the root layout.
             Scene scene = new Scene(rootLayout);
