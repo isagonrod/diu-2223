@@ -1,0 +1,9 @@
+.buttonDelete {
+    -fx-background-color: red;
+    -fx-text-fill: white;
+}
+
+.buttonAdd {
+    -fx-background-color: green;
+    -fx-text-fill: white;
+}

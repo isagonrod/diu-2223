@@ -71,9 +71,9 @@ public class VistaTabla extends Application {
         tvPersonajes.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         tvPersonajes.setEditable(true);
 
-        columnaNombre.setMinWidth(125);
+        columnaNombre.setMinWidth(123);
         columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        columnaApellidos.setMinWidth(125);
+        columnaApellidos.setMinWidth(123);
         columnaApellidos.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
 
         tvPersonajes.setItems(personajes);
@@ -84,32 +84,5 @@ public class VistaTabla extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
-//            VBox raiz = new VBox();
-//            raiz.setPadding(new Insets(40));
-//            raiz.setSpacing(10);
-//
-//            Label lbPersonajes = new Label("Personajes:");
-//            tvPersonajes = new TableView<Personaje>();
-//            tvPersonajes.getColumns().add(columnaNombre);
-//            tvPersonajes.getColumns().add(columnaApellidos);
-//            tvPersonajes.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-//            tvPersonajes.setEditable(true);
-//            columnaNombre.setMinWidth(100);
-//            columnaNombre.setCellValueFactory(new PropertyValueFactory<Personaje, String>("nombre"));
-//            columnaApellidos.setMinWidth(100);
-//            columnaApellidos.setCellValueFactory(new PropertyValueFactory<Personaje, String>("apellidos"));
-//
-//            tvPersonajes.setItems(personajes);
-//
-//            raiz.getChildren().addAll(lbPersonajes, tvPersonajes);
-//
-//            Scene escena = new Scene(raiz, 300, 250);
-//            escenarioPrincipal.setTitle("Vista de tabla");
-//            escenarioPrincipal.setScene(escena);
-//            escenarioPrincipal.show();
-//        } catch(Exception e) {
-//            e.printStackTrace();
-//        }
 
 }
