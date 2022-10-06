@@ -22,8 +22,8 @@
 
             <ProgressIndicator fx:id="progreso" layoutX="550.0" layoutY="25.0" progress="0.0" />
 
-            <Button fx:id="buttonDelete" layoutX="50.0" layoutY="320.00" prefHeight="50.0" prefWidth="100.0" styleClass="buttonDelete" stylesheets="/css/vistaTabla.css" text="ELIMINAR" />
-            <Button fx:id="buttonAdd" layoutX="200.0" layoutY="320.0" prefHeight="50.0" prefWidth="100.0" styleClass="buttonAdd" stylesheets="/css/vistaTabla.css" text="AÑADIR" />
+            <Button fx:id="buttonDelete" layoutX="50.0" layoutY="320.00" onAction="#deletePersonajes" prefHeight="50.0" prefWidth="100.0" styleClass="buttonDelete" stylesheets="/css/vistaTabla.css" text="ELIMINAR" />
+            <Button fx:id="buttonAdd" layoutX="200.0" layoutY="320.0" onAction="#addPersonajes" prefHeight="50.0" prefWidth="100.0" styleClass="buttonAdd" stylesheets="/css/vistaTabla.css" text="AÑADIR" />
 
             <Label layoutX="400.0" layoutY="100.0" text="Nombre" />
             <TextField layoutX="400.0" layoutY="120.0" prefHeight="25.0" prefWidth="150.0" />

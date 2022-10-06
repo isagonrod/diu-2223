@@ -41,9 +41,13 @@ public class VistaTabla extends Application {
             double progreso = ((TableView<Personaje>)((Pane)rootLayout.getChildren().get(0)).getChildren().get(1)).getItems().size() / 10.0;
             ((ProgressIndicator)((Pane)rootLayout.getChildren().get(0)).getChildren().get(2)).setProgress(progreso);
 
+			VistaTablaControlador controlador = loader.getController();
+			controlador.setPersonajes(((TableView<Personaje>)((Pane)rootLayout.getChildren().get(0)).getChildren().get(1)).getItems());
+
             Scene scene = new Scene(rootLayout);
             escenario.setScene(scene);
             escenario.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -54,7 +58,7 @@ public class VistaTabla extends Application {
     }
 
     public TableView<Personaje> rellenarTablaPersonajes(TableView<Personaje> tvPersonajes) {
-        final ObservableList<Personaje> personajes = FXCollections.observableArrayList(
+        ObservableList<Personaje> personajes = FXCollections.observableArrayList(
                 new Personaje("Pepito", "Grillo"),
                 new Personaje("Bob", "Esponja"),
                 new Personaje("Juan", "Sin Miedo"),
