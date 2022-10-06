@@ -51,7 +51,9 @@ public class VistaTablaControlador {
 			dialogo.setContentText("El campo APELLIDOS está vacío");
 		} else {
 			personajes.add(new Personaje(tfNombre.getText(), tfApellidos.getText()));
-			progreso.setProgress(personajes.size());
+			progreso.setProgress(personajes.size() / 10.0);
+			tfNombre.setText("");
+			tfApellidos.setText("");
 		}
 	}
 
@@ -68,7 +70,7 @@ public class VistaTablaControlador {
 
 			if (respuesta.get() == ButtonType.OK){
 				personajes.remove(tvPersonajes.getSelectionModel().getSelectedItem());
-				progreso.setProgress(personajes.size());
+				progreso.setProgress(personajes.size() / 10.0);
 			} else {
 				System.out.println("No se ha borrado el personaje");
 			}
