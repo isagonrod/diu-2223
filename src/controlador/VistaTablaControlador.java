@@ -85,4 +85,9 @@ public class VistaTablaControlador {
 		}
 	}
 
+	public void teclaTexto(KeyEvent event) {
+		if (event.getCode() == KeyCode.ENTER) {
+			this.addPersonajes();
+		}
+	}
 }

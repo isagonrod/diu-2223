@@ -26,10 +26,10 @@
             <Button fx:id="buttonAdd" layoutX="200.0" layoutY="320.0" onAction="#addPersonajes" prefHeight="50.0" prefWidth="100.0" styleClass="buttonAdd" stylesheets="/css/vistaTabla.css" text="AÑADIR" />
 
             <Label fx:id="lbNombre" layoutX="400.0" layoutY="100.0" text="Nombre" />
-            <TextField fx:id="tfNombre" layoutX="400.0" layoutY="120.0" prefHeight="25.0" prefWidth="150.0" />
+            <TextField fx:id="tfNombre" onKeyPressed="#teclaTexto" layoutX="400.0" layoutY="120.0" prefHeight="25.0" prefWidth="150.0" />
 
             <Label fx:id="lbApellidos" layoutX="400.0" layoutY="200.0" text="Apellidos" />
-            <TextField fx:id="tfApellidos" layoutX="400.0" layoutY="220.0" prefHeight="25.0" prefWidth="150.0" />
+            <TextField fx:id="tfApellidos" onKeyPressed="#teclaTexto" layoutX="400.0" layoutY="220.0" prefHeight="25.0" prefWidth="150.0" />
 
          </children>
 
