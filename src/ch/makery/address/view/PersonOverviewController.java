@@ -7,6 +7,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import ch.makery.address.MainApp;
 import ch.makery.address.model.Person;
+import org.controlsfx.dialog.Dialogs;
 
 public class PersonOverviewController {
 	@FXML
@@ -48,6 +49,13 @@ public class PersonOverviewController {
 		// Initialize the person table with the two columns.
 		firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
 		lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
+
+		// Clear person details.
+		showPersonDetails(null);
+
+		// Listen for selection changes and show the person details when changed.
+		personTable.getSelectionModel().selectedItemProperty().addListener(
+				(observable, oldValue, newValue) -> showPersonDetails(newValue));
 	}
 
 	/**
@@ -87,6 +95,24 @@ public class PersonOverviewController {
 			postalCodeLabel.setText("");
 			cityLabel.setText("");
 			birthdayLabel.setText("");
+		}
+	}
+
+	/**
+	 * Called when the user clicks on the delete button.
+	 */
+	@FXML
+	private void handleDeletePerson() {
+		int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
+		if (selectedIndex >= 0) {
+			personTable.getItems().remove(selectedIndex);
+		} else {
+			// Nothing selected.
+			Dialogs.create()
+					.title("No Selection")
+					.masthead("No Person Selected")
+					.message("Please select a person in the table.")
+					.showWarning();
 		}
 	}
 }
