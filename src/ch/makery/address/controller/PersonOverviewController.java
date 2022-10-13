@@ -1,4 +1,4 @@
-package ch.makery.address.view;
+package ch.makery.address.controller;
 
 import ch.makery.address.util.DateUtil;
 import javafx.fxml.FXML;

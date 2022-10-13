@@ -1,4 +1,4 @@
-package ch.makery.address.view;
+package ch.makery.address.controller;
 
 import java.text.DateFormatSymbols;
 import java.util.Arrays;

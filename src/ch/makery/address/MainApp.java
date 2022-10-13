@@ -6,10 +6,10 @@ import java.util.prefs.Preferences;
 
 import ch.makery.address.model.Person;
 import ch.makery.address.model.PersonListWrapper;
-import ch.makery.address.view.BirthdayStatisticsController;
-import ch.makery.address.view.PersonEditDialogController;
-import ch.makery.address.view.PersonOverviewController;
-import ch.makery.address.view.RootLayoutController;
+import ch.makery.address.controller.BirthdayStatisticsController;
+import ch.makery.address.controller.PersonEditDialogController;
+import ch.makery.address.controller.PersonOverviewController;
+import ch.makery.address.controller.RootLayoutController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

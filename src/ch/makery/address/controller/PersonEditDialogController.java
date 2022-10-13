@@ -1,4 +1,4 @@
-package ch.makery.address.view;
+package ch.makery.address.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
