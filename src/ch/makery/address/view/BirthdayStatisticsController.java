@@ -41,6 +41,7 @@ public class BirthdayStatisticsController {
 
         // Assign the month names as categories for the horizontal axis.
         xAxis.setCategories(monthNames);
+		xAxis.setTickLabelRotation(90.0);
     }
 
     /**
