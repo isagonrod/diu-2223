@@ -37,7 +37,7 @@ public class MainApp extends Application {
 	private ObservableList<Person> personData = FXCollections.observableArrayList();
 
 	/**
-	 * Constructor
+	 * Constructor where the program add a list of persons
 	 */
 	public MainApp() {
 		// Add some sample data
@@ -54,12 +54,21 @@ public class MainApp extends Application {
 
 	/**
 	 * Returns the data as an observable list of Persons.
-	 * @return
+	 * @return personData
 	 */
 	public ObservableList<Person> getPersonData() {
 		return personData;
 	}
 
+	/**
+	 * Start the application
+	 *
+	 * @param primaryStage the primary stage for this application, onto which
+	 * the application scene can be set. The primary stage will be embedded in
+	 * the browser if the application was launched as an applet.
+	 * Applications may create other stages, if needed, but they will not be
+	 * primary stages and will not be embedded in the browser.
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -170,7 +179,7 @@ public class MainApp extends Application {
 	 * The preference is read from the OS specific registry. If no such
 	 * preference can be found, null is returned.
 	 *
-	 * @return
+	 * @return new File(filePath) if the answer is true, and null if the answer is false
 	 */
 	public File getPersonFilePath() {
 		Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
@@ -289,7 +298,7 @@ public class MainApp extends Application {
 
 	/**
 	 * Returns the main stage.
-	 * @return
+	 * @return primaryStage
 	 */
 	public Stage getPrimaryStage() {
 		return primaryStage;

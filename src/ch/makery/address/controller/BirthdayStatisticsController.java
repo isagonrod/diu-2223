@@ -16,7 +16,7 @@ import ch.makery.address.model.Person;
 /**
  * The controller for the birthday statistics view.
  *
- * @author Marco Jakob
+ * @author Isa González
  */
 public class BirthdayStatisticsController {
 

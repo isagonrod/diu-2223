@@ -16,7 +16,7 @@ import ch.makery.address.MainApp;
  * application layout containing a menu bar and space where other JavaFX
  * elements can be placed.
  *
- * @author Marco Jakob
+ * @author Isa González
  */
 public class RootLayoutController {
 
@@ -107,7 +107,7 @@ public class RootLayoutController {
 		Alert dialog = new Alert(Alert.AlertType.INFORMATION);
 		dialog.setTitle("AddressApp");
 		dialog.setHeaderText("About");
-		dialog.setContentText("Author: Marco Jakob\n\nWebsite: https://code.makery.ch");
+		dialog.setContentText("Author: Isa González\n\nWebsite: https://www.linkedin.com/in/imgonzalezrodriguez/");
 		dialog.show();
     }
 

@@ -12,7 +12,7 @@ import ch.makery.address.util.DateUtil;
 /**
  * Dialog to edit details of a person.
  *
- * @author Marco Jakob
+ * @author Isa González
  */
 public class PersonEditDialogController {
 
@@ -71,7 +71,7 @@ public class PersonEditDialogController {
     /**
      * Returns true if the user clicked OK, false otherwise.
      *
-     * @return
+     * @return okClicked
      */
     public boolean isOkClicked() {
         return okClicked;
