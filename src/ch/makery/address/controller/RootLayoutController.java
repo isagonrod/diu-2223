@@ -3,6 +3,8 @@ package ch.makery.address.controller;
 import java.io.File;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Hyperlink;
 import javafx.stage.FileChooser;
 
 import org.controlsfx.dialog.Dialogs;
@@ -98,15 +100,15 @@ public class RootLayoutController {
     }
 
     /**
-     * Opens an about dialog.
+     * Opens an about dialog with author information.
      */
     @FXML
     private void handleAbout() {
-        Dialogs.create()
-                .title("AddressApp")
-                .masthead("About")
-                .message("Author: Marco Jakob\nWebsite: http://code.makery.ch")
-                .showInformation();
+		Alert dialog = new Alert(Alert.AlertType.INFORMATION);
+		dialog.setTitle("AddressApp");
+		dialog.setHeaderText("About");
+		dialog.setContentText("Author: Marco Jakob\n\nWebsite: https://code.makery.ch");
+		dialog.show();
     }
 
     /**

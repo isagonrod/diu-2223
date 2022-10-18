@@ -4,6 +4,8 @@
       <root url="jar://$PROJECT_DIR$/lib/controlsfx-8.0.6_20.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/controlsfx-8.0.6_20-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>
