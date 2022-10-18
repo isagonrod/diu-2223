@@ -11,7 +11,7 @@
     <orderEntry type="library" name="openjfx.javafx.fxml" level="application" />
     <orderEntry type="library" exported="" name="openjfx.javafx.web" level="application" />
     <orderEntry type="library" name="controlsfx-8.0.6_20" level="project" />
-    <orderEntry type="library" name="AccesoBBDDMoneda" level="application" />
     <orderEntry type="library" name="mysql-connector-java-8.0.12" level="application" />
+    <orderEntry type="library" name="AccesoBBDDMoneda" level="application" />
   </component>
 </module>
