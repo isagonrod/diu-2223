@@ -1,4 +1,4 @@
-package ch.makery.address.model.repository.impl;
+package ch.makery.address.model.repository;
 
 import ch.makery.address.model.ExceptionPerson;
 import ch.makery.address.model.PersonVO;
