@@ -32,7 +32,11 @@ public class PersonRepositoryImpl implements PersonRepository {
 
         newPerson.setId(this.stmt.getNextId("person")); //TODO: o quizás devolver el objeto entero al controlador
 
-        this.stmt.insert(fields, values, "person");
+        if (this.stmt.insert(fields, values, "person") == -1) {
+            this.stmt.closeStatement();
+            this.conn.closeDataBase();
+            throw new PersonException("Error al guardar la persona");
+        }
 
         this.stmt.closeStatement();
         this.conn.closeDataBase();
@@ -40,7 +44,11 @@ public class PersonRepositoryImpl implements PersonRepository {
 
     @Override
     public void deletePerson(int id) throws PersonException {
-        this.stmt.delete("person", "id=" + id);
+        if (this.stmt.delete("person", "id=" + id) == -1) {
+            this.stmt.closeStatement();
+            this.conn.closeDataBase();
+            throw new PersonException("Error al borrar la persona");
+        }
 
         this.stmt.closeStatement();
         this.conn.closeDataBase();
@@ -53,7 +61,11 @@ public class PersonRepositoryImpl implements PersonRepository {
                 person.getStreet(), person.getCity(),
                 person.getPostalCode(), DateUtil.format(person.getBirthday()));
 
-        this.stmt.update(fields, "person", "id=" + person.getId());
+        if (this.stmt.update(fields, "person", "id=" + person.getId()) == -1) {
+            this.stmt.closeStatement();
+            this.conn.closeDataBase();
+            throw new PersonException("Error al actualizar la persona");
+        }
 
         this.stmt.closeStatement();
         this.conn.closeDataBase();
@@ -86,7 +98,7 @@ public class PersonRepositoryImpl implements PersonRepository {
             e.printStackTrace();
             this.stmt.closeStatement();
             this.conn.closeDataBase();
-            throw new PersonException(e.getMessage());
+            throw new PersonException("Error al listar las personas");
         }
 
         this.stmt.closeStatement();
