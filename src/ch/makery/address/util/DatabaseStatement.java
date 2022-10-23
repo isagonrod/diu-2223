@@ -130,4 +130,25 @@ public class DatabaseStatement {
         query += ";";
         return this.queryUpdate(query);
     }
+
+    /**
+     * Method that builds an UPDATE query to a table based on the fields and conditions indicated.<br>
+     * Conditions and values must be a String like "field='value'".
+     *
+     * @param fields - a string of the fields to be updated, separated by a comma
+     * @param table - the table name to be updated
+     * @param conditions - the conditions to be used in the query (if any)
+     * @return int - returns -1 if the query was not successful (an exception was thrown)
+     */
+    public int update(String fields, String table, String conditions) {
+        String query;
+
+        query = "UPDATE " + table + " SET " + fields;
+        if (conditions != null && conditions.compareTo("") != 0) {
+            query += " WHERE " + conditions;
+        }
+
+        query += ";";
+        return this.queryUpdate(query);
+    }
 }
