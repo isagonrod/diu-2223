@@ -3,7 +3,7 @@ package ch.makery.address.model.repository;
 import ch.makery.address.model.PersonException;
 import ch.makery.address.model.PersonVO;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Interface that defines how to implement a Person repository.
@@ -39,5 +39,5 @@ public interface PersonRepository {
 	 * @return ArrayList<PersonVO> - The list of persons in the database
 	 * @throws PersonException Exception thrown if a controlled error happens
 	 */
-	ArrayList<PersonVO> loadPersonList() throws PersonException;
+	List<PersonVO> loadPersonList() throws PersonException;
 }

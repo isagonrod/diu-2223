@@ -11,6 +11,8 @@ public class PersonVO {
 	private int postalCode;
 	private LocalDate birthday;
 
+	public PersonVO() {}
+
 	public PersonVO (String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;

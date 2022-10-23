@@ -12,7 +12,7 @@ import java.time.format.DateTimeParseException;
 public class DateUtil {
 
 	/** The date pattern that is used for conversion. Change as you wish. */
-	private static final String DATE_PATTERN = "dd.MM.yyyy";
+	private static final String DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
 
 	/** The date formatter. */
 	private static final DateTimeFormatter DATE_FORMATTER =
@@ -52,7 +52,7 @@ public class DateUtil {
 	/**
 	 * Checks the String whether it is a valid date.
 	 *
-	 * @param dateString
+	 * @param dateString the date as String
 	 * @return true if the String is a valid date
 	 */
 	public static boolean validDate(String dateString) {
