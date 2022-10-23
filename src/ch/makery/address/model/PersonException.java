@@ -1,16 +1,16 @@
 package ch.makery.address.model;
 
 public class PersonException extends Exception {
-	private String mensaje;
+	private String message;
 
 	public PersonException() {
 	}
 
 	public PersonException(String ms) {
-		this.mensaje = ms;
+		this.message = ms;
 	}
 
-	public String imprimirMensaje() {
-		return this.mensaje;
+	public String printMessage() {
+		return this.message;
 	}
 }
