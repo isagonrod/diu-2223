@@ -60,18 +60,20 @@ public abstract class DatabaseConnection {
     }
 
     /**
-     * Function that creates a new Statement instance for running queries.
+     * Function that creates a new DatabaseStatement instance for running queries.
      *
      * @return the new statement object
      */
-    public Statement getNewStatement() {
-        Statement stmt = null;
+    public DatabaseStatement getNewStatement() {
+        Statement stmt;
+        DatabaseStatement dbStmt = null;
         try {
             stmt = this.conn.createStatement();
+            dbStmt = new DatabaseStatement(stmt);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return stmt;
+        return dbStmt;
     }
 
     /**
