@@ -1,12 +1,12 @@
 package ch.makery.address.model;
 
-public class ExceptionPerson extends Exception {
+public class PersonException extends Exception {
 	private String mensaje;
 
-	public ExceptionPerson() {
+	public PersonException() {
 	}
 
-	public ExceptionPerson(String ms) {
+	public PersonException(String ms) {
 		this.mensaje = ms;
 	}
 
