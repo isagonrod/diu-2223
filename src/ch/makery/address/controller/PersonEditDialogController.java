@@ -1,6 +1,7 @@
 package ch.makery.address.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -29,7 +30,6 @@ public class PersonEditDialogController {
     @FXML
     private TextField birthdayField;
 
-
     private Stage dialogStage;
     private Person person;
     private boolean okClicked = false;
@@ -40,6 +40,7 @@ public class PersonEditDialogController {
      */
     @FXML
     private void initialize() {
+
     }
 
     /**

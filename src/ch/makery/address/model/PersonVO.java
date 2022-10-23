@@ -74,14 +74,12 @@ public class PersonVO {
 
 	@Override
 	public String toString() {
-		return "Contacto {" +
-				"id=" + id +
-				", First Name ='" + firstName + '\'' +
-				", Last Name ='" + lastName + '\'' +
-				", Street ='" + street + '\'' +
-				", City ='" + city + '\'' +
-				", Postal Code =" + postalCode +
-				", Birthday =" + birthday +
-				'}';
+		return "\nContacto " + id +
+				"\n\tFirst Name = " + firstName +
+				"\n\tLast Name = " + lastName +
+				"\n\tStreet = " + street +
+				"\n\tCity = " + city +
+				"\n\tPostal Code = " + postalCode +
+				"\n\tBirthday = " + birthday;
 	}
 }
