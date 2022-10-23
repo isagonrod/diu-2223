@@ -5,6 +5,7 @@ import ch.makery.address.model.PersonVO;
 import ch.makery.address.model.repository.PersonRepository;
 import ch.makery.address.util.DatabaseConnection;
 import ch.makery.address.util.DatabaseStatement;
+import ch.makery.address.util.DateUtil;
 import ch.makery.address.util.MySqlConnection;
 
 import java.sql.ResultSet;
@@ -27,7 +28,7 @@ public class PersonRepositoryImpl implements PersonRepository {
         String values = String.format("%d, %s, %s, %s, %s, %d, %s",
                 1, newPerson.getFirstName(), newPerson.getLastName(),
                 newPerson.getStreet(), newPerson.getCity(),
-                newPerson.getPostalCode(), newPerson.getBirthday());
+                newPerson.getPostalCode(), DateUtil.format(newPerson.getBirthday()));
 
         this.stmt.insert(fields, values, "person");
 
@@ -48,7 +49,7 @@ public class PersonRepositoryImpl implements PersonRepository {
         String fields = String.format("firstName='%s', lastName='%s', street='%s', city='%s', postalCode=%d, birthday='%s'",
                 person.getFirstName(), person.getLastName(),
                 person.getStreet(), person.getCity(),
-                person.getPostalCode(), person.getBirthday());
+                person.getPostalCode(), DateUtil.format(person.getBirthday()));
 
         this.stmt.update(fields, "person", "id=" + person.getId());
 
