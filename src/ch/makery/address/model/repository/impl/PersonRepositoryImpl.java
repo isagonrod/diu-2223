@@ -24,11 +24,13 @@ public class PersonRepositoryImpl implements PersonRepository {
     }
     @Override
     public void savePerson(PersonVO newPerson) throws PersonException {
-        String fields = "id, firstName, lastName, street, city, postalCode, birthday";
-        String values = String.format("%d, %s, %s, %s, %s, %d, %s",
-                this.stmt.getNextId("person"), newPerson.getFirstName(), newPerson.getLastName(),
+        String fields = "firstName, lastName, street, city, postalCode, birthday";
+        String values = String.format("%s, %s, %s, %s, %d, %s",
+                newPerson.getFirstName(), newPerson.getLastName(),
                 newPerson.getStreet(), newPerson.getCity(),
                 newPerson.getPostalCode(), DateUtil.format(newPerson.getBirthday()));
+
+        newPerson.setId(this.stmt.getNextId("person")); //TODO: o quizás devolver el objeto entero al controlador
 
         this.stmt.insert(fields, values, "person");
 
