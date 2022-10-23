@@ -151,4 +151,24 @@ public class DatabaseStatement {
         query += ";";
         return this.queryUpdate(query);
     }
+
+    /**
+     * Function to check the next value for the auto increment of the table.
+     * WARNING: Only works with MySQL/MariaDB.
+     *
+     * @param table - the table name to check
+     * @return int - the next auto increment value or -1 if there was an exception
+     */
+    public int getNextId(String table) {
+        ResultSet rs = this.queryResult("SHOW TABLE STATUS WHERE Name = '" + table + "';");
+        int result = -1;
+
+        try {
+            result = rs.getInt("Auto_increment");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 }

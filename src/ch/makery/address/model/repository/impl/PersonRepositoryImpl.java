@@ -26,7 +26,7 @@ public class PersonRepositoryImpl implements PersonRepository {
     public void savePerson(PersonVO newPerson) throws PersonException {
         String fields = "id, firstName, lastName, street, city, postalCode, birthday";
         String values = String.format("%d, %s, %s, %s, %s, %d, %s",
-                1, newPerson.getFirstName(), newPerson.getLastName(),
+                this.stmt.getNextId("person"), newPerson.getFirstName(), newPerson.getLastName(),
                 newPerson.getStreet(), newPerson.getCity(),
                 newPerson.getPostalCode(), DateUtil.format(newPerson.getBirthday()));
 
