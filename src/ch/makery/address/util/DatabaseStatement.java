@@ -64,7 +64,7 @@ public class DatabaseStatement {
     }
 
     /**
-     * Method that builds a Select query to a table based on the fields, conditions and order indicated.<br>
+     * Method that builds a SELECT query to a table based on the fields, conditions and order indicated.<br>
      * Fields (when querying many) must be separated by commas within the String.
      * Conditions must be a String like "field='value'".<br>
      * Order parameters must indicate the name of the field to use and the ASC or DESC as needed.
@@ -80,13 +80,54 @@ public class DatabaseStatement {
 
         query = "SELECT " + fields + " FROM " + table;
         if (conditions != null && conditions.compareTo("") != 0) {
-            query = query + " WHERE " + conditions;
+            query += " WHERE " + conditions;
         }
         if (order != null && order.compareTo("") != 0) {
-            query = query + " ORDER BY " + order;
+            query += " ORDER BY " + order;
         }
 
-        query = query + ";";
+        query += ";";
         return this.queryResult(query);
+    }
+
+    /**
+     * Builds an INSERT query based on the fields and values received.
+     *
+     * @param fields - a string of the fields to be called, separated by a comma
+     * @param values - the values to insert, separated by a comma, strings delimited by ''
+     * @param table - the table name into which the values will be inserted
+     * @return int - returns -1 if the query was not successful (an exception was thrown)
+     */
+    public int insert(String fields, String values, String table) {
+        String query;
+
+        query = "INSERT INTO " + table;
+        if (fields != null && fields.compareTo("") != 0) {
+            query += " (" + fields + ")";
+        }
+
+        query += " VALUES (" + values + ");";
+
+        return this.queryUpdate(query);
+    }
+
+    /**
+     * Method that builds a DELETE query to a table based on the fields and conditions indicated.<br>
+     * Conditions must be a String like "field='value'".
+     *
+     * @param table - the table name or names to be queried
+     * @param conditions - the conditions to be used in the query (if any)
+     * @return int - returns -1 if the query was not successful (an exception was thrown)
+     */
+    public int delete(String table, String conditions) {
+        String query;
+
+        query = "DELETE FROM " + table;
+        if (conditions != null && conditions.compareTo("") != 0) {
+            query += " WHERE " + conditions;
+        }
+
+        query += ";";
+        return this.queryUpdate(query);
     }
 }
