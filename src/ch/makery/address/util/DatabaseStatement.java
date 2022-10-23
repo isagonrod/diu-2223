@@ -20,6 +20,18 @@ public class DatabaseStatement {
     }
 
     /**
+     * Closes the current statement.
+     * Will make inaccessible any derived ResultSet instances.
+     */
+    public void closeStatement() {
+        try {
+            this.stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Simple method that returns the ResultSet from doing a regular Select query.
      *
      * @param query - the string query to send to the database
