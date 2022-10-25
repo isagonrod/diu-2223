@@ -18,7 +18,7 @@ public class PersonRepositoryImpl implements PersonRepository {
     private DatabaseStatement stmt;
 
     public PersonRepositoryImpl() {
-        this.conn = new MySqlConnection("localhost", "3306", "agenda", "root", "");
+        this.conn = new MySqlConnection("localhost", "3306", "agenda", "root", "MAirena.1985");
         this.conn.connectToDataBase();
         this.stmt = this.conn.getNewStatement();
     }
