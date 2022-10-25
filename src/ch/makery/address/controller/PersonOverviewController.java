@@ -1,5 +1,6 @@
 package ch.makery.address.controller;
 
+import ch.makery.address.model.PersonException;
 import ch.makery.address.util.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -105,7 +106,13 @@ public class PersonOverviewController {
 	private void handleDeletePerson() {
 		int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
 		if (selectedIndex >= 0) {
-			personTable.getItems().remove(selectedIndex);
+			try {
+				PersonModel personToDelete = personTable.getItems().get(selectedIndex);
+				personToDelete.getRepository().deletePerson(personToDelete.getId());
+				personTable.getItems().remove(selectedIndex);
+			} catch (PersonException e) {
+				throw new RuntimeException(e);
+			}
 		} else {
 			// Nothing selected.
 			Dialogs.create()
