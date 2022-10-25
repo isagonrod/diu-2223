@@ -1,10 +1,10 @@
 package ch.makery.address.util;
 
-import ch.makery.address.model.Person;
+import ch.makery.address.model.PersonModel;
 import ch.makery.address.model.PersonVO;
 
 public class PersonParse {
-	public static PersonVO parseToPersonVO(Person person) {
+	public static PersonVO parseToPersonVO(PersonModel person) {
 		PersonVO personVO = new PersonVO();
 		personVO.setId(person.getId());
 		personVO.setFirstName(person.getFirstName());
@@ -16,8 +16,8 @@ public class PersonParse {
 		return personVO;
 	}
 
-	public static Person parseToPerson(PersonVO personVO) {
-		Person person = new Person();
+	public static PersonModel parseToPerson(PersonVO personVO) {
+		PersonModel person = new PersonModel();
 		person.setId(personVO.getId());
 		person.setFirstName(personVO.getFirstName());
 		person.setLastName(personVO.getLastName());

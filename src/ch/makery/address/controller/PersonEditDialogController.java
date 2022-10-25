@@ -1,13 +1,12 @@
 package ch.makery.address.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import org.controlsfx.dialog.Dialogs;
 
-import ch.makery.address.model.Person;
+import ch.makery.address.model.PersonModel;
 import ch.makery.address.util.DateUtil;
 
 /**
@@ -31,7 +30,7 @@ public class PersonEditDialogController {
     private TextField birthdayField;
 
     private Stage dialogStage;
-    private Person person;
+    private PersonModel person;
     private boolean okClicked = false;
 
     /**
@@ -57,7 +56,7 @@ public class PersonEditDialogController {
      *
      * @param person
      */
-    public void setPerson(Person person) {
+    public void setPerson(PersonModel person) {
         this.person = person;
 
         firstNameField.setText(person.getFirstName());

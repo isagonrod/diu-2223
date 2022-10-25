@@ -6,16 +6,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import ch.makery.address.MainApp;
-import ch.makery.address.model.Person;
+import ch.makery.address.model.PersonModel;
 import org.controlsfx.dialog.Dialogs;
 
 public class PersonOverviewController {
 	@FXML
-	private TableView<Person> personTable;
+	private TableView<PersonModel> personTable;
 	@FXML
-	private TableColumn<Person, String> firstNameColumn;
+	private TableColumn<PersonModel, String> firstNameColumn;
 	@FXML
-	private TableColumn<Person, String> lastNameColumn;
+	private TableColumn<PersonModel, String> lastNameColumn;
 
 	@FXML
 	private Label firstNameLabel;
@@ -76,7 +76,7 @@ public class PersonOverviewController {
 	 *
 	 * @param person the person or null
 	 */
-	private void showPersonDetails(Person person) {
+	private void showPersonDetails(PersonModel person) {
 		if (person != null) {
 			// Fill the labels with info from the person object.
 			firstNameLabel.setText(person.getFirstName());
@@ -122,7 +122,7 @@ public class PersonOverviewController {
 	 */
 	@FXML
 	private void handleNewPerson() {
-		Person tempPerson = new Person();
+		PersonModel tempPerson = new PersonModel();
 		boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
 		if (okClicked) {
 			mainApp.getPersonData().add(tempPerson);
@@ -135,7 +135,7 @@ public class PersonOverviewController {
 	 */
 	@FXML
 	private void handleEditPerson() {
-		Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
+		PersonModel selectedPerson = personTable.getSelectionModel().getSelectedItem();
 		if (selectedPerson != null) {
 			boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
 			if (okClicked) {

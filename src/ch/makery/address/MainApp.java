@@ -4,15 +4,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.prefs.Preferences;
 
-import ch.makery.address.model.Person;
+import ch.makery.address.model.PersonModel;
 import ch.makery.address.model.PersonListWrapper;
 import ch.makery.address.controller.BirthdayStatisticsController;
 import ch.makery.address.controller.PersonEditDialogController;
 import ch.makery.address.controller.PersonOverviewController;
 import ch.makery.address.controller.RootLayoutController;
-import ch.makery.address.model.PersonModel;
-import ch.makery.address.model.PersonVO;
-import ch.makery.address.model.repository.PersonRepository;
 import ch.makery.address.model.repository.impl.PersonRepositoryImpl;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -38,7 +35,7 @@ public class MainApp extends Application {
 	/**
 	 * The data as an observable list of Persons.
 	 */
-	private ObservableList<Person> personData = FXCollections.observableArrayList();
+	private ObservableList<PersonModel> personData = FXCollections.observableArrayList();
 
 	/**
 	 * Constructor where the program add a list of persons
@@ -65,7 +62,7 @@ public class MainApp extends Application {
 	 * Returns the data as an observable list of Persons.
 	 * @return personData
 	 */
-	public ObservableList<Person> getPersonData() {
+	public ObservableList<PersonModel> getPersonData() {
 		return personData;
 	}
 
@@ -152,7 +149,7 @@ public class MainApp extends Application {
 	 * @param person the person object to be edited
 	 * @return true if the user clicked OK, false otherwise.
 	 */
-	public boolean showPersonEditDialog(Person person) {
+	public boolean showPersonEditDialog(PersonModel person) {
 		try {
 			// Load the fxml file and create a new stage for the popup dialog.
 			FXMLLoader loader = new FXMLLoader();
