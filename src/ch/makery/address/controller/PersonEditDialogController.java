@@ -67,7 +67,7 @@ public class PersonEditDialogController {
         postalCodeField.setText(Integer.toString(person.getPostalCode()));
         cityField.setText(person.getCity());
         birthdayField.setText(DateUtil.format(person.getBirthday()));
-        birthdayField.setPromptText("dd.mm.yyyy");
+        birthdayField.setPromptText("yyyy-MM-dd HH:mm:ss");
     }
 
     /**

@@ -2,15 +2,20 @@ package ch.makery.address;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 import java.util.prefs.Preferences;
 
+import ch.makery.address.model.PersonException;
 import ch.makery.address.model.PersonModel;
 import ch.makery.address.model.PersonListWrapper;
 import ch.makery.address.controller.BirthdayStatisticsController;
 import ch.makery.address.controller.PersonEditDialogController;
 import ch.makery.address.controller.PersonOverviewController;
 import ch.makery.address.controller.RootLayoutController;
+import ch.makery.address.model.PersonVO;
 import ch.makery.address.model.repository.impl.PersonRepositoryImpl;
+import ch.makery.address.util.PersonParse;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,19 +48,14 @@ public class MainApp extends Application {
 	public MainApp() {
 
 		PersonRepositoryImpl repository = new PersonRepositoryImpl();
-		PersonModel model = new PersonModel();
-		model.setRepository(repository);
-
-//		// Add some sample data
-//		personData.add(new Person("Hans", "Muster"));
-//		personData.add(new Person("Ruth", "Mueller"));
-//		personData.add(new Person("Heinz", "Kurz"));
-//		personData.add(new Person("Cornelia", "Meier"));
-//		personData.add(new Person("Werner", "Meyer"));
-//		personData.add(new Person("Lydia", "Kunz"));
-//		personData.add(new Person("Anna", "Best"));
-//		personData.add(new Person("Stefan", "Meier"));
-//		personData.add(new Person("Martin", "Mueller"));
+		try {
+			List<PersonVO> bd = repository.loadPersonList();
+			for (PersonVO personVO : bd) {
+				personData.add(PersonParse.parseToPerson(personVO));
+			}
+		} catch (PersonException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	/**
