@@ -1,9 +1,6 @@
 package ch.makery.address.model;
 
 import java.time.LocalDate;
-
-import ch.makery.address.model.repository.PersonRepository;
-import ch.makery.address.model.repository.impl.PersonRepositoryImpl;
 import ch.makery.address.util.LocalDateAdapter;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
@@ -20,7 +17,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * @author Isa González
  */
 public class PersonModel {
-	private PersonRepository repository;
 	private final IntegerProperty id;
 	private final StringProperty firstName;
 	private final StringProperty lastName;
@@ -32,11 +28,7 @@ public class PersonModel {
 	/**
 	 * Default constructor.
 	 */
-	public PersonModel() { this(new PersonRepositoryImpl()); }
-
-	public PersonModel(PersonRepositoryImpl repository) {
-		this(repository, null, null);
-	}
+	public PersonModel() { this(null, null); }
 
 	/**
 	 * Constructor with some initial data.
@@ -44,8 +36,7 @@ public class PersonModel {
 	 * @param firstName
 	 * @param lastName
 	 */
-	public PersonModel(PersonRepositoryImpl repository, String firstName, String lastName) {
-		this.repository = repository;
+	public PersonModel(String firstName, String lastName) {
 		this.firstName = new SimpleStringProperty(firstName);
 		this.lastName = new SimpleStringProperty(lastName);
 
@@ -55,14 +46,6 @@ public class PersonModel {
 		this.postalCode = new SimpleIntegerProperty(1234);
 		this.city = new SimpleStringProperty("some city");
 		this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(1999, 2, 21));
-	}
-
-	public PersonRepository getRepository() {
-		return this.repository;
-	}
-
-	public void setRepository(PersonRepository repository) {
-		this.repository = repository;
 	}
 
 	public int getId() {

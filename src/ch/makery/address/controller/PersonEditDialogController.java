@@ -1,6 +1,7 @@
 package ch.makery.address.controller;
 
 import ch.makery.address.model.PersonException;
+import ch.makery.address.service.PersonService;
 import ch.makery.address.util.PersonParse;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -35,6 +36,8 @@ public class PersonEditDialogController {
     private PersonModel person;
     private boolean okClicked = false;
 
+    private boolean isNew;
+
     /**
      * Initializes the controller class. This method is automatically called
      * after the fxml file has been loaded.
@@ -58,8 +61,9 @@ public class PersonEditDialogController {
      *
      * @param person
      */
-    public void setPerson(PersonModel person) {
+    public void setPerson(PersonModel person, boolean isNew) {
         this.person = person;
+        this.isNew = isNew;
 
         firstNameField.setText(person.getFirstName());
         lastNameField.setText(person.getLastName());
@@ -93,7 +97,12 @@ public class PersonEditDialogController {
                 person.setCity(cityField.getText());
                 person.setBirthday(DateUtil.parse(birthdayField.getText()));
 
-                person.getRepository().savePerson(PersonParse.parseToPersonVO(person));
+                if (isNew) {
+                    new PersonService().savePerson(person);
+                }
+                else {
+                    new PersonService().editPerson(person);
+                }
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

@@ -148,7 +148,7 @@ public class MainApp extends Application {
 	 * @param person the person object to be edited
 	 * @return true if the user clicked OK, false otherwise.
 	 */
-	public boolean showPersonEditDialog(PersonModel person) {
+	public boolean showPersonEditDialog(PersonModel person, boolean isNew) {
 		try {
 			// Load the fxml file and create a new stage for the popup dialog.
 			FXMLLoader loader = new FXMLLoader();
@@ -167,7 +167,7 @@ public class MainApp extends Application {
 			// Set the person into the controller.
 			PersonEditDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
-			controller.setPerson(person);
+			controller.setPerson(person, isNew);
 
 			// Show the dialog and wait until the user closes it
 			dialogStage.showAndWait();

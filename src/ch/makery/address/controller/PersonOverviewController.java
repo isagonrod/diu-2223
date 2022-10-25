@@ -1,6 +1,7 @@
 package ch.makery.address.controller;
 
 import ch.makery.address.model.PersonException;
+import ch.makery.address.service.PersonService;
 import ch.makery.address.util.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -108,7 +109,7 @@ public class PersonOverviewController {
 		if (selectedIndex >= 0) {
 			try {
 				PersonModel personToDelete = personTable.getItems().get(selectedIndex);
-				personToDelete.getRepository().deletePerson(personToDelete.getId());
+				new PersonService().deletePerson(personToDelete);
 				personTable.getItems().remove(selectedIndex);
 			} catch (PersonException e) {
 				throw new RuntimeException(e);
@@ -130,7 +131,7 @@ public class PersonOverviewController {
 	@FXML
 	private void handleNewPerson() {
 		PersonModel tempPerson = new PersonModel();
-		boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
+		boolean okClicked = mainApp.showPersonEditDialog(tempPerson, true);
 		if (okClicked) {
 			mainApp.getPersonData().add(tempPerson);
 		}
@@ -144,7 +145,7 @@ public class PersonOverviewController {
 	private void handleEditPerson() {
 		PersonModel selectedPerson = personTable.getSelectionModel().getSelectedItem();
 		if (selectedPerson != null) {
-			boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
+			boolean okClicked = mainApp.showPersonEditDialog(selectedPerson, false);
 			if (okClicked) {
 				showPersonDetails(selectedPerson);
 			}
