@@ -10,6 +10,10 @@ import ch.makery.address.controller.BirthdayStatisticsController;
 import ch.makery.address.controller.PersonEditDialogController;
 import ch.makery.address.controller.PersonOverviewController;
 import ch.makery.address.controller.RootLayoutController;
+import ch.makery.address.model.PersonModel;
+import ch.makery.address.model.PersonVO;
+import ch.makery.address.model.repository.PersonRepository;
+import ch.makery.address.model.repository.impl.PersonRepositoryImpl;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,16 +44,21 @@ public class MainApp extends Application {
 	 * Constructor where the program add a list of persons
 	 */
 	public MainApp() {
-		// Add some sample data
-		personData.add(new Person("Hans", "Muster"));
-		personData.add(new Person("Ruth", "Mueller"));
-		personData.add(new Person("Heinz", "Kurz"));
-		personData.add(new Person("Cornelia", "Meier"));
-		personData.add(new Person("Werner", "Meyer"));
-		personData.add(new Person("Lydia", "Kunz"));
-		personData.add(new Person("Anna", "Best"));
-		personData.add(new Person("Stefan", "Meier"));
-		personData.add(new Person("Martin", "Mueller"));
+
+		PersonRepositoryImpl repository = new PersonRepositoryImpl();
+		PersonModel model = new PersonModel();
+		model.setRepository(repository);
+
+//		// Add some sample data
+//		personData.add(new Person("Hans", "Muster"));
+//		personData.add(new Person("Ruth", "Mueller"));
+//		personData.add(new Person("Heinz", "Kurz"));
+//		personData.add(new Person("Cornelia", "Meier"));
+//		personData.add(new Person("Werner", "Meyer"));
+//		personData.add(new Person("Lydia", "Kunz"));
+//		personData.add(new Person("Anna", "Best"));
+//		personData.add(new Person("Stefan", "Meier"));
+//		personData.add(new Person("Martin", "Mueller"));
 	}
 
 	/**
@@ -90,8 +99,7 @@ public class MainApp extends Application {
 		try {
 			// Load root layout from fxml file.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class
-					.getResource("view/RootLayout.fxml"));
+			loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
 			rootLayout = loader.load();
 
 			// Show the scene containing the root layout.
@@ -158,6 +166,7 @@ public class MainApp extends Application {
 			dialogStage.initOwner(primaryStage);
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
+
 
 			// Set the person into the controller.
 			PersonEditDialogController controller = loader.getController();

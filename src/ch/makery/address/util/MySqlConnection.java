@@ -19,7 +19,7 @@ public class MySqlConnection extends DatabaseConnection {
      * @param dbPass - the password for the user
      */
     public MySqlConnection(String dbHost, String dbPort, String dbSchema, String dbUser, String dbPass) {
-        super("com.mysql.jdbc.Driver", dbHost, dbPort, dbSchema, dbUser, dbPass);
+        super("com.mysql.cj.jdbc.Driver", dbHost, dbPort, dbSchema, dbUser, dbPass);
     }
 
     /**

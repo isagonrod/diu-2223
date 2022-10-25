@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 public class Person {
 
+	private final IntegerProperty id;
 	private final StringProperty firstName;
 	private final StringProperty lastName;
 	private final StringProperty street;
@@ -44,10 +45,23 @@ public class Person {
 		this.lastName = new SimpleStringProperty(lastName);
 
 		// Some initial dummy data, just for convenient testing.
+		this.id = new SimpleIntegerProperty(0);
 		this.street = new SimpleStringProperty("some street");
 		this.postalCode = new SimpleIntegerProperty(1234);
 		this.city = new SimpleStringProperty("some city");
 		this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(1999, 2, 21));
+	}
+
+	public int getId() {
+		return id.get();
+	}
+
+	public IntegerProperty idProperty() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id.set(id);
 	}
 
 	public String getFirstName() {
