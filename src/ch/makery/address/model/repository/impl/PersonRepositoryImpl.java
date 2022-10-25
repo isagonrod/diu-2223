@@ -25,7 +25,7 @@ public class PersonRepositoryImpl implements PersonRepository {
     @Override
     public void savePerson(PersonVO newPerson) throws PersonException {
         String fields = "firstName, lastName, street, city, postalCode, birthday";
-        String values = String.format("%s, %s, %s, %s, %d, %s",
+        String values = String.format("'%s', '%s', '%s', '%s', %d, '%s'",
                 newPerson.getFirstName(), newPerson.getLastName(),
                 newPerson.getStreet(), newPerson.getCity(),
                 newPerson.getPostalCode(), DateUtil.format(newPerson.getBirthday()));

@@ -1,5 +1,7 @@
 package ch.makery.address.controller;
 
+import ch.makery.address.model.PersonException;
+import ch.makery.address.util.PersonParse;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -83,12 +85,18 @@ public class PersonEditDialogController {
     @FXML
     private void handleOk() {
         if (isInputValid()) {
-            person.setFirstName(firstNameField.getText());
-            person.setLastName(lastNameField.getText());
-            person.setStreet(streetField.getText());
-            person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
-            person.setCity(cityField.getText());
-            person.setBirthday(DateUtil.parse(birthdayField.getText()));
+            try {
+                person.setFirstName(firstNameField.getText());
+                person.setLastName(lastNameField.getText());
+                person.setStreet(streetField.getText());
+                person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
+                person.setCity(cityField.getText());
+                person.setBirthday(DateUtil.parse(birthdayField.getText()));
+
+                person.getRepository().savePerson(PersonParse.parseToPersonVO(person));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
 
             okClicked = true;
             dialogStage.close();

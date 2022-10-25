@@ -164,6 +164,7 @@ public class DatabaseStatement {
         int result = -1;
 
         try {
+            rs.next();
             result = rs.getInt("Auto_increment");
         } catch (SQLException e) {
             e.printStackTrace();
