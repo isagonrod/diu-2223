@@ -46,7 +46,6 @@ public class MainApp extends Application {
 	 * Constructor where the program add a list of persons
 	 */
 	public MainApp() {
-
 		PersonRepositoryImpl repository = new PersonRepositoryImpl();
 		try {
 			List<PersonVO> bd = repository.loadPersonList();
