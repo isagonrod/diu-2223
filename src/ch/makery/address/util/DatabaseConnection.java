@@ -1,5 +1,6 @@
 package ch.makery.address.util;
 
+import javax.net.ssl.SSLException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;

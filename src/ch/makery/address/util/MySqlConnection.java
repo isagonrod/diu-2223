@@ -30,7 +30,7 @@ public class MySqlConnection extends DatabaseConnection {
 
         try {
             this.conn = DriverManager.getConnection(
-                    "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbSchema, dbUser, dbPass
+                    "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbSchema + "?useSSL=false", dbUser, dbPass
             );
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

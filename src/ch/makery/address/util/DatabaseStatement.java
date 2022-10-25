@@ -160,12 +160,12 @@ public class DatabaseStatement {
      * @return int - the next auto increment value or -1 if there was an exception
      */
     public int getNextId(String table) {
-        ResultSet rs = this.queryResult("SHOW TABLE STATUS WHERE Name = '" + table + "';");
+        ResultSet rs = this.queryResult("SELECT MAX(id)+1 id FROM " + table + ";");
         int result = -1;
 
         try {
             rs.next();
-            result = rs.getInt("Auto_increment");
+            result = rs.getInt("id");
         } catch (SQLException e) {
             e.printStackTrace();
         }
