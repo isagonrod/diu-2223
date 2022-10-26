@@ -22,6 +22,7 @@ public class PersonRepositoryImpl implements PersonRepository {
         this.conn.connectToDataBase();
         this.stmt = this.conn.getNewStatement();
     }
+
     @Override
     public void savePerson(PersonVO newPerson) throws PersonException {
         String fields = "id, firstName, lastName, street, city, postalCode, birthday";
