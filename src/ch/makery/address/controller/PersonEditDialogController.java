@@ -4,6 +4,8 @@ import ch.makery.address.model.PersonException;
 import ch.makery.address.service.PersonService;
 import ch.makery.address.util.PersonParse;
 import javafx.fxml.FXML;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -38,6 +40,12 @@ public class PersonEditDialogController {
 
     private boolean isNew;
 
+    @FXML
+    private ProgressBar progressBar;
+
+    @FXML
+    private ProgressIndicator progressIndicator;
+
     /**
      * Initializes the controller class. This method is automatically called
      * after the fxml file has been loaded.
@@ -50,7 +58,7 @@ public class PersonEditDialogController {
     /**
      * Sets the stage of this dialog.
      *
-     * @param dialogStage
+     * @param dialogStage - The stage's dialog
      */
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
@@ -59,7 +67,8 @@ public class PersonEditDialogController {
     /**
      * Sets the person to be edited in the dialog.
      *
-     * @param person
+     * @param person - The person that wants to be changed
+     * @param isNew - True if the person is new, False if it is not
      */
     public void setPerson(PersonModel person, boolean isNew) {
         this.person = person;
@@ -81,6 +90,11 @@ public class PersonEditDialogController {
      */
     public boolean isOkClicked() {
         return okClicked;
+    }
+
+    public void setProgressBar(double progress) {
+        this.progressBar.setProgress(progress);
+        this.progressIndicator.setProgress(progress);
     }
 
     /**

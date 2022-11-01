@@ -167,6 +167,7 @@ public class MainApp extends Application {
 			PersonEditDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 			controller.setPerson(person, isNew);
+			controller.setProgressBar((double)this.personData.size() / 50);
 
 			// Show the dialog and wait until the user closes it
 			dialogStage.showAndWait();
@@ -220,7 +221,7 @@ public class MainApp extends Application {
 	 * Loads person data from the specified file. The current person data will
 	 * be replaced.
 	 *
-	 * @param file
+	 * @param file - The file where the program takes the person data
 	 */
 	public void loadPersonDataFromFile(File file) {
 		try {
@@ -248,7 +249,7 @@ public class MainApp extends Application {
 	/**
 	 * Saves the current person data to the specified file.
 	 *
-	 * @param file
+	 * @param file - The file where the program saves the person data
 	 */
 	public void savePersonDataToFile(File file) {
 		try {
