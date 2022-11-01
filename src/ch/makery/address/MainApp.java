@@ -150,7 +150,8 @@ public class MainApp extends Application {
 	 * clicks OK, the changes are saved into the provided person object and true
 	 * is returned.
 	 *
-	 * @param person the person object to be edited
+	 * @param person the person object to be
+	 * @param isNew true or false
 	 * @return true if the user clicked OK, false otherwise.
 	 */
 	public boolean showPersonEditDialog(PersonModel person, boolean isNew) {

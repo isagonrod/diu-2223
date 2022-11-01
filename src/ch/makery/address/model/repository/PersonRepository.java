@@ -38,7 +38,7 @@ public interface PersonRepository {
 	/**
 	 * Opens a database connection and queries all the persons in the database.
 	 *
-	 * @return ArrayList<PersonVO> - The list of persons in the database
+	 * @return ArrayList of PersonVO - The list of persons in the database
 	 * @throws PersonException Exception thrown if a controlled error happens
 	 */
 	List<PersonVO> loadPersonList() throws PersonException;

@@ -59,7 +59,7 @@ public class MainVentanaContadorPulsaciones extends Application {
 
     /**
      * Returns the main stage.
-     * @return
+     * @return the primary stage
      */
     public Stage getPrimaryStage() {
         return primaryStage;
