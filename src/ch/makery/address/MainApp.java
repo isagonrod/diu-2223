@@ -2,7 +2,6 @@ package ch.makery.address;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 import java.util.prefs.Preferences;
 
@@ -164,7 +163,7 @@ public class MainApp extends Application {
 			// Create the dialog Stage.
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Edit Person");
-			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initModality(Modality.NONE);
 			dialogStage.initOwner(primaryStage);
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
