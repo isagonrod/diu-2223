@@ -47,7 +47,7 @@ public class BirthdayStatisticsController {
     /**
      * Sets the persons to show the statistics for.
      *
-     * @param persons
+     * @param persons - List of persons
      */
     public void setPersonData(List<PersonModel> persons) {
         // Count the number of people having their birthday in a specific month.

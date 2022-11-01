@@ -6,6 +6,11 @@ import ch.makery.address.model.repository.PersonRepository;
 import ch.makery.address.model.repository.impl.PersonRepositoryImpl;
 import ch.makery.address.util.PersonParse;
 
+/**
+ * The class of person service to connect the application with the repository.
+ *
+ * @author Isa González
+ */
 public class PersonService {
     private PersonRepository repository;
 

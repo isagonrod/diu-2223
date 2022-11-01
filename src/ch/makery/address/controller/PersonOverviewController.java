@@ -11,6 +11,11 @@ import ch.makery.address.MainApp;
 import ch.makery.address.model.PersonModel;
 import org.controlsfx.dialog.Dialogs;
 
+/**
+ * The controller of the person overview.
+ *
+ * @author Isa González
+ */
 public class PersonOverviewController {
 	@FXML
 	private TableView<PersonModel> personTable;
@@ -63,7 +68,7 @@ public class PersonOverviewController {
 	/**
 	 * Is called by the main application to give a reference back to itself.
 	 *
-	 * @param mainApp
+	 * @param mainApp - References the main application
 	 */
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;

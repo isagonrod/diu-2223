@@ -33,8 +33,8 @@ public class PersonModel {
 	/**
 	 * Constructor with some initial data.
 	 *
-	 * @param firstName
-	 * @param lastName
+	 * @param firstName - The first name of the new person
+	 * @param lastName - The last name of the new person
 	 */
 	public PersonModel(String firstName, String lastName) {
 		this.firstName = new SimpleStringProperty(firstName);

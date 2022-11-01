@@ -2,6 +2,12 @@ package ch.makery.address.model;
 
 import java.time.LocalDate;
 
+/**
+ * Value Object class of Person. This class only have the person attributes, the constructor
+ * and the attributes' getter and setter.
+ *
+ * @author Isa González
+ */
 public class PersonVO {
 	private int id;
 	private String firstName;

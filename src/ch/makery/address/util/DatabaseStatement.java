@@ -6,6 +6,8 @@ import java.sql.Statement;
 
 /**
  * Class to encapsulate a Statement instance with helper methods.
+ *
+ * @author Isa González
  */
 public class DatabaseStatement {
     private Statement stmt;

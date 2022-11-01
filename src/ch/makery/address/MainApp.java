@@ -32,6 +32,11 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+/**
+ * Main application
+ *
+ * @author Isa González
+ */
 public class MainApp extends Application {
 
 	private Stage primaryStage;

@@ -7,6 +7,8 @@ import java.sql.SQLException;
  * Subclass that inherits base functionality from DatabaseConnection
  * and defines the specific connection data and drivers to be used
  * to run queries against a MySQL/MariaDB Database.
+ *
+ * @author Isa González
  */
 public class MySqlConnection extends DatabaseConnection {
     /**

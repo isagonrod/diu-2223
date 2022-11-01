@@ -1,6 +1,5 @@
 package ch.makery.address.util;
 
-import javax.net.ssl.SSLException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -11,6 +10,8 @@ import java.sql.Statement;
  * <p>
  * Any new type of SQL database we want for our code must inherit this
  * abstract class, and only through them can a connection be established.
+ *
+ * @author Isa González
  */
 public abstract class DatabaseConnection {
     protected Connection conn;

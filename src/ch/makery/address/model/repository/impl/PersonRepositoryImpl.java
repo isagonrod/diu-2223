@@ -13,16 +13,29 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The implementation of person repository.
+ *
+ * @author Isa González
+ */
 public class PersonRepositoryImpl implements PersonRepository {
-    private DatabaseConnection conn;
-    private DatabaseStatement stmt;
+    private final DatabaseConnection conn;
+    private final DatabaseStatement stmt;
 
+    /**
+     * Empty constructor with a MySQL connection by default
+     */
     public PersonRepositoryImpl() {
         this.conn = new MySqlConnection("localhost", "3306", "agenda", "root", "MAirena.1985");
         this.conn.connectToDataBase();
         this.stmt = this.conn.getNewStatement();
     }
 
+    /**
+     * Method to save a person into the repository
+     *
+     * @param newPerson - the object with the new data to insert
+     */
     @Override
     public void savePerson(PersonVO newPerson) throws PersonException {
         String fields = "id, firstName, lastName, street, city, postalCode, birthday";
@@ -44,6 +57,11 @@ public class PersonRepositoryImpl implements PersonRepository {
         this.conn.closeDataBase();
     }
 
+    /**
+     * Method to delete a person of the repository.
+     *
+     * @param id - the ID of the person to delete
+     */
     @Override
     public void deletePerson(int id) throws PersonException {
         if (this.stmt.delete("person", "id=" + id) == -1) {
@@ -56,6 +74,11 @@ public class PersonRepositoryImpl implements PersonRepository {
         this.conn.closeDataBase();
     }
 
+    /**
+     * Method to edit or update a person of the repository.
+     *
+     * @param person - the data to send to the database
+     */
     @Override
     public void editPerson(PersonVO person) throws PersonException {
         String fields = String.format("firstName='%s', lastName='%s', street='%s', city='%s', postalCode=%d, birthday='%s'",
@@ -73,6 +96,11 @@ public class PersonRepositoryImpl implements PersonRepository {
         this.conn.closeDataBase();
     }
 
+    /**
+     * Method to load a person list.
+     *
+     * @return a list of persons saved into the repository
+     */
     @Override
     public List<PersonVO> loadPersonList() throws PersonException {
         ResultSet rs = this.stmt.select("*", "person", null, null);

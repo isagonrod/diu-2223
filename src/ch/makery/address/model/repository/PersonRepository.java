@@ -7,6 +7,8 @@ import java.util.List;
 
 /**
  * Interface that defines how to implement a Person repository.
+ *
+ * @author Isa González
  */
 public interface PersonRepository {
 	/**

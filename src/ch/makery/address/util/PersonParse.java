@@ -3,6 +3,11 @@ package ch.makery.address.util;
 import ch.makery.address.model.PersonModel;
 import ch.makery.address.model.PersonVO;
 
+/**
+ * Class to convert a PersonModel to a PersonVO and vice versa.
+ *
+ * @author Isa González
+ */
 public class PersonParse {
 	public static PersonVO parseToPersonVO(PersonModel person) {
 		PersonVO personVO = new PersonVO();
