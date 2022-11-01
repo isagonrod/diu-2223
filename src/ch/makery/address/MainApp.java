@@ -16,6 +16,8 @@ import ch.makery.address.model.PersonVO;
 import ch.makery.address.model.repository.impl.PersonRepositoryImpl;
 import ch.makery.address.util.PersonParse;
 import javafx.application.Application;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -46,11 +48,13 @@ public class MainApp extends Application {
 	 */
 	private ObservableList<PersonModel> personData = FXCollections.observableArrayList();
 
+	private DoubleProperty personAmount;
 	/**
 	 * Constructor where the program add a list of persons
 	 */
 	public MainApp() {
 		PersonRepositoryImpl repository = new PersonRepositoryImpl();
+		this.personAmount = new SimpleDoubleProperty(0);
 		try {
 			List<PersonVO> bd = repository.loadPersonList();
 			for (PersonVO personVO : bd) {
@@ -173,6 +177,7 @@ public class MainApp extends Application {
 			controller.setDialogStage(dialogStage);
 			controller.setPerson(person, isNew);
 			controller.setProgressBar((double)this.personData.size() / 50);
+			controller.setPersonAmountProperty(this.personAmount);
 
 			// Show the dialog and wait until the user closes it
 			dialogStage.showAndWait();

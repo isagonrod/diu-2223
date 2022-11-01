@@ -3,6 +3,11 @@ package ch.makery.address.controller;
 import ch.makery.address.model.PersonException;
 import ch.makery.address.service.PersonService;
 import ch.makery.address.util.PersonParse;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
@@ -34,18 +39,19 @@ public class PersonEditDialogController {
     @FXML
     private TextField birthdayField;
 
-    private Stage dialogStage;
-    private PersonModel person;
-    private boolean okClicked = false;
-
-    private boolean isNew;
-
     @FXML
     private ProgressBar progressBar;
 
     @FXML
     private ProgressIndicator progressIndicator;
 
+    private Stage dialogStage;
+    private PersonModel person;
+    private boolean okClicked = false;
+
+    private boolean isNew;
+
+    private DoubleProperty personAmount = new SimpleDoubleProperty(0);
     /**
      * Initializes the controller class. This method is automatically called
      * after the fxml file has been loaded.
@@ -95,6 +101,32 @@ public class PersonEditDialogController {
     public void setProgressBar(double progress) {
         this.progressBar.setProgress(progress);
         this.progressIndicator.setProgress(progress);
+    }
+
+    /**
+     * Binds the local size property to the one from the outside and
+     * calls for the construction of the change listener.
+     *
+     * @param personAmountProperty - the property to which we have to bind the value
+     */
+    public void setPersonAmountProperty(DoubleProperty personAmountProperty) {
+        this.personAmount.bindBidirectional(personAmountProperty);
+        this.establishPersonAmount(this.personAmount);
+    }
+
+    /**
+     * Adds a change listener to the size property so that it calculates the
+     * new value whenever it is changed.
+     *
+     * @param personAmountProperty - the property to which we have to add a listener
+     */
+    private void establishPersonAmount(DoubleProperty personAmountProperty) {
+        personAmountProperty.addListener(new ChangeListener() {
+
+            @Override public void changed(ObservableValue o, Object oldVal, Object newVal) {
+                progressIndicator.setProgress(personAmountProperty.getValue() / 50);
+            }
+        });
     }
 
     /**
