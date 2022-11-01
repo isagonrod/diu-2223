@@ -144,7 +144,7 @@ public class EjemploGridPane extends Application {
             raiz.add(comboBox, 3, 2);
             Scene scene = new Scene(raiz,600,400);
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Tarea GripPane <Miguel Ángel Vidal de Blanca>");
+            primaryStage.setTitle("Tarea GripPane");
             primaryStage.show();
 
         } catch(Exception e) {
