@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>ch.makery.address</OriginalElement>
+  <nodes>
+    <node x="189.0" y="75.25">ch.makery.address.model.PersonVO</node>
+    <node x="841.0" y="893.5">ch.makery.address.controller.RootLayoutController</node>
+    <node x="1499.2999999999997" y="374.5">ch.makery.address.util.OracleConnection</node>
+    <node x="-175.5" y="-10.375">ch.makery.address.util.DateUtil</node>
+    <node x="452.0" y="363.0">ch.makery.address.controller.BirthdayStatisticsController</node>
+    <node x="167.5" y="961.0">ch.makery.address.model.repository.PersonRepository</node>
+    <node x="-322.5" y="971.0">ch.makery.address.model.PersonListWrapper</node>
+    <node x="190.5" y="1105.5">ch.makery.address.model.PersonException</node>
+    <node x="1145.2999999999997" y="374.5">ch.makery.address.util.MySqlConnection</node>
+    <node x="189.5" y="1338.25">ch.makery.address.controller.PersonEditDialogController</node>
+    <node x="-221.5" y="154.625">ch.makery.address.util.PersonParse</node>
+    <node x="515.0" y="1060.5">ch.makery.address.service.PersonService</node>
+    <node x="-210.0" y="1120.6666666666667">ch.makery.address.controller.PersonOverviewController</node>
+    <node x="532.8" y="705.0">ch.makery.address.model.repository.impl.PersonRepositoryImpl</node>
+    <node x="146.0" y="605.0">ch.makery.address.MainApp</node>
+    <node x="1340.3000000000002" y="695.5">ch.makery.address.util.DatabaseStatement</node>
+    <node x="-232.5" y="300.0">ch.makery.address.model.PersonModel</node>
+    <node x="1304.7999999999997" y="501.5">ch.makery.address.util.DatabaseConnection</node>
+    <node x="180.5" y="-59.375">ch.makery.address.util.LocalDateAdapter</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ch.makery.address.model.repository.impl.PersonRepositoryImpl" target="ch.makery.address.model.repository.PersonRepository" relationship="REALIZATION">
+      <point x="-31.799999999999955" y="60.0" />
+      <point x="612.5" y="1021.0" />
+      <point x="111.5" y="0.0" />
+    </edge>
+    <edge source="ch.makery.address.service.PersonService" target="ch.makery.address.model.repository.PersonRepository" relationship="TO_ONE">
+      <point x="-112.5" y="-87.0" />
+      <point x="111.5" y="47.0" />
+    </edge>
+    <edge source="ch.makery.address.model.repository.impl.PersonRepositoryImpl" target="ch.makery.address.util.MySqlConnection" relationship="CREATE">
+      <point x="111.5" y="-30.0" />
+      <point x="1287.2999999999997" y="735.0" />
+      <point x="-25.0" y="38.5" />
+    </edge>
+    <edge source="ch.makery.address.util.DatabaseConnection" target="ch.makery.address.util.DatabaseStatement" relationship="CREATE">
+      <point x="4.547473508864641E-13" y="72.0" />
+      <point x="0.0" y="-115.5" />
+    </edge>
+    <edge source="ch.makery.address.model.repository.impl.PersonRepositoryImpl" target="ch.makery.address.util.DatabaseStatement" relationship="TO_ONE">
+      <point x="111.5" y="-15.0" />
+      <point x="-140.0" y="-61.0" />
+    </edge>
+    <edge source="ch.makery.address.util.PersonParse" target="ch.makery.address.model.PersonModel" relationship="CREATE">
+      <point x="0.0" y="49.5" />
+      <point x="0.0" y="-270.5" />
+    </edge>
+    <edge source="ch.makery.address.controller.PersonOverviewController" target="ch.makery.address.model.PersonModel" relationship="CREATE">
+      <point x="-15.0" y="-105.5" />
+      <point x="-15.0" y="270.5" />
+    </edge>
+    <edge source="ch.makery.address.controller.PersonEditDialogController" target="ch.makery.address.model.PersonModel" relationship="TO_ONE">
+      <point x="-126.5" y="0.0" />
+      <point x="-340.0" y="1487.75" />
+      <point x="-340.0" y="570.5" />
+      <point x="-148.5" y="0.0" />
+    </edge>
+    <edge source="ch.makery.address.MainApp" target="ch.makery.address.model.repository.impl.PersonRepositoryImpl" relationship="CREATE">
+      <point x="170.0" y="0.0" />
+      <point x="-111.5" y="0.0" />
+    </edge>
+    <edge source="ch.makery.address.model.PersonListWrapper" target="ch.makery.address.model.PersonModel" relationship="TO_MANY">
+      <point x="0.0" y="-50.0" />
+      <point x="-224.0" y="870.0" />
+      <point x="-84.0" y="870.0" />
+      <point x="0.0" y="270.5" />
+    </edge>
+    <edge source="ch.makery.address.service.PersonService" target="ch.makery.address.model.repository.impl.PersonRepositoryImpl" relationship="CREATE">
+      <point x="0.0" y="-94.5" />
+      <point x="627.5" y="842.5" />
+      <point x="510.0" y="842.5" />
+      <point x="510.0" y="765.0" />
+      <point x="-111.5" y="0.0" />
+    </edge>
+    <edge source="ch.makery.address.controller.PersonOverviewController" target="ch.makery.address.service.PersonService" relationship="CREATE">
+      <point x="126.0" y="3.333333331738686E-4" />
+      <point x="265.0" y="1226.167" />
+      <point x="265.0" y="1303.0" />
+      <point x="627.5" y="1303.0" />
+      <point x="0.0" y="94.5" />
+    </edge>
+    <edge source="ch.makery.address.controller.PersonOverviewController" target="ch.makery.address.MainApp" relationship="TO_ONE">
+      <point x="0.0" y="-105.49966666666671" />
+      <point x="-84.0" y="943.0" />
+      <point x="316.0" y="943.0" />
+      <point x="0.0" y="160.0" />
+    </edge>
+    <edge source="ch.makery.address.MainApp" target="ch.makery.address.model.PersonListWrapper" relationship="CREATE">
+      <point x="-170.0" y="152.5" />
+      <point x="80.0" y="917.5" />
+      <point x="80.0" y="997.5" />
+      <point x="98.5" y="-23.5" />
+    </edge>
+    <edge source="ch.makery.address.model.repository.impl.PersonRepositoryImpl" target="ch.makery.address.util.DatabaseConnection" relationship="TO_ONE">
+      <point x="0.0" y="-60.0" />
+      <point x="644.3" y="612.5" />
+      <point x="-175.5" y="39.0" />
+    </edge>
+    <edge source="ch.makery.address.MainApp" target="ch.makery.address.model.PersonModel" relationship="TO_MANY">
+      <point x="-170.0" y="0.0" />
+      <point x="82.0" y="765.0" />
+      <point x="82.0" y="866.0" />
+      <point x="-84.0" y="866.0" />
+      <point x="0.0" y="270.5" />
+    </edge>
+    <edge source="ch.makery.address.controller.RootLayoutController" target="ch.makery.address.MainApp" relationship="TO_ONE">
+      <point x="-119.0" y="0.0" />
+      <point x="788.3" y="1021.0" />
+      <point x="788.3" y="943.0" />
+      <point x="316.0" y="943.0" />
+      <point x="0.0" y="160.0" />
+    </edge>
+    <edge source="ch.makery.address.util.OracleConnection" target="ch.makery.address.util.DatabaseConnection" relationship="GENERALIZATION">
+      <point x="2.2737367544323206E-13" y="38.5" />
+      <point x="1648.3" y="477.0" />
+      <point x="1480.3" y="477.0" />
+      <point x="2.2737367544323206E-13" y="-72.0" />
+    </edge>
+    <edge source="ch.makery.address.model.repository.impl.PersonRepositoryImpl" target="ch.makery.address.model.PersonVO" relationship="CREATE">
+      <point x="111.5" y="0.0" />
+      <point x="1025.5" y="765.0" />
+      <point x="1025.5" y="279.75" />
+      <point x="90.0" y="0.0" />
+    </edge>
+    <edge source="ch.makery.address.model.repository.impl.PersonRepositoryImpl" target="ch.makery.address.model.PersonException" relationship="CREATE">
+      <point x="111.5" y="15.0" />
+      <point x="773.3" y="780.0" />
+      <point x="773.3" y="1267.0" />
+      <point x="280.0" y="1267.0" />
+      <point x="0.0" y="49.5" />
+    </edge>
+    <edge source="ch.makery.address.controller.PersonEditDialogController" target="ch.makery.address.service.PersonService" relationship="CREATE">
+      <point x="0.0" y="-149.5" />
+      <point x="316.0" y="1303.0" />
+      <point x="627.5" y="1303.0" />
+      <point x="0.0" y="94.5" />
+    </edge>
+    <edge source="ch.makery.address.util.MySqlConnection" target="ch.makery.address.util.DatabaseConnection" relationship="GENERALIZATION">
+      <point x="2.2737367544323206E-13" y="38.5" />
+      <point x="1312.3" y="477.0" />
+      <point x="1480.3" y="477.0" />
+      <point x="2.2737367544323206E-13" y="-72.0" />
+    </edge>
+    <edge source="ch.makery.address.util.PersonParse" target="ch.makery.address.model.PersonVO" relationship="CREATE">
+      <point x="137.5" y="0.0" />
+      <point x="-90.0" y="-75.625" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.5" showDependencies="true" x="300.66666666666833" y="816.0000000000001" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
