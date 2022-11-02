@@ -48,18 +48,26 @@ public class MainApp extends Application {
 	 */
 	private ObservableList<PersonModel> personData = FXCollections.observableArrayList();
 
+	public double getPersonAmount() {
+		return personAmount.get();
+	}
+
+	public DoubleProperty getPersonAmountProperty() {
+		return personAmount;
+	}
+
 	private DoubleProperty personAmount;
 	/**
 	 * Constructor where the program add a list of persons
 	 */
 	public MainApp() {
 		PersonRepositoryImpl repository = new PersonRepositoryImpl();
-		this.personAmount = new SimpleDoubleProperty(0);
 		try {
 			List<PersonVO> bd = repository.loadPersonList();
 			for (PersonVO personVO : bd) {
 				personData.add(PersonParse.parseToPerson(personVO));
 			}
+			this.personAmount = new SimpleDoubleProperty(this.personData.size());
 		} catch (PersonException e) {
 			throw new RuntimeException(e);
 		}
@@ -145,50 +153,6 @@ public class MainApp extends Application {
 
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * Opens a dialog to edit details for the specified person. If the user
-	 * clicks OK, the changes are saved into the provided person object and true
-	 * is returned.
-	 *
-	 * @param person the person object to be
-	 * @param isNew true or false
-	 * @return true if the user clicked OK, false otherwise.
-	 */
-	public boolean showPersonEditDialog(PersonModel person, boolean isNew) {
-		try {
-			// Load the fxml file and create a new stage for the popup dialog.
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("view/PersonEditDialog.fxml"));
-			AnchorPane page = loader.load();
-
-			// Create the dialog Stage.
-			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Edit Person");
-			dialogStage.initModality(Modality.NONE);
-			dialogStage.initOwner(primaryStage);
-			Scene scene = new Scene(page);
-			dialogStage.setScene(scene);
-
-			// Set the person into the controller.
-			PersonEditDialogController controller = loader.getController();
-			controller.setDialogStage(dialogStage);
-			controller.setPerson(person, isNew);
-			person.setPersonNumber((double)this.personData.size() / 50);
-			person.setPersonNumberProperty(this.personAmount);
-			controller.setProgressBar((double)this.personData.size() / 50);
-			controller.setPersonAmountProperty(this.personAmount);
-
-
-			// Show the dialog and wait until the user closes it
-			dialogStage.showAndWait();
-
-			return controller.isOkClicked();
-		} catch (IOException e) {
-			e.printStackTrace();
-			return false;
 		}
 	}
 

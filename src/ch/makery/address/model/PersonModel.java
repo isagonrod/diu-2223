@@ -137,12 +137,12 @@ public class PersonModel {
 		return personNumber.get();
 	}
 
-	public DoubleProperty personNumberProperty() {
+	public DoubleProperty getPersonNumberProperty() {
 		return personNumber;
 	}
 
 	public void setPersonNumberProperty(DoubleProperty personNumber) {
-		this.updatePersonNumber(this.personNumber);
+		this.personNumberListener(this.personNumber);
 		this.personNumber.bindBidirectional(personNumber);
 	}
 
@@ -150,7 +150,7 @@ public class PersonModel {
 		this.personNumber.set(personNumber);
 	}
 
-	public void updatePersonNumber(DoubleProperty personNumber) {
+	public void personNumberListener(DoubleProperty personNumber) {
 		personNumber.addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {

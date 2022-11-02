@@ -4,12 +4,19 @@ import ch.makery.address.model.PersonException;
 import ch.makery.address.service.PersonService;
 import ch.makery.address.util.DateUtil;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import ch.makery.address.MainApp;
 import ch.makery.address.model.PersonModel;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.controlsfx.dialog.Dialogs;
+
+import java.io.IOException;
 
 /**
  * The controller of the person overview.
@@ -136,7 +143,7 @@ public class PersonOverviewController {
 	@FXML
 	private void handleNewPerson() {
 		PersonModel tempPerson = new PersonModel();
-		boolean okClicked = mainApp.showPersonEditDialog(tempPerson, true);
+		boolean okClicked = this.showPersonEditDialog(tempPerson, true);
 		if (okClicked) {
 			mainApp.getPersonData().add(tempPerson);
 		}
@@ -150,7 +157,7 @@ public class PersonOverviewController {
 	private void handleEditPerson() {
 		PersonModel selectedPerson = personTable.getSelectionModel().getSelectedItem();
 		if (selectedPerson != null) {
-			boolean okClicked = mainApp.showPersonEditDialog(selectedPerson, false);
+			boolean okClicked = this.showPersonEditDialog(selectedPerson, false);
 			if (okClicked) {
 				showPersonDetails(selectedPerson);
 			}
@@ -162,6 +169,52 @@ public class PersonOverviewController {
 					.masthead("No Person Selected")
 					.message("Please select a person in the table.")
 					.showWarning();
+		}
+	}
+
+
+
+	/**
+	 * Opens a dialog to edit details for the specified person. If the user
+	 * clicks OK, the changes are saved into the provided person object and true
+	 * is returned.
+	 *
+	 * @param person the person object to be
+	 * @param isNew true or false
+	 * @return true if the user clicked OK, false otherwise.
+	 */
+	public boolean showPersonEditDialog(PersonModel person, boolean isNew) {
+		try {
+			// Load the fxml file and create a new stage for the popup dialog.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("view/PersonEditDialog.fxml"));
+			AnchorPane page = loader.load();
+
+			// Create the dialog Stage.
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Edit Person");
+			dialogStage.initModality(Modality.NONE);
+			dialogStage.initOwner(mainApp.getPrimaryStage());
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+
+			// Set the person into the controller.
+			PersonEditDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			controller.setPerson(person, isNew);
+			person.setPersonNumber((double)mainApp.getPersonData().size() / 50);
+			person.setPersonNumberProperty(mainApp.getPersonAmountProperty());
+			controller.setProgressBar((double)mainApp.getPersonData().size() / 50);
+			controller.setPersonAmountProperty(mainApp.getPersonAmountProperty());
+
+
+			// Show the dialog and wait until the user closes it
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 }
