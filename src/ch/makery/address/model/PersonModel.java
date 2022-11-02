@@ -1,13 +1,11 @@
 package ch.makery.address.model;
 
 import java.time.LocalDate;
+
 import ch.makery.address.util.LocalDateAdapter;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -24,6 +22,8 @@ public class PersonModel {
 	private final IntegerProperty postalCode;
 	private final StringProperty city;
 	private final ObjectProperty<LocalDate> birthday;
+
+	private DoubleProperty personNumber = new SimpleDoubleProperty();
 
 	/**
 	 * Default constructor.
@@ -131,5 +131,31 @@ public class PersonModel {
 
 	public ObjectProperty<LocalDate> birthdayProperty() {
 		return birthday;
+	}
+
+	public double getPersonNumber() {
+		return personNumber.get();
+	}
+
+	public DoubleProperty personNumberProperty() {
+		return personNumber;
+	}
+
+	public void setPersonNumberProperty(DoubleProperty personNumber) {
+		this.updatePersonNumber(this.personNumber);
+		this.personNumber.bindBidirectional(personNumber);
+	}
+
+	public void setPersonNumber(double personNumber) {
+		this.personNumber.set(personNumber);
+	}
+
+	public void updatePersonNumber(DoubleProperty personNumber) {
+		personNumber.addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+				personNumber.set(newValue.intValue());
+			}
+		});
 	}
 }

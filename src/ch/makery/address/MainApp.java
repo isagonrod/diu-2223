@@ -176,8 +176,11 @@ public class MainApp extends Application {
 			PersonEditDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 			controller.setPerson(person, isNew);
+			person.setPersonNumber((double)this.personData.size() / 50);
+			person.setPersonNumberProperty(this.personAmount);
 			controller.setProgressBar((double)this.personData.size() / 50);
 			controller.setPersonAmountProperty(this.personAmount);
+
 
 			// Show the dialog and wait until the user closes it
 			dialogStage.showAndWait();

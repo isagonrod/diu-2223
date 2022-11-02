@@ -65,7 +65,7 @@ public class PersonRepositoryImpl implements PersonRepository {
      */
     @Override
     public void deletePerson(int id) throws PersonException {
-        if (this.stmt.delete("person", "id=" + id) == -1) {
+        if (this.stmt.delete("person", "idPerson=" + id) == -1) {
             this.stmt.closeStatement();
             this.conn.closeDataBase();
             throw new PersonException("Error al borrar la persona");
@@ -87,7 +87,7 @@ public class PersonRepositoryImpl implements PersonRepository {
                 person.getStreet(), person.getCity(),
                 person.getPostalCode(), DateUtil.format(person.getBirthday()));
 
-        if (this.stmt.update(fields, "person", "id=" + person.getId()) == -1) {
+        if (this.stmt.update(fields, "person", "idPerson=" + person.getId()) == -1) {
             this.stmt.closeStatement();
             this.conn.closeDataBase();
             throw new PersonException("Error al actualizar la persona");
