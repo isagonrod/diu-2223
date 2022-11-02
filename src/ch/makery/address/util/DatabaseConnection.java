@@ -116,6 +116,12 @@ public abstract class DatabaseConnection {
         }
     }
 
+    /**
+     * Loads database configuration from a specified file.
+     *
+     * @param fileName - the file to read
+     * @return Map - A map with the config values
+     */
     public Map<String, String> loadDbConfig(String fileName) {
         Map<String, String> result = new HashMap<>();
 

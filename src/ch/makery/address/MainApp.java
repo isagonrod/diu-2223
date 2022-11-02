@@ -9,7 +9,6 @@ import ch.makery.address.model.PersonException;
 import ch.makery.address.model.PersonModel;
 import ch.makery.address.model.PersonListWrapper;
 import ch.makery.address.controller.BirthdayStatisticsController;
-import ch.makery.address.controller.PersonEditDialogController;
 import ch.makery.address.controller.PersonOverviewController;
 import ch.makery.address.controller.RootLayoutController;
 import ch.makery.address.model.PersonVO;
@@ -35,12 +34,12 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 /**
- * Main application
+ * Main application class.
+ * Contains the Main method and launches the framework.
  *
  * @author Isa González
  */
 public class MainApp extends Application {
-
     private Stage primaryStage;
     private BorderPane rootLayout;
 
@@ -49,18 +48,11 @@ public class MainApp extends Application {
      */
     private ObservableList<PersonModel> personData = FXCollections.observableArrayList();
 
-    public double getPersonAmount() {
-        return personAmount.get();
-    }
-
-    public DoubleProperty getPersonAmountProperty() {
-        return personAmount;
-    }
-
     private DoubleProperty personAmount;
 
     /**
-     * Constructor where the program add a list of persons
+     * Constructor where the program adds a list of persons from the database
+     * and sets a listener for the ObservableList containing the persons.
      */
     public MainApp() {
         PersonRepositoryImpl repository = new PersonRepositoryImpl();
@@ -86,14 +78,23 @@ public class MainApp extends Application {
     /**
      * Returns the data as an observable list of Persons.
      *
-     * @return personData
+     * @return The ObservableList of Persons.
      */
     public ObservableList<PersonModel> getPersonData() {
         return personData;
     }
 
     /**
-     * Start the application
+     * Returns the person amount Property instance.
+     *
+     * @return The person amount Property instance.
+     */
+    public DoubleProperty getPersonAmountProperty() {
+        return personAmount;
+    }
+
+    /**
+     * Starts the application.
      *
      * @param primaryStage the primary stage for this application, onto which
      *                     the application scene can be set. The primary stage will be embedded in
@@ -298,6 +299,11 @@ public class MainApp extends Application {
         return primaryStage;
     }
 
+    /**
+     * Java application entry point.
+     *
+     * @param args - execution parameters, if any were received
+     */
     public static void main(String[] args) {
         launch(args);
     }

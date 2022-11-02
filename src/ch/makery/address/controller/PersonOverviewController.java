@@ -172,8 +172,6 @@ public class PersonOverviewController {
 		}
 	}
 
-
-
 	/**
 	 * Opens a dialog to edit details for the specified person. If the user
 	 * clicks OK, the changes are saved into the provided person object and true

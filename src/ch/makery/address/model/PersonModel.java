@@ -133,23 +133,33 @@ public class PersonModel {
 		return birthday;
 	}
 
-	public double getPersonNumber() {
-		return personNumber.get();
-	}
-
-	public DoubleProperty getPersonNumberProperty() {
-		return personNumber;
-	}
-
+	/**
+	 * Sets the PersonNumber Property for this class so that it can be
+	 * used for updating the progress indicators.
+	 *
+	 * @param personNumber - the property being used through the application
+	 */
 	public void setPersonNumberProperty(DoubleProperty personNumber) {
 		this.personNumberListener(this.personNumber);
 		this.personNumber.bindBidirectional(personNumber);
 	}
 
+	/**
+	 * Sets the value that the progress indicators will use.
+	 *
+	 * @param personNumber - the new value to use
+	 */
 	public void setPersonNumber(double personNumber) {
 		this.personNumber.set(personNumber);
 	}
 
+	/**
+	 * Creates a listener for the property that contains
+	 * the person number value, so that the value is received
+	 * properly with each change.
+	 *
+	 * @param personNumber - the property to listen to
+	 */
 	public void personNumberListener(DoubleProperty personNumber) {
 		personNumber.addListener(new ChangeListener<Number>() {
 			@Override

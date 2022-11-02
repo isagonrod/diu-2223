@@ -25,7 +25,6 @@ import ch.makery.address.util.DateUtil;
  * @author Isa González
  */
 public class PersonEditDialogController {
-
     @FXML
     private TextField firstNameField;
     @FXML
@@ -48,10 +47,9 @@ public class PersonEditDialogController {
     private Stage dialogStage;
     private PersonModel person;
     private boolean okClicked = false;
-
     private boolean isNew;
-
     private DoubleProperty personAmount = new SimpleDoubleProperty(0);
+
     /**
      * Initializes the controller class. This method is automatically called
      * after the fxml file has been loaded.
@@ -220,5 +218,4 @@ public class PersonEditDialogController {
             return false;
         }
     }
-
 }

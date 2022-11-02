@@ -23,7 +23,7 @@ public class PersonRepositoryImpl implements PersonRepository {
     private final DatabaseStatement stmt;
 
     /**
-     * Empty constructor with a MySQL connection by default
+     * Empty constructor with a default MySQL connection read from a config file.
      */
     public PersonRepositoryImpl() {
         this.conn = new MySqlConnection();
@@ -46,7 +46,6 @@ public class PersonRepositoryImpl implements PersonRepository {
                 newPerson.getStreet(), newPerson.getCity(),
                 newPerson.getPostalCode(), DateUtil.format(newPerson.getBirthday()));
 		System.out.println(newPerson.getId());
-
 
         if (this.stmt.insert(fields, values, "person") == -1) {
             this.stmt.closeStatement();
