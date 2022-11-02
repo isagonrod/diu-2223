@@ -162,12 +162,12 @@ public class DatabaseStatement {
      * @return int - the next auto increment value or -1 if there was an exception
      */
     public int getNextId(String table) {
-        ResultSet rs = this.queryResult("SELECT IFNULL(MAX(id)+1,1) id FROM " + table + ";");
+        ResultSet rs = this.queryResult("SELECT IFNULL(MAX(idPerson)+1,1) idPerson FROM " + table + ";");
         int result = -1;
 
         try {
             rs.next();
-            result = rs.getInt("id");
+            result = rs.getInt("idPerson");
         } catch (SQLException e) {
             e.printStackTrace();
         }

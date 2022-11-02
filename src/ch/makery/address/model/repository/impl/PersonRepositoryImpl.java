@@ -38,13 +38,14 @@ public class PersonRepositoryImpl implements PersonRepository {
      */
     @Override
     public void savePerson(PersonVO newPerson) throws PersonException {
-        String fields = "id, firstName, lastName, street, city, postalCode, birthday";
+        String fields = "idPerson, firstName, lastName, street, city, postalCode, birthday";
         newPerson.setId(this.stmt.getNextId("person"));
 
         String values = String.format("%d, '%s', '%s', '%s', '%s', %d, '%s'",
                 newPerson.getId(), newPerson.getFirstName(), newPerson.getLastName(),
                 newPerson.getStreet(), newPerson.getCity(),
                 newPerson.getPostalCode(), DateUtil.format(newPerson.getBirthday()));
+		System.out.println(newPerson.getId());
 
 
         if (this.stmt.insert(fields, values, "person") == -1) {
@@ -111,7 +112,7 @@ public class PersonRepositoryImpl implements PersonRepository {
             while (rs.next()) {
                 tmp = new PersonVO();
 
-                tmp.setId(rs.getInt("id"));
+                tmp.setId(rs.getInt("idPerson"));
                 tmp.setFirstName(rs.getString("firstName"));
                 tmp.setLastName(rs.getString("lastName"));
                 tmp.setStreet(rs.getString("street"));
