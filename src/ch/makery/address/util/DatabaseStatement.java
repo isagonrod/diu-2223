@@ -159,6 +159,7 @@ public class DatabaseStatement {
      * WARNING: Only works with MySQL/MariaDB.
      *
      * @param table - the table name to check
+     * @param idFieldName - the name of the identifier field that must be checked
      * @return int - the next auto increment value or -1 if there was an exception
      */
     public int getNextId(String table, String idFieldName) {
