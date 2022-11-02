@@ -145,6 +145,7 @@ public class PersonEditDialogController {
 
                 if (isNew) {
                     new PersonService().savePerson(person);
+                    this.personAmount.setValue(this.personAmount.get() + 1);
                 }
                 else {
                     new PersonService().editPerson(person);
