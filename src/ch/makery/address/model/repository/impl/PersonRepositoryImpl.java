@@ -39,7 +39,7 @@ public class PersonRepositoryImpl implements PersonRepository {
     @Override
     public void savePerson(PersonVO newPerson) throws PersonException {
         String fields = "idPerson, firstName, lastName, street, city, postalCode, birthday";
-        newPerson.setId(this.stmt.getNextId("person"));
+        newPerson.setId(this.stmt.getNextId("person", "idPerson"));
 
         String values = String.format("%d, '%s', '%s', '%s', '%s', %d, '%s'",
                 newPerson.getId(), newPerson.getFirstName(), newPerson.getLastName(),

@@ -161,13 +161,13 @@ public class DatabaseStatement {
      * @param table - the table name to check
      * @return int - the next auto increment value or -1 if there was an exception
      */
-    public int getNextId(String table) {
-        ResultSet rs = this.queryResult("SELECT IFNULL(MAX(idPerson)+1,1) idPerson FROM " + table + ";");
+    public int getNextId(String table, String idFieldName) {
+        ResultSet rs = this.queryResult("SELECT IFNULL(MAX(" + idFieldName + ")+1,1) " + idFieldName + " FROM " + table + ";");
         int result = -1;
 
         try {
             rs.next();
-            result = rs.getInt("idPerson");
+            result = rs.getInt(idFieldName);
         } catch (SQLException e) {
             e.printStackTrace();
         }
