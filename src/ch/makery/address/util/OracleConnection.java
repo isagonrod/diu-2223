@@ -2,6 +2,7 @@ package ch.makery.address.util;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Map;
 
 /**
  * Subclass that inherits base functionality from DatabaseConnection
@@ -11,6 +12,13 @@ import java.sql.SQLException;
  * @author Isa González
  */
 public class OracleConnection extends DatabaseConnection {
+    /**
+     * Creates a connection using the default configuration data in the .OracleConfig file.
+     */
+    public OracleConnection() {
+        super("oracle.jdbc.driver.OracleDriver", ".OracleConfig");
+    }
+
     /**
      * Creates a connection element but does not start it yet.
      *

@@ -1,5 +1,6 @@
 package ch.makery.address.util;
 
+import java.nio.file.Paths;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -11,6 +12,13 @@ import java.sql.SQLException;
  * @author Isa González
  */
 public class MySqlConnection extends DatabaseConnection {
+    /**
+     * Creates a connection using the default configuration data in the .MySqlConfig file.
+     */
+    public MySqlConnection() {
+        super("com.mysql.cj.jdbc.Driver", Paths.get("src/ch/makery/address/util/.MySqlConfig").toAbsolutePath().normalize().toString());
+    }
+
     /**
      * Creates a connection element but does not start it yet.
      *
@@ -32,7 +40,7 @@ public class MySqlConnection extends DatabaseConnection {
 
         try {
             this.conn = DriverManager.getConnection(
-                    "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbSchema + "?useSSL=false", dbUser, dbPass
+                    "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbSchema + "?useSSL=false&allowPublicKeyRetrieval=true", dbUser, dbPass
             );
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

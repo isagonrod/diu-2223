@@ -1,8 +1,11 @@
 package ch.makery.address.util;
 
+import java.io.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Top-level class that specifies the basics of a Database connection,
@@ -27,6 +30,23 @@ public abstract class DatabaseConnection {
      */
     public DatabaseConnection() {
         throw new RuntimeException("Cannot instance a Database connection without data");
+    }
+
+    /**
+     * Creates a connection using the default configuration data in the specified file
+     * using the required className for the driver.
+     * @param className - the JDBC class name
+     * @param configFileName - the configuration file name
+     */
+    public DatabaseConnection(String className, String configFileName) {
+        Map<String, String> config = loadDbConfig(configFileName);
+
+        this.className = className;
+        this.dbHost = config.get("dbHost");
+        this.dbPort = config.get("dbPort");
+        this.dbSchema = config.get("dbSchema");
+        this.dbUser = config.get("dbUser");
+        this.dbPass = config.get("dbPass");
     }
 
     /**
@@ -94,5 +114,30 @@ public abstract class DatabaseConnection {
                 exceptionIteration = exceptionIteration.getNextException();
             }
         }
+    }
+
+    public Map<String, String> loadDbConfig(String fileName) {
+        Map<String, String> result = new HashMap<>();
+
+        try {
+            File file = new File(fileName);
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String st;
+
+            while ((st = br.readLine()) != null) {
+                result.put(st.split("=")[0], st.split("=")[1]);
+            }
+
+            br.close();
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("No se encuentra el archivo de configuración de BDD.");
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            System.out.println("Error de lectura del archivo de configuración de BDD.");
+            throw new RuntimeException(e);
+        }
+
+        return result;
     }
 }

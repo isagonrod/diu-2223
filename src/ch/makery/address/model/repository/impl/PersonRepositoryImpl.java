@@ -26,7 +26,7 @@ public class PersonRepositoryImpl implements PersonRepository {
      * Empty constructor with a MySQL connection by default
      */
     public PersonRepositoryImpl() {
-        this.conn = new MySqlConnection("localhost", "3306", "agenda", "root", "MAirena.1985");
+        this.conn = new MySqlConnection();
         this.conn.connectToDataBase();
         this.stmt = this.conn.getNewStatement();
     }
