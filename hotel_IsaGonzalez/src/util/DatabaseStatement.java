@@ -78,12 +78,23 @@ public class DatabaseStatement {
         return this.queryUpdate(query);
     }
 
-    public int getNextId(String table, String idFieldName) {
+    public int getNextCodReserva(String table, String idFieldName) {
         ResultSet rs = this.queryResult("SELECT IFNULL(MAX(" + idFieldName + ")+1,1) " + idFieldName + " FROM " + table + ";");
         int result = -1;
         try {
             rs.next();
             result = rs.getInt(idFieldName);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return result;
+    }
+    public String getNextDni(String table, String idFieldName) {
+        ResultSet rs = this.queryResult("SELECT IFNULL(MAX(" + idFieldName + ")+1,1) " + idFieldName + " FROM " + table + ";");
+        String result = null;
+        try {
+            rs.next();
+            result = rs.getString(idFieldName);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
