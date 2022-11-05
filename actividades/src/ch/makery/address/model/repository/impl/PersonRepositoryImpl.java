@@ -45,7 +45,6 @@ public class PersonRepositoryImpl implements PersonRepository {
                 newPerson.getId(), newPerson.getFirstName(), newPerson.getLastName(),
                 newPerson.getStreet(), newPerson.getCity(),
                 newPerson.getPostalCode(), DateUtil.format(newPerson.getBirthday()));
-		System.out.println(newPerson.getId());
 
         if (this.stmt.insert(fields, values, "person") == -1) {
             this.stmt.closeStatement();
