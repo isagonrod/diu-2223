@@ -1,13 +1,16 @@
 package model;
 
 import javafx.beans.property.*;
-import javafx.util.converter.LocalDateStringConverter;
+import util.LocalDateAdapter;
 
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 
 public class Booking {
     private IntegerProperty codReserva;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate fechaLlegada;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate fechaSalida;
     private IntegerProperty numHabitaciones;
     private StringProperty tipoHabitacion;
