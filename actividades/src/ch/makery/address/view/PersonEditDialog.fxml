@@ -13,12 +13,20 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.controller.PersonEditDialogController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0"
+            styleClass="background" stylesheets="@DarkTheme.css"
+            xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ch.makery.address.controller.PersonEditDialogController">
+
    <children>
-      <GridPane layoutX="33.0" layoutY="15.0" prefHeight="300.0" prefWidth="580.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <GridPane layoutX="33.0" layoutY="15.0" prefHeight="300.0" prefWidth="580.0"
+                AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="283.33331298828125" minWidth="10.0" prefWidth="167.6666717529297" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="443.0" minWidth="10.0" prefWidth="412.3333282470703" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="283.33331298828125" minWidth="10.0"
+                             prefWidth="167.6666717529297" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="443.0" minWidth="10.0"
+                             prefWidth="412.3333282470703" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -109,7 +117,8 @@
             </TextField>
          </children>
       </GridPane>
-      <HBox layoutX="303.0" layoutY="316.0" prefHeight="50.0" prefWidth="580.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+      <HBox layoutX="303.0" layoutY="316.0" prefHeight="50.0" prefWidth="580.0"
+            AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
          <children>
             <ProgressIndicator fx:id="progressIndicator" prefHeight="40.0" prefWidth="42.0" progress="0.0" stylesheets="@DarkTheme.css" />
             <ProgressBar fx:id="progressBar" accessibleText="\%" prefHeight="40.0" prefWidth="229.0" progress="0.0">
@@ -117,7 +126,8 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </ProgressBar>
-            <Button defaultButton="true" mnemonicParsing="false" onAction="#handleOk" prefHeight="40.0" prefWidth="150.0" text="OK">
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#handleOk"
+                    prefHeight="40.0" prefWidth="150.0" text="OK">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
@@ -125,7 +135,8 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button defaultButton="true" mnemonicParsing="false" onAction="#handleCancel" prefHeight="40.0" prefWidth="150.0" text="Cancel">
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#handleCancel"
+                    prefHeight="40.0" prefWidth="150.0" text="Cancel">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
