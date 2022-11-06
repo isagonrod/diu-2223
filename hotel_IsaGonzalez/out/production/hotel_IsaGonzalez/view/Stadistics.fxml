@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.StadisticsController"
+            prefHeight="800.0" prefWidth="1000.0">
+
+    <children>
+        <BarChart
+            fx:id="barChart"
+            layoutX="60.0" layoutY="25.0"
+            prefHeight="700.0" prefWidth="900.0"
+            title="Estadísticas de ocupación por mes"
+            AnchorPane.bottomAnchor="0.0"
+            AnchorPane.leftAnchor="0.0"
+            AnchorPane.rightAnchor="0.0"
+            AnchorPane.topAnchor="0.0">
+
+            <xAxis>
+                <CategoryAxis
+                        side="BOTTOM"
+                        fx:id="xAxis" />
+            </xAxis>
+
+            <yAxis>
+                <NumberAxis
+                        side="LEFT" />
+            </yAxis>
+        </BarChart>
+    </children>
+
+</AnchorPane>
