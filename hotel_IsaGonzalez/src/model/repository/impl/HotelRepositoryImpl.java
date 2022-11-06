@@ -72,8 +72,8 @@ public class HotelRepositoryImpl implements HotelRepository {
             while (rs.next()) {
                 tmp = new BookingVO();
                 tmp.setCodReserva(rs.getInt("codReserva"));
-                tmp.setFechaLlegada(rs.getString("fechaLlegada"));
-                tmp.setFechaSalida(rs.getString("fechaSalida"));
+                tmp.setFechaLlegada(rs.getDate("fechaLlegada").toLocalDate());
+                tmp.setFechaSalida(rs.getDate("fechaSalida").toLocalDate());
                 tmp.setNumHabitaciones(rs.getInt("numHabitaciones"));
                 tmp.setTipoHabitacion(rs.getString("tipoHabitacion"));
                 tmp.setFumador(rs.getBoolean("fumador"));

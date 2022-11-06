@@ -18,9 +18,9 @@ CREATE TABLE reserva (
     fechaSalida DATE,
     numHabitaciones INT,
     tipoHabitacion VARCHAR(50),
-    fumador BIT, /* TRUE = 1, FALSE = 0 */
+    fumador BOOLEAN, /* FALSE = 0, TRUE != 0 */
     regimenAlojamiento VARCHAR(10),
     dniCliente VARCHAR(9),
     PRIMARY KEY(codReserva),
-    FOREIGN KEY(dniCliente) FROM cliente(dni)
+    FOREIGN KEY(dniCliente) REFERENCES cliente(dni)
 ) ENGINE=InnoDB;

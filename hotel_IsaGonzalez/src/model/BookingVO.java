@@ -10,6 +10,7 @@ public class BookingVO {
     private String tipoHabitacion;
     private boolean fumador;
     private String regimenAlojamiento;
+    private String dniCliente;
 
     public BookingVO() {}
 
@@ -30,16 +31,16 @@ public class BookingVO {
         return fechaLlegada;
     }
 
-    public void setFechaLlegada(String fechaLlegada) {
-        this.fechaLlegada = LocalDate.parse(fechaLlegada);
+    public void setFechaLlegada(LocalDate fechaLlegada) {
+        this.fechaLlegada = fechaLlegada;
     }
 
     public LocalDate getFechaSalida() {
         return fechaSalida;
     }
 
-    public void setFechaSalida(String fechaSalida) {
-        this.fechaSalida = LocalDate.parse(fechaSalida);
+    public void setFechaSalida(LocalDate fechaSalida) {
+        this.fechaSalida = fechaSalida;
     }
 
     public int getNumHabitaciones() {
@@ -72,6 +73,14 @@ public class BookingVO {
 
     public void setRegimenAlojamiento(String regimenAlojamiento) {
         this.regimenAlojamiento = regimenAlojamiento;
+    }
+
+    public String getDniCliente() {
+        return dniCliente;
+    }
+
+    public void setDniCliente(String dniCliente) {
+        this.dniCliente = dniCliente;
     }
 
     public String toString() {
