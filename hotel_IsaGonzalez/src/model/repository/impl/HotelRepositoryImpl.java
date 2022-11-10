@@ -11,10 +11,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementación de la interfaz HotelRepository.
+ */
 public class HotelRepositoryImpl implements HotelRepository {
     protected final DatabaseConnection connection;
     protected final DatabaseStatement statement;
 
+	/**
+	 * Constructor por defecto, donde se inicializa la conexión con la base de datos.
+	 */
     public HotelRepositoryImpl() {
         this.connection = new MySqlConnection();
         this.connection.closeDataBase();
