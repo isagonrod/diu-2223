@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Spinner;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -19,18 +20,17 @@ import java.awt.*;
  * @autor Isa González
  */
 public class BookingEditDialogController {
-    @FXML
     private TextField codReservaField;
     @FXML
-    private TextField fechaLlegadaField;
+    private DatePicker fechaLlegadaField;
     @FXML
-    private TextField fechaSalidaField;
+    private DatePicker fechaSalidaField;
     @FXML
     private Spinner numHabitacionesField;
     @FXML
     private ComboBox<String> tipoHabitacionField;
     @FXML
-    private TextField fumadorField;
+    private Checkbox fumadorField;
     @FXML
     private TextField regimenAlojamientoField;
 
