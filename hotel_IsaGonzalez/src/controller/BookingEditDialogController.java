@@ -1,6 +1,11 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Spinner;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import model.Booking;
 import model.HotelModel;
@@ -9,6 +14,10 @@ import util.DateUtil;
 
 import java.awt.*;
 
+/**
+ *
+ * @autor Isa González
+ */
 public class BookingEditDialogController {
     @FXML
     private TextField codReservaField;
@@ -17,9 +26,9 @@ public class BookingEditDialogController {
     @FXML
     private TextField fechaSalidaField;
     @FXML
-    private TextField numHabitacionesField;
+    private Spinner numHabitacionesField;
     @FXML
-    private TextField tipoHabitacionField;
+    private ComboBox<String> tipoHabitacionField;
     @FXML
     private TextField fumadorField;
     @FXML
@@ -30,7 +39,7 @@ public class BookingEditDialogController {
     private boolean okClicked = false;
     private boolean isNew;
 
-    @FXML
+	@FXML
     private void initialize() {}
 
     public void setDialogStage(Stage dialogStage) {

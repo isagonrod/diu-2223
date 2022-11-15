@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-
 
 <AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BookingEditDialogController">
    <children>
@@ -93,7 +97,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </GridPane>
-      <GridPane layoutX="30.0" layoutY="250.0" prefHeight="433.0" prefWidth="950.0">
+      <GridPane layoutX="30.0" layoutY="250.0" prefHeight="518.0" prefWidth="950.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -106,6 +110,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="Datos de la reserva" />
@@ -113,7 +119,35 @@
             <Label text="Fecha de Salida" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1" />
             <DatePicker GridPane.columnSpan="2" GridPane.rowIndex="2" />
             <DatePicker GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-            <Label text="Label" GridPane.rowIndex="3" />
+            <Label text="Nº de habitaciones" GridPane.rowIndex="3" />
+            <Spinner prefHeight="31.0" prefWidth="236.0" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </Spinner>
+            <Label text="Tipo de habitación" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox prefHeight="31.0" prefWidth="238.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <CheckBox mnemonicParsing="false" text="Fumador" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <Label cache="true" prefHeight="85.0" prefWidth="231.0" text="En virtud de la ley de sanidad se informa a los clientes de que solo podrán fumar en las habitaciones reservadas para tal fin." GridPane.columnIndex="2" GridPane.rowIndex="4" GridPane.rowSpan="2">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Régimen" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <RadioButton mnemonicParsing="false" text="Alojamiento y desayuno" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <RadioButton mnemonicParsing="false" text="Media pensión" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <RadioButton mnemonicParsing="false" text="Pensión completa" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" text="Limpiar" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" text="Aceptar" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" text="Cancelar" GridPane.columnIndex="2" GridPane.rowIndex="6" />
          </children>
       </GridPane>
    </children>

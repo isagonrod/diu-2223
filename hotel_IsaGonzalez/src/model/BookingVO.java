@@ -1,5 +1,10 @@
 package model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ComboBox;
+import javafx.scene.layout.StackPane;
+
 import java.time.LocalDate;
 
 public class BookingVO {
@@ -52,6 +57,12 @@ public class BookingVO {
     }
 
     public String getTipoHabitacion() {
+		/*
+		ObservableList<String> items = FXCollections.observableArrayList();
+		items.addAll("Doble de uso individual", "Doble", "Junior Suite", "Suite");
+		ComboBox<String> cbx = new ComboBox<>(items);
+		StackPane pane = new StackPane(cbx);
+		*/
         return tipoHabitacion;
     }
 

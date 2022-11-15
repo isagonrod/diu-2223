@@ -65,19 +65,19 @@ public class Booking {
         this.numHabitaciones.set(numHabitaciones);
     }
 
-    public String getTipoHabitacion() {
-        return tipoHabitacion.get();
-    }
+	public String getTipoHabitacion() {
+		return tipoHabitacion.get();
+	}
 
-    public StringProperty tipoHabitacionProperty() {
-        return tipoHabitacion;
-    }
+	public StringProperty tipoHabitacionProperty() {
+		return tipoHabitacion;
+	}
 
-    public void setTipoHabitacion(String tipoHabitacion) {
-        this.tipoHabitacion.set(tipoHabitacion);
-    }
+	public void setTipoHabitacion(String tipoHabitacion) {
+		this.tipoHabitacion.set(tipoHabitacion);
+	}
 
-    public boolean isFumador() {
+	public boolean isFumador() {
         return fumador.get();
     }
 
