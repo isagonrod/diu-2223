@@ -55,7 +55,7 @@ public class BookingEditDialogController {
         fechaSalidaField.setValue(booking.getFechaSalida());
         numHabitacionesField.setValueFactory(booking.getNumHabitaciones());
         tipoHabitacionField.setValue(booking.getTipoHabitacion());
-        fumadorField.setText(String.valueOf(booking.isFumador()));
+        fumadorField.setState(booking.isFumador());
         regimenAlojamientoField.setText(booking.getRegimenAlojamiento());
     }
 
@@ -72,7 +72,7 @@ public class BookingEditDialogController {
                 booking.setFechaSalida(fechaSalidaField.getValue());
                 booking.setNumHabitaciones(Integer.parseInt(String.valueOf(numHabitacionesField.getValueFactory())));
                 booking.setTipoHabitacion(tipoHabitacionField.getValue());
-                booking.setFumador(Boolean.parseBoolean(fumadorField.getText()));
+                booking.setFumador(fumadorField.getState());
                 booking.setRegimenAlojamiento(regimenAlojamientoField.getText());
                 if (isNew) {
                     new HotelModel().saveBooking(booking);
@@ -108,7 +108,7 @@ public class BookingEditDialogController {
         if (tipoHabitacionField.getValue() == null || tipoHabitacionField.getValue().length() == 0) {
             errorMessage += "Tipo de habitación no válido";
         }
-        if (fumadorField.getText() == null || fumadorField.getText().length() == 0) {
+        if (!fumadorField.getState()) {
             errorMessage += "Elección de fumador no válida";
         }
         if (regimenAlojamientoField.getText() == null || regimenAlojamientoField.getText().length() == 0) {
