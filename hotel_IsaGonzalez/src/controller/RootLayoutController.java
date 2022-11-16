@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.fxml.FXML;
+import main.HotelMainApp;
 
 /**
  * Controlador para el diseño raíz.
@@ -17,7 +18,7 @@ public class RootLayoutController {
 	}
 
 	@FXML
-	private void handleNew() {
-
+	private void handleShowStatistics() {
+		mainApp.showStatistics();
 	}
 }

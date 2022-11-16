@@ -1,10 +1,10 @@
+package main;
+
 import controller.CustomerOverviewController;
 import controller.RootLayoutController;
 import controller.StatisticsController;
 import javafx.application.Application;
-import javafx.beans.property.DoubleProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,13 +18,8 @@ import model.repository.impl.HotelRepositoryImpl;
 import util.BookingParse;
 import util.CustomerParse;
 
-import javax.imageio.event.IIOWriteProgressListener;
-import javax.xml.bind.JAXBContext;
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.prefs.Preferences;
 
 /**
  * Aplicación principal para la gestión del hotel.
