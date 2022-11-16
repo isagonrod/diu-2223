@@ -1,6 +1,7 @@
 package model;
 
 import javafx.beans.property.*;
+import javafx.scene.control.SpinnerValueFactory;
 import util.LocalDateAdapter;
 
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -53,7 +54,7 @@ public class Booking {
         this.fechaSalida = fechaSalida;
     }
 
-    public int getNumHabitaciones() {
+    public SpinnerValueFactory getNumHabitaciones() {
         return numHabitaciones.get();
     }
 

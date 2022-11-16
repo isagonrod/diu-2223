@@ -53,8 +53,8 @@ public class BookingEditDialogController {
         codReservaField.setText(String.valueOf(booking.getCodReserva()));
         fechaLlegadaField.setText(DateUtil.format(booking.getFechaLlegada()));
         fechaSalidaField.setText(DateUtil.format(booking.getFechaSalida()));
-        numHabitacionesField.setText(String.valueOf(booking.getNumHabitaciones()));
-        tipoHabitacionField.setText(booking.getTipoHabitacion());
+        numHabitacionesField.setValueFactory(booking.getNumHabitaciones());
+        tipoHabitacionField.setValue(booking.getTipoHabitacion());
         fumadorField.setText(String.valueOf(booking.isFumador()));
         regimenAlojamientoField.setText(booking.getRegimenAlojamiento());
     }
@@ -70,8 +70,8 @@ public class BookingEditDialogController {
                 booking.setCodReserva(Integer.parseInt(codReservaField.getText()));
                 booking.setFechaLlegada(DateUtil.parse(fechaLlegadaField.getText()));
                 booking.setFechaSalida(DateUtil.parse(fechaSalidaField.getText()));
-                booking.setNumHabitaciones(Integer.parseInt(numHabitacionesField.getText()));
-                booking.setTipoHabitacion(tipoHabitacionField.getText());
+                booking.setNumHabitaciones(Integer.parseInt(String.valueOf(numHabitacionesField.getValueFactory())));
+                booking.setTipoHabitacion(tipoHabitacionField.getValue());
                 booking.setFumador(Boolean.parseBoolean(fumadorField.getText()));
                 booking.setRegimenAlojamiento(regimenAlojamientoField.getText());
                 if (isNew) {
@@ -102,10 +102,10 @@ public class BookingEditDialogController {
         if (fechaLlegadaField.getText() == null || fechaSalidaField.getText().length() == 0) {
             errorMessage += "Fecha de salida no válida";
         }
-        if (numHabitacionesField.getText() == null || numHabitacionesField.getText().length() == 0) {
+        if (numHabitacionesField.getValueFactory() == null || numHabitacionesField.getValueFactory().equals('0')) {
             errorMessage += "Número de habitaciones no válido";
         }
-        if (tipoHabitacionField.getText() == null || tipoHabitacionField.getText().length() == 0) {
+        if (tipoHabitacionField.getValue() == null || tipoHabitacionField.getValue().length() == 0) {
             errorMessage += "Tipo de habitación no válido";
         }
         if (fumadorField.getText() == null || fumadorField.getText().length() == 0) {
