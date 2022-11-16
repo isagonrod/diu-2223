@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.fxml.FXML;
+
 /**
  * Controlador para el diseño raíz.
  * Este proporciona el diseño básico de la aplicación que contiene una barra de menú
@@ -8,4 +10,14 @@ package controller;
  * @author Isa González
  */
 public class RootLayoutController {
+	private HotelMainApp mainApp;
+
+	public void setHotelMainApp(HotelMainApp hotelMainApp) {
+		this.mainApp = hotelMainApp;
+	}
+
+	@FXML
+	private void handleNew() {
+
+	}
 }
