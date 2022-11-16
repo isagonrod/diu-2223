@@ -51,8 +51,8 @@ public class BookingEditDialogController {
         this.isNew = isNew;
 
         codReservaField.setText(String.valueOf(booking.getCodReserva()));
-        fechaLlegadaField.setText(DateUtil.format(booking.getFechaLlegada()));
-        fechaSalidaField.setText(DateUtil.format(booking.getFechaSalida()));
+        fechaLlegadaField.setValue(booking.getFechaLlegada());
+        fechaSalidaField.setValue(booking.getFechaSalida());
         numHabitacionesField.setValueFactory(booking.getNumHabitaciones());
         tipoHabitacionField.setValue(booking.getTipoHabitacion());
         fumadorField.setText(String.valueOf(booking.isFumador()));
@@ -68,8 +68,8 @@ public class BookingEditDialogController {
         if (isInputValid()) {
             try {
                 booking.setCodReserva(Integer.parseInt(codReservaField.getText()));
-                booking.setFechaLlegada(DateUtil.parse(fechaLlegadaField.getText()));
-                booking.setFechaSalida(DateUtil.parse(fechaSalidaField.getText()));
+                booking.setFechaLlegada(fechaLlegadaField.getValue());
+                booking.setFechaSalida(fechaSalidaField.getValue());
                 booking.setNumHabitaciones(Integer.parseInt(String.valueOf(numHabitacionesField.getValueFactory())));
                 booking.setTipoHabitacion(tipoHabitacionField.getValue());
                 booking.setFumador(Boolean.parseBoolean(fumadorField.getText()));
@@ -96,10 +96,10 @@ public class BookingEditDialogController {
         if (codReservaField.getText() == null || codReservaField.getText().length() == 0) {
             errorMessage += "Código de reserva no válido";
         }
-        if (fechaLlegadaField.getText() == null || fechaLlegadaField.getText().length() == 0) {
+        if (fechaLlegadaField.getValue() == null || fechaLlegadaField.getValue().equals('0')) {
             errorMessage += "Fecha de llegada no válida";
         }
-        if (fechaLlegadaField.getText() == null || fechaSalidaField.getText().length() == 0) {
+        if (fechaLlegadaField.getValue() == null || fechaSalidaField.getValue().equals('0')) {
             errorMessage += "Fecha de salida no válida";
         }
         if (numHabitacionesField.getValueFactory() == null || numHabitacionesField.getValueFactory().equals('0')) {
