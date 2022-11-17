@@ -1,14 +1,25 @@
 package controller;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import main.HotelMainApp;
 import model.Customer;
 import model.CustomerException;
 import model.HotelModel;
 import org.controlsfx.dialog.Dialogs;
+
+import java.io.IOException;
 
 public class CustomerOverviewController {
 	@FXML
@@ -30,6 +41,9 @@ public class CustomerOverviewController {
 	private Label localidadLabel;
 	@FXML
 	private Label provinciaLabel;
+
+	@FXML
+	private TextField dniSearch;
 
 	private HotelMainApp mainApp;
 
@@ -84,5 +98,95 @@ public class CustomerOverviewController {
 					.message("Please select a person in the table")
 					.showWarning();
 		}
+	}
+
+	@FXML
+	private void handleNewCustomer() {
+		Customer tempCustomer = new Customer();
+		boolean okClicked = this.showCustomerEditDialog(tempCustomer, true);
+		if (okClicked) {
+			mainApp.getCustomers().add(tempCustomer);
+		}
+	}
+
+	@FXML
+	private void handleEditCustomer() {
+		Customer selectedCustomer = customerTable.getSelectionModel().getSelectedItem();
+		if (selectedCustomer != null) {
+			boolean okClicked = this.showCustomerEditDialog(selectedCustomer, false);
+			if (okClicked) {
+				showCustomerDetails(selectedCustomer);
+			}
+		} else {
+			Dialogs.create()
+					.title("No selection")
+					.masthead("No person selected")
+					.message("Please select a person in the table")
+					.showWarning();
+		}
+	}
+
+	@FXML
+	private void handleBookings() {
+		Customer selectedCustomer = customerTable.getSelectionModel().getSelectedItem();
+		if (selectedCustomer != null) {
+			// TODO: Mandar a la ventana de BookingOverview
+			boolean okClicked = this.showBookingOverview(selectedCustomer, false);
+		} else {
+			Dialogs.create()
+					.title("No selection")
+					.masthead("No person selected")
+					.message("Please select a person in the table")
+					.showWarning();
+		}
+	}
+
+	public boolean showCustomerEditDialog(Customer customer, boolean isNew) {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(HotelMainApp.class.getResource("view/CustomerEditDialog.fxml"));
+			AnchorPane pane = loader.load();
+
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Editar Cliente");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(mainApp.getPrimaryStage());
+			Scene scene = new Scene(pane);
+			dialogStage.setScene(scene);
+
+			CustomerEditDialogController controller = loader.getController();
+			controller.setDialogStage(dialogStage);
+			controller.setCustomer(customer, isNew);
+			customer.apellidosProperty();
+			customer.nombreProperty();
+
+			dialogStage.showAndWait();
+
+			return controller.isOkClicked();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+
+	public boolean showBookingOverview(Customer customer, boolean isNew) {
+		// TODO: Mostrar ventana de BookingOverview
+		return false;
+	}
+
+	@FXML
+	public void showCustomerSearchedByDNI(Customer customer) {
+		// TODO: Mostar los datos del cliente buscado introduciendo el DNI en la caja de búsqueda
+		dniSearch.setOnKeyPressed(event -> {
+			if (event.getCode() == KeyCode.ENTER && customer.getDni().equalsIgnoreCase(String.valueOf(dniSearch))) {
+				showCustomerDetails(customer);
+			} else {
+				Dialogs.create()
+						.title("No selection")
+						.masthead("No person selected")
+						.message("Please select a person in the table")
+						.showWarning();
+			}
+		});
 	}
 }
