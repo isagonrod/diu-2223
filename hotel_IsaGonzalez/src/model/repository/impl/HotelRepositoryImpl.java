@@ -36,23 +36,15 @@ public class HotelRepositoryImpl implements HotelRepository {
                 newBooking.getNumHabitaciones(), newBooking.getTipoHabitacion(), newBooking.isFumador(),
                 newBooking.getRegimenAlojamiento());
         if (this.statement.insert(fields, values, "reserva") == -1) {
-            this.statement.closeStatement();
-            this.connection.closeDataBase();
             throw new BookingException("Error al guardar la reserva");
         }
-        this.statement.closeStatement();
-        this.connection.closeDataBase();
     }
 
     @Override
     public void deleteBooking(int codReserva) throws BookingException {
         if (this.statement.delete("reserva", "codReserva=" + codReserva) == -1) {
-            this.statement.closeStatement();
-            this.connection.closeDataBase();
             throw new BookingException("Error al borrar la persona");
         }
-        this.statement.closeStatement();
-        this.connection.closeDataBase();
     }
 
     @Override
@@ -61,12 +53,8 @@ public class HotelRepositoryImpl implements HotelRepository {
                 booking.getCodReserva(), booking.getFechaLlegada(), booking.getFechaSalida(), booking.getNumHabitaciones(),
                 booking.getTipoHabitacion(), booking.isFumador(), booking.getRegimenAlojamiento());
         if (this.statement.update(fields, "reserva", "codReserva=" + booking.getCodReserva()) == -1) {
-            this.statement.closeStatement();
-            this.connection.closeDataBase();
             throw new BookingException("Error al editar la reserva");
         }
-        this.statement.closeStatement();
-        this.connection.closeDataBase();
     }
 
     @Override
@@ -89,12 +77,8 @@ public class HotelRepositoryImpl implements HotelRepository {
             rs.close();
         } catch (SQLException ex) {
             ex.printStackTrace();
-            this.statement.closeStatement();
-            this.connection.closeDataBase();
             throw new BookingException("Error al listar las reservas");
         }
-        this.statement.closeStatement();
-        this.connection.closeDataBase();
         return result;
     }
 
@@ -106,23 +90,15 @@ public class HotelRepositoryImpl implements HotelRepository {
                 newCustomer.getDni(), newCustomer.getNombre(), newCustomer.getApellidos(),
                 newCustomer.getDireccion(), newCustomer.getLocalidad(), newCustomer.getProvincia());
         if (this.statement.insert(fields, values, "cliente") == -1) {
-            this.statement.closeStatement();
-            this.connection.closeDataBase();
             throw new CustomerException("Error al guardar el cliente");
         }
-        this.statement.closeStatement();
-        this.connection.closeDataBase();
     }
 
     @Override
     public void deleteCustomer(String dniCustomer) throws CustomerException {
         if(this.statement.delete("cliente", "dni=" + dniCustomer) == -1) {
-            this.statement.closeStatement();
-            this.connection.closeDataBase();
             throw new CustomerException("Error al borrar el cliente");
         }
-        this.statement.closeStatement();
-        this.connection.closeDataBase();
     }
 
     @Override
@@ -131,8 +107,6 @@ public class HotelRepositoryImpl implements HotelRepository {
                 customer.getDni(), customer.getNombre(), customer.getApellidos(),
                 customer.getDireccion(), customer.getLocalidad(), customer.getProvincia());
         if (this.statement.update(fields, "cliente", "dni=" + customer.getDni()) == -1) {
-            this.statement.closeStatement();
-            this.connection.closeDataBase();
             throw new CustomerException("Error al editar el cliente");
         }
     }
@@ -157,12 +131,8 @@ public class HotelRepositoryImpl implements HotelRepository {
             rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            this.statement.closeStatement();
-            this.connection.closeDataBase();
             throw new CustomerException("Error al listar los clientes");
         }
-        this.statement.closeStatement();
-        this.connection.closeDataBase();
         return result;
     }
 }
