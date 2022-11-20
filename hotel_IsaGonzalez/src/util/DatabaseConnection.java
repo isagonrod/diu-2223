@@ -82,7 +82,15 @@ public abstract class DatabaseConnection {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String st;
             while ((st = br.readLine()) != null) {
-                result.put(st.split("=")[0], st.split("=")[1]);
+                String[] split = st.split("=");
+                String p1, p2;
+                p1 = split[0];
+                if (split.length == 1) {
+                    p2 = "";
+                } else {
+                    p2 = split[1];
+                }
+                result.put(p1, p2);
             }
             br.close();
         } catch (FileNotFoundException ex) {
