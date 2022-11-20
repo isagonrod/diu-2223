@@ -23,7 +23,7 @@ public class BookingOverviewController {
 	@FXML
 	private TableView<Booking> bookingTable;
 	@FXML
-	private TableColumn<Booking, Integer> codReserva;
+	private TableColumn<Booking, Number> codReserva;
 	@FXML
 	private TableColumn<Booking, LocalDate> fechaLlegada;
 
@@ -47,7 +47,7 @@ public class BookingOverviewController {
 	@FXML
 	private void initialize() {
 		codReserva.setCellValueFactory(cellData -> cellData.getValue().codReservaProperty());
-		fechaLlegada.setCellValueFactory(cellData -> cellData.getValue().getFechaLlegada());
+		fechaLlegada.setCellValueFactory(cellData -> cellData.getValue().fechaLlegadaProperty());
 		showBookingDetails(null);
 		bookingTable.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> showBookingDetails(newValue)));
 	}

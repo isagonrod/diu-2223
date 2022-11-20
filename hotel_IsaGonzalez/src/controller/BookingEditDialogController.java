@@ -53,7 +53,7 @@ public class BookingEditDialogController {
         codReservaField.setText(String.valueOf(booking.getCodReserva()));
         fechaLlegadaField.setValue(booking.getFechaLlegada());
         fechaSalidaField.setValue(booking.getFechaSalida());
-        numHabitacionesField.setValueFactory(booking.getNumHabitaciones());
+        numHabitacionesField.getValueFactory().setValue(booking.getNumHabitaciones());
         tipoHabitacionField.setValue(booking.getTipoHabitacion());
         fumadorField.setState(booking.isFumador());
         regimenAlojamientoField.setText(booking.getRegimenAlojamiento());

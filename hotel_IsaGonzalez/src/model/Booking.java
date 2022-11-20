@@ -10,9 +10,9 @@ import java.time.LocalDate;
 public class Booking {
     private IntegerProperty codReserva;
     @XmlJavaTypeAdapter(LocalDateAdapter.class)
-    private LocalDate fechaLlegada;
+    private ObjectProperty<LocalDate> fechaLlegada;
     @XmlJavaTypeAdapter(LocalDateAdapter.class)
-    private LocalDate fechaSalida;
+    private ObjectProperty<LocalDate> fechaSalida;
     private IntegerProperty numHabitaciones;
     private StringProperty tipoHabitacion;
     private BooleanProperty fumador;
@@ -23,7 +23,7 @@ public class Booking {
 
     public Booking(int codReserva, LocalDate fechaEntrada) {
         this.codReserva = new SimpleIntegerProperty(codReserva);
-        this.fechaLlegada = fechaEntrada;
+        this.fechaLlegada = new SimpleObjectProperty<>(fechaEntrada);
     }
 
     public int getCodReserva() {
@@ -39,22 +39,30 @@ public class Booking {
     }
 
     public LocalDate getFechaLlegada() {
+        return fechaLlegada.get();
+    }
+
+    public ObjectProperty<LocalDate> fechaLlegadaProperty() {
         return fechaLlegada;
     }
 
     public void setFechaLlegada(LocalDate fechaLlegada) {
-        this.fechaLlegada = fechaLlegada;
+        this.fechaLlegada.set(fechaLlegada);
     }
 
     public LocalDate getFechaSalida() {
+        return fechaSalida.get();
+    }
+
+    public ObjectProperty<LocalDate> fechaSalidaProperty() {
         return fechaSalida;
     }
 
     public void setFechaSalida(LocalDate fechaSalida) {
-        this.fechaSalida = fechaSalida;
+        this.fechaSalida.set(fechaSalida);
     }
 
-    public SpinnerValueFactory getNumHabitaciones() {
+    public int getNumHabitaciones() {
         return numHabitaciones.get();
     }
 
