@@ -47,6 +47,15 @@ public interface HotelRepository {
     List<BookingVO> loadBookingList() throws BookingException;
 
 	/**
+	 * Abre una conexión a la base de datos y busca un elemento en la tabla 'cliente'.
+	 *
+	 * @param dni El DNI del cliente a buscar
+	 * @return Devuelve un objeto CustomerVO con los datos del cliente, o null si no existe
+	 * @throws CustomerException Excepción lanzada si ocurre un error controlado
+	 */
+	CustomerVO getCustomer(String dni) throws CustomerException;
+
+	/**
 	 * Abre una conexión a la base de datos e inserta un nuevo cliente.
 	 *
 	 * @param newCustomer Objeto CustomerVO con los datos del nuevo cliente

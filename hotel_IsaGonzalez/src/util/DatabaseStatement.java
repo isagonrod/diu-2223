@@ -41,10 +41,10 @@ public class DatabaseStatement {
 
     public ResultSet select(String fields, String table, String conditions, String order) {
         String query = "SELECT " + fields + " FROM " + table;
-        if (conditions != null && conditions.equalsIgnoreCase("")) {
+        if (conditions != null && !conditions.equalsIgnoreCase("")) {
             query += " WHERE " + conditions;
         }
-        if (order != null && order.equalsIgnoreCase("")) {
+        if (order != null && !order.equalsIgnoreCase("")) {
             query += " ORDER BY " + order;
         }
         query += ";";
@@ -53,7 +53,7 @@ public class DatabaseStatement {
 
     public int insert(String fields, String values, String table) {
         String query = "INSERT INTO " + table;
-        if (fields != null && fields.equalsIgnoreCase("")) {
+        if (fields != null && !fields.equalsIgnoreCase("")) {
             query += " (" + fields + ")";
         }
         query += " VALUES (" + values + ");";
@@ -62,7 +62,7 @@ public class DatabaseStatement {
 
     public int delete(String table, String conditions) {
         String query = "DELETE FROM " + table;
-        if (conditions != null && conditions.equalsIgnoreCase("")) {
+        if (conditions != null && !conditions.equalsIgnoreCase("")) {
             query += " WHERE " + conditions;
         }
         query += ";";
@@ -71,7 +71,7 @@ public class DatabaseStatement {
 
     public int update(String fields, String table, String conditions) {
         String query = "UPDATE " + table + " SET " + fields;
-        if (conditions != null && conditions.equalsIgnoreCase("")) {
+        if (conditions != null && !conditions.equalsIgnoreCase("")) {
             query += " WHERE " + conditions;
         }
         query += ";";

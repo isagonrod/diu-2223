@@ -121,7 +121,7 @@ public class BookingOverviewController {
 	public boolean showBookingEditDialog(Booking booking, boolean isNew) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(HotelMainApp.class.getResource("view/BookingEditDialog.fxml"));
+			loader.setLocation(HotelMainApp.class.getResource("../view/BookingEditDialog.fxml"));
 			AnchorPane pane = loader.load();
 
 			Stage dialogStage = new Stage();

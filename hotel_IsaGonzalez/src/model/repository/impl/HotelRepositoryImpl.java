@@ -82,6 +82,28 @@ public class HotelRepositoryImpl implements HotelRepository {
         return result;
     }
 
+    public CustomerVO getCustomer(String dni) throws CustomerException {
+        ResultSet rs = this.statement.select("*", "cliente", "dni=" + dni, null);
+        CustomerVO result = null;
+
+        try {
+            while (rs.next()) {
+                result = new CustomerVO();
+                result.setDni(rs.getString("dni"));
+                result.setNombre(rs.getString("nombre"));
+                result.setApellidos(rs.getString("apellidos"));
+                result.setDireccion(rs.getString("direccion"));
+                result.setLocalidad(rs.getString("localidad"));
+                result.setProvincia(rs.getString("provincia"));
+            }
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new CustomerException("Error al buscar cliente");
+        }
+        return result;
+    }
+
     @Override
     public void saveCustomer(CustomerVO newCustomer) throws CustomerException {
         String fields = "dni, nombre, apellidos, direccion, localidad, provincia";

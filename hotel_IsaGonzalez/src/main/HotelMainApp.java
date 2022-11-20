@@ -69,7 +69,7 @@ public class HotelMainApp extends Application {
 	public void initRootLayout() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(HotelMainApp.class.getResource("view/RootLayout.fxml"));
+			loader.setLocation(HotelMainApp.class.getResource("../view/RootLayout.fxml"));
 			rootLayout = loader.load();
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
@@ -84,7 +84,7 @@ public class HotelMainApp extends Application {
 	public void showCustomerOverview() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(HotelMainApp.class.getResource("view/CustomerOverview.fxml"));
+			loader.setLocation(HotelMainApp.class.getResource("../view/CustomerOverview.fxml"));
 			AnchorPane customerOverview = loader.load();
 			rootLayout.setCenter(customerOverview);
 			CustomerOverviewController controller = loader.getController();
@@ -97,7 +97,7 @@ public class HotelMainApp extends Application {
 	public void showStatistics() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(HotelMainApp.class.getResource("view/Statistics.fxml"));
+			loader.setLocation(HotelMainApp.class.getResource("../view/Statistics.fxml"));
 			AnchorPane pane = loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("ESTADÍSTICAS");

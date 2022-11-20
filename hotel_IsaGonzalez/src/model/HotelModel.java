@@ -24,6 +24,10 @@ public class HotelModel {
         this.repository = repository;
     }
 
+    public Customer getCustomer(String dni) throws CustomerException {
+        return CustomerParse.parseToCustomer(repository.getCustomer(dni));
+    }
+
     public void saveCustomer(Customer customer) throws CustomerException {
         repository.saveCustomer(CustomerParse.parseToCustomerVO(customer));
     }

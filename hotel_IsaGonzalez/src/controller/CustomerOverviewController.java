@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -144,7 +143,7 @@ public class CustomerOverviewController {
 	public boolean showCustomerEditDialog(Customer customer, boolean isNew) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(HotelMainApp.class.getResource("view/CustomerEditDialog.fxml"));
+			loader.setLocation(HotelMainApp.class.getResource("../view/CustomerEditDialog.fxml"));
 			AnchorPane pane = loader.load();
 
 			Stage dialogStage = new Stage();
@@ -175,18 +174,22 @@ public class CustomerOverviewController {
 	}
 
 	@FXML
-	public void showCustomerSearchedByDNI(Customer customer) {
-		// TODO: Mostar los datos del cliente buscado introduciendo el DNI en la caja de búsqueda
-		dniSearch.setOnKeyPressed(event -> {
-			if (event.getCode() == KeyCode.ENTER && customer.getDni().equalsIgnoreCase(String.valueOf(dniSearch))) {
-				showCustomerDetails(customer);
-			} else {
-				Dialogs.create()
-						.title("No selection")
-						.masthead("No person selected")
-						.message("Please select a person in the table")
-						.showWarning();
+	public void showCustomerSearchedByDNI(KeyEvent event) {
+		if (event.getCode() == KeyCode.ENTER) {
+			try {
+				Customer customer = new HotelModel().getCustomer(dniSearch.getText());
+				if (customer != null) {
+					showCustomerDetails(customer);
+				} else {
+					Dialogs.create()
+							.title("Not found")
+							.masthead("Not found")
+							.message("No DNI matching the text")
+							.showWarning();
+				}
+			} catch (CustomerException ex) {
+				throw new RuntimeException(ex);
 			}
-		});
+		}
 	}
 }

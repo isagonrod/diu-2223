@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import model.Customer;
 import model.HotelModel;
-import java.awt.*;
+import javafx.scene.control.*;
 import org.controlsfx.dialog.Dialogs;
 
 public class CustomerEditDialogController {
@@ -37,12 +37,14 @@ public class CustomerEditDialogController {
         this.customer = customer;
         this.isNew = isNew;
 
-        dniField.setText(customer.getDni());
-        nombreField.setText(customer.getNombre());
-        apellidosField.setText(customer.getApellidos());
-        direccionField.setText(customer.getDireccion());
-        localidadField.setText(customer.getLocalidad());
-        provinciaField.setText(customer.getProvincia());
+        if (!isNew) {
+            dniField.setText(customer.getDni());
+            nombreField.setText(customer.getNombre());
+            apellidosField.setText(customer.getApellidos());
+            direccionField.setText(customer.getDireccion());
+            localidadField.setText(customer.getLocalidad());
+            provinciaField.setText(customer.getProvincia());
+        }
     }
 
     public boolean isOkClicked() {
@@ -64,6 +66,8 @@ public class CustomerEditDialogController {
                 } else {
                     new HotelModel().editCustomer(customer);
                 }
+                this.okClicked = true;
+                dialogStage.close();
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }

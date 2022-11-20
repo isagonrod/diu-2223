@@ -1,5 +1,6 @@
 package model;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Customer {
@@ -10,7 +11,14 @@ public class Customer {
     private StringProperty localidad;
     private StringProperty provincia;
 
-    public Customer() {}
+    public Customer() {
+        this.dni = new SimpleStringProperty("");
+        this.nombre = new SimpleStringProperty("");
+        this.apellidos = new SimpleStringProperty("");
+        this.direccion = new SimpleStringProperty("");
+        this.localidad = new SimpleStringProperty("");
+        this.provincia = new SimpleStringProperty("");
+    }
 
     public Customer(StringProperty nombre, StringProperty apellidos) {
         this.nombre = nombre;
