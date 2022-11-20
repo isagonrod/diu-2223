@@ -23,7 +23,7 @@ public class HotelRepositoryImpl implements HotelRepository {
 	 */
     public HotelRepositoryImpl() {
         this.connection = new MySqlConnection();
-        this.connection.closeDataBase();
+        this.connection.connectToDataBase();
         this.statement = this.connection.getNewStatement();
     }
 
