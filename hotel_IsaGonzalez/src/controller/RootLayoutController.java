@@ -21,4 +21,9 @@ public class RootLayoutController {
 	private void handleShowStatistics() {
 		mainApp.showStatistics();
 	}
+
+	@FXML
+	private void handleShowPhotoGallery() {
+		mainApp.showPhotoGallery();
+	}
 }

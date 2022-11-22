@@ -1,6 +1,7 @@
 package main;
 
 import controller.CustomerOverviewController;
+import controller.PhotoGalleryController;
 import controller.RootLayoutController;
 import controller.StatisticsController;
 import javafx.application.Application;
@@ -101,12 +102,36 @@ public class HotelMainApp extends Application {
 			AnchorPane pane = loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("ESTADÍSTICAS");
-			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initModality(Modality.NONE);
 			dialogStage.initOwner(primaryStage);
 			Scene scene = new Scene(pane);
 			dialogStage.setScene(scene);
+
 			StatisticsController controller = loader.getController();
 			controller.setBookingData(bookings);
+
+			dialogStage.show();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	public void showPhotoGallery() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(HotelMainApp.class.getResource("../view/PhotoGallery.fxml"));
+			// TODO: Revisar porque falla al cargar la ventana
+			AnchorPane pane = loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Galería de fotos");
+			dialogStage.initModality(Modality.NONE);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(pane);
+			dialogStage.setScene(scene);
+
+			PhotoGalleryController controller = loader.getController();
+			controller.setBookingData(bookings);
+
 			dialogStage.show();
 		} catch (IOException ex) {
 			ex.printStackTrace();

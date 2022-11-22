@@ -76,6 +76,23 @@
                                 <Label fx:id="provinciaLabel" text="provincia" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                             </children>
                         </GridPane>
+                  <HBox layoutX="254.0" layoutY="693.0" prefHeight="50.0" prefWidth="429.0" AnchorPane.bottomAnchor="55.0">
+                     <children>
+                        <Label prefHeight="43.0" prefWidth="92.0" text="Buscar DNI:">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="dniSearch" onKeyPressed="#showCustomerSearchedByDNI" prefHeight="40.0" prefWidth="317.0">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
 
                         <HBox layoutX="208.0" layoutY="292.0" prefHeight="50.0" prefWidth="443.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
 
@@ -103,23 +120,6 @@
                             </children>
 
                         </HBox>
-                  <HBox layoutX="252.0" layoutY="693.0" prefHeight="50.0" prefWidth="429.0">
-                     <children>
-                        <Label prefHeight="43.0" prefWidth="92.0" text="Buscar DNI:">
-                           <HBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="dniSearch" onKeyPressed="#showCustomerSearchedByDNI" prefHeight="40.0" prefWidth="317.0">
-                           <HBox.margin>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                  </HBox>
                     </children>
                 </AnchorPane>
 

@@ -57,8 +57,17 @@ public class CustomerOverviewController {
 	}
 
 	public void setHotelMainApp(HotelMainApp mainApp) {
-		this.mainApp = mainApp;
-		customerTable.setItems(mainApp.getCustomers());
+		// TODO: Revisar para que se inicialice la app aunque esté la base de datos apagada
+		try {
+			this.mainApp = mainApp;
+			customerTable.setItems(mainApp.getCustomers());
+		} catch (Exception ex) {
+			Dialogs.create()
+					.title("No database")
+					.masthead("Not found any database")
+					.message("Please connect some database")
+					.showWarning();
+		}
 	}
 
 	private void showCustomerDetails(Customer customer) {
