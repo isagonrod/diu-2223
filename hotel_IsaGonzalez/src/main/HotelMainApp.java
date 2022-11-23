@@ -12,6 +12,9 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.*;
@@ -26,7 +29,7 @@ import java.util.List;
  * Aplicación principal para la gestión del hotel.
  * Contiene el método MAIN y lanza el 'framework' o ventana principal de gestión.
  *
- * @author Isa González
+ * @author Isa Gonzalez
  */
 public class HotelMainApp extends Application {
     private Stage primaryStage;
@@ -34,6 +37,9 @@ public class HotelMainApp extends Application {
 	private ObservableList<Customer> customers = FXCollections.observableArrayList();
 	private ObservableList<Booking> bookings = FXCollections.observableArrayList();
 
+	/**
+	 * Constructor de la aplicación principal.
+	 */
 	public HotelMainApp() {
 		HotelRepositoryImpl repository = new HotelRepositoryImpl();
 		try {
@@ -58,7 +64,18 @@ public class HotelMainApp extends Application {
 		return bookings;
 	}
 
-    @Override
+	/**
+	 * Método para arrancar la aplicación, en el que se define el título o cabecera que aparecerá en la parte superior
+	 * y el icono de la misma.
+	 *
+	 * @param primaryStage PrimaryStage de esta aplicación, en la que la escena se puede configurar.
+	 * El primaryStage se integrará en el navegador si la aplicación se inició como un subprograma.
+	 * Las aplicaciones pueden crear otras etapas, si es necesario, pero no serán etapas primarias
+	 * y no se integrarán en el navegador.
+	 *
+	 * @throws Exception excepción
+	 */
+	@Override
     public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("HOTEL");
@@ -67,6 +84,12 @@ public class HotelMainApp extends Application {
 		showCustomerOverview();
     }
 
+	/**
+	 * Método para cargar la ventana principal de la aplicación, la cual consta de una barra de menú superior
+	 * con dos pestañas (Aplicación y Gestión) y una zona inferior vacía donde se cargará la ventana del cliente.
+	 * En la pestaña Aplicación está la opción "Visualizar Javadoc".
+	 * En la pestaña Gestión están las opciones "Estadísticas de ocupación por meses" y "Galería de fotos".
+	 */
 	public void initRootLayout() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -82,6 +105,13 @@ public class HotelMainApp extends Application {
 		}
 	}
 
+	/**
+	 * Método para cargar la ventana del Cliente.
+	 * Esta está dividida en dos partes: en la columna de la izquierda hay una lista donde se muestran
+	 * los apellidos y los nombres de los clientes, al pulsar sobre uno de ellos, aparecerán en la parte
+	 * derecha de la ventana todos sus datos.
+	 * En la parte izquierda también aparecerán varios botones: Nuevo, Editar, Eliminar y Reservas.
+	 */
 	public void showCustomerOverview() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -95,13 +125,17 @@ public class HotelMainApp extends Application {
 		}
 	}
 
+	/**
+	 * Método para cargar la ventana de Estadísticas desde la ventana principal al pulsar la opción correspondiente
+	 * del menú situado en la barra superior, en la pestaña de Gestión.
+	 */
 	public void showStatistics() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(HotelMainApp.class.getResource("../view/Statistics.fxml"));
 			AnchorPane pane = loader.load();
 			Stage dialogStage = new Stage();
-			dialogStage.setTitle("ESTADÍSTICAS");
+			dialogStage.setTitle("ESTADISTICAS");
 			dialogStage.initModality(Modality.NONE);
 			dialogStage.initOwner(primaryStage);
 			Scene scene = new Scene(pane);
@@ -116,6 +150,10 @@ public class HotelMainApp extends Application {
 		}
 	}
 
+	/**
+	 * Método para cargar la ventana de Galería de fotos desde la ventana principal al pulsar la opción correspondiente
+	 * del menú situado en la barra superior, en la pestaña de Gestión.
+	 */
 	public void showPhotoGallery() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -136,6 +174,27 @@ public class HotelMainApp extends Application {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
+	}
+
+	/**
+	 * Método para cargar el navegador con el Javadoc del proyecto en formato HTML al pulsar la opción correspondiente
+	 * del menú situado en la barra superior, en la pestaña Aplicación.
+	 */
+	public void showJavadoc() {
+		// TODO: Usar WebView
+		WebView webView = new WebView();
+
+		WebEngine webEngine = webView.getEngine();
+		webEngine.load("resources/javadoc/index.html");
+
+		StackPane root = new StackPane();
+		root.getChildren().add(webView);
+
+		Scene scene = new Scene(root, 800, 1000);
+
+		primaryStage.setTitle("Javadoc");
+		primaryStage.setScene(scene);
+		primaryStage.show();
 	}
 
 	public Stage getPrimaryStage() {

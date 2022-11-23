@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.HotelMainApp;
@@ -20,6 +21,12 @@ import org.controlsfx.dialog.Dialogs;
 
 import java.io.IOException;
 
+/**
+ * Controlador de la ventana principal del cliente, en la que se muestra una tabla en la parte izquierda
+ * y los datos de un cliente concreto seleccionado de dicha tabla en la parte derecha.
+ *
+ * @author Isa Gonzalez
+ */
 public class CustomerOverviewController {
 	@FXML
 	private TableView<Customer> customerTable;
@@ -48,12 +55,17 @@ public class CustomerOverviewController {
 
 	public CustomerOverviewController() {}
 
+	/**
+	 * Método para inicializar la ventana y cargar los datos de los clientes desde la base de datos.
+	 */
 	@FXML
 	private void initialize() {
 		nombre.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
 		apellidos.setCellValueFactory(cellData -> cellData.getValue().apellidosProperty());
 		showCustomerDetails(null);
-		customerTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showCustomerDetails(newValue));
+		customerTable.getSelectionModel()
+				.selectedItemProperty()
+				.addListener((observable, oldValue, newValue) -> showCustomerDetails(newValue));
 	}
 
 	public void setHotelMainApp(HotelMainApp mainApp) {
@@ -70,6 +82,12 @@ public class CustomerOverviewController {
 		}
 	}
 
+	/**
+	 * Método que sirve para mostrar los datos del cliente en la parte derecha de la ventana al pulsar
+	 * sobre uno de los clientes de la lista de la parte izquierda.
+	 *
+	 * @param customer El cliente pulsado en la tabla de la izquierda.
+	 */
 	private void showCustomerDetails(Customer customer) {
 		if (customer != null) {
 			dniLabel.setText(customer.getDni());
@@ -88,6 +106,9 @@ public class CustomerOverviewController {
 		}
 	}
 
+	/**
+	 * Método para borrar un cliente que esté seleccionado al pulsar el botón "Borrar".
+	 */
 	@FXML
 	private void handleDeleteCustomer() {
 		int selectedIndex = customerTable.getSelectionModel().getSelectedIndex();
@@ -108,6 +129,11 @@ public class CustomerOverviewController {
 		}
 	}
 
+	/**
+	 * Método para crear un nuevo cliente al pulsar sobre el botón "Nuevo".
+	 * Al pulsar este botón, se abrirá una ventana emergente donde se tendrán que introducir los datos
+	 * del nuevo cliente.
+	 */
 	@FXML
 	private void handleNewCustomer() {
 		Customer tempCustomer = new Customer();
@@ -117,6 +143,11 @@ public class CustomerOverviewController {
 		}
 	}
 
+	/**
+	 * Método para editar un cliente ya existente en la base de datos al pulsar sobre el botón "Editar".
+	 * Al pulsar este botón, se abrirá una ventana emergente donde se tendrán que introducir los datos
+	 * del cliente seleccionado.
+	 */
 	@FXML
 	private void handleEditCustomer() {
 		Customer selectedCustomer = customerTable.getSelectionModel().getSelectedItem();
@@ -134,6 +165,11 @@ public class CustomerOverviewController {
 		}
 	}
 
+	/**
+	 * Método para abrir la ventana de reservas de un cliente seleccionado al pulsar sobre el botón "Reservas".
+	 * Al pulsar este botón, se abrirá una nueva ventana donde se verá una lista de reservas del cliente
+	 * seleccionado a la izquierda y a la derecha se ven los datos de una reserva concreta al seleccionarla.
+	 */
 	@FXML
 	private void handleBookings() {
 		Customer selectedCustomer = customerTable.getSelectionModel().getSelectedItem();
@@ -149,6 +185,13 @@ public class CustomerOverviewController {
 		}
 	}
 
+	/**
+	 * Método para mostrar la ventana de edición y creación de un nuevo cliente.
+	 *
+	 * @param customer Cliente
+	 * @param isNew Si es nuevo o no
+	 * @return Si se ha pulsado sobre el botón OK.
+	 */
 	public boolean showCustomerEditDialog(Customer customer, boolean isNew) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -177,11 +220,36 @@ public class CustomerOverviewController {
 		}
 	}
 
+	/**
+	 * Método para mostrar la venta de reservas.
+	 *
+	 * @param customer Cliente seleccionado.
+	 * @param isNew 'false' si ya está en la base de datos, 'true' si es nuevo.
+	 * @return ?
+	 */
 	public boolean showBookingOverview(Customer customer, boolean isNew) {
 		// TODO: Mostrar ventana de BookingOverview
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(HotelMainApp.class.getResource("../view/BookingOverview.fxml"));
+			AnchorPane bookingOverview = loader.load();
+			BorderPane rootLayout = null;
+			assert false;
+			rootLayout.setCenter(bookingOverview);
+			BookingOverviewController controller = loader.getController();
+			controller.setHotelMainApp(mainApp);
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
 		return false;
 	}
 
+	/**
+	 * Método para mostrar los datos de un cliente en la parte derecha de la ventana al insertar su DNI
+	 * en la caja de búsqueda y pulsar ENTER.
+	 *
+	 * @param event Evento de pulsar la tecla ENTER.
+	 */
 	@FXML
 	public void showCustomerSearchedByDNI(KeyEvent event) {
 		if (event.getCode() == KeyCode.ENTER) {

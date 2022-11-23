@@ -13,6 +13,8 @@ import java.util.List;
 
 /**
  * Implementación de la interfaz HotelRepository.
+ *
+ * @author Isa Gonzalez
  */
 public class HotelRepositoryImpl implements HotelRepository {
     protected final DatabaseConnection connection;

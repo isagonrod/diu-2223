@@ -1,23 +1,19 @@
 package controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Spinner;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import model.Booking;
 import model.HotelModel;
 import org.controlsfx.dialog.Dialogs;
-import util.DateUtil;
-
 import java.awt.*;
 
 /**
+ * Controlador de la ventana de edición y creación de reservas.
  *
- * @autor Isa González
+ * @author Isa Gonzalez
  */
 public class BookingEditDialogController {
     private TextField codReservaField;
@@ -59,10 +55,20 @@ public class BookingEditDialogController {
         regimenAlojamientoField.setText(booking.getRegimenAlojamiento());
     }
 
+	/**
+	 * Método que comprueba si se ha pulsado o no el botón de editar.
+	 *
+	 * @return 'true' si se ha pulsado 'Editar', 'false' si se ha pulsado 'Nuevo'.
+	 */
     public boolean isOkClicked() {
         return okClicked;
     }
 
+	/**
+	 * Método que controla si se ha pulsado el botón 'OK' después de introducir o cambiar los datos de la reserva.
+	 * Comprueba, antes de cerrar la ventana, si es una nueva reserva (entonces la guarda en la base de datos) o
+	 * si la reserva ya existe (entonces la modifica en la base de datos).
+	 */
     @FXML
     private void pushOk() {
         if (isInputValid()) {
@@ -87,10 +93,19 @@ public class BookingEditDialogController {
         }
     }
 
+	/**
+	 * Método que controla si se ha pulsado el botón 'Cancelar', cerrando la ventana sin guardar ningún cambio.
+	 */
+	@FXML
     private void pushCancel() {
         dialogStage.close();
     }
 
+	/**
+	 * Método para controlar que los datos se han introducido de forma correcta.
+	 *
+	 * @return 'true' si se han introducido bien los datos, 'false' si hay algún error en algún campo.
+	 */
     private boolean isInputValid() {
         String errorMessage = "";
         if (codReservaField.getText() == null || codReservaField.getText().length() == 0) {

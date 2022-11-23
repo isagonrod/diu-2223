@@ -11,7 +11,7 @@
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
                 <Menu mnemonicParsing="false" text="Aplicación">
-                    <MenuItem mnemonicParsing="false" text="Ver Javadoc" />
+                    <MenuItem mnemonicParsing="false" onAction="#handleShowJavadoc" text="Ver Javadoc" />
                 </Menu>
                 <Menu mnemonicParsing="false" text="Gestión">
                     <MenuItem mnemonicParsing="false" onAction="#handleShowStatistics" text="Estadísticas de ocupación por meses" />

@@ -19,6 +19,11 @@ import org.controlsfx.dialog.Dialogs;
 import java.io.IOException;
 import java.time.LocalDate;
 
+/**
+ * Controlador para cargar la ventana de reservas de un cliente determinado.
+ *
+ * @author Isa Gonzalez
+ */
 public class BookingOverviewController {
 	@FXML
 	private TableView<Booking> bookingTable;
@@ -72,6 +77,9 @@ public class BookingOverviewController {
 		}
 	}
 
+	/**
+	 * Método para borrar una reserva que esté seleccionada al pulsar el botón "Borrar".
+	 */
 	@FXML
 	private void handleDeleteBooking() {
 		int selectedIndex = bookingTable.getSelectionModel().getSelectedIndex();
@@ -92,6 +100,11 @@ public class BookingOverviewController {
 		}
 	}
 
+	/**
+	 * Método para crear una nueva reserva al pulsar sobre el botón "Nuevo".
+	 * Al pulsar este botón, se abrirá una ventana emergente donde se tendrán que introducir los datos
+	 * de la nueva reserva.
+	 */
 	@FXML
 	private void handleNewBooking() {
 		Booking tempBooking = new Booking();
@@ -101,6 +114,11 @@ public class BookingOverviewController {
 		}
 	}
 
+	/**
+	 * Método para editar una reserva ya existente en la base de datos al pulsar sobre el botón "Editar".
+	 * Al pulsar este botón, se abrirá una ventana emergente donde se tendrán que introducir los datos
+	 * de la reserva seleccionada.
+	 */
 	@FXML
 	private void handleEditBooking() {
 		Booking selectedBooking = bookingTable.getSelectionModel().getSelectedItem();
@@ -118,6 +136,13 @@ public class BookingOverviewController {
 		}
 	}
 
+	/**
+	 * Método para mostrar la ventana de edición y creación de una nueva reserva.
+	 *
+	 * @param booking Reserva.
+	 * @param isNew Si es nueva o no.
+	 * @return Si se ha pulsado sobre el botón OK.
+	 */
 	public boolean showBookingEditDialog(Booking booking, boolean isNew) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -143,6 +168,20 @@ public class BookingOverviewController {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 			return false;
+		}
+	}
+
+	public void setHotelMainApp(HotelMainApp mainApp) {
+		// TODO: Revisar para que se inicialice la app aunque esté la base de datos apagada
+		try {
+			this.mainApp = mainApp;
+			bookingTable.setItems(mainApp.getBookings());
+		} catch (Exception ex) {
+			Dialogs.create()
+					.title("No database")
+					.masthead("Not found any database")
+					.message("Please connect some database")
+					.showWarning();
 		}
 	}
 }

@@ -13,6 +13,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * Controlador de la ventana de Estadísticas, donde se muestra una gráfica con los datos de ocupación por meses.
+ *
+ * @author Isa Gonzalez
+ */
 public class StatisticsController {
     @FXML
     private BarChart<String, Integer> barChart;
@@ -20,6 +25,9 @@ public class StatisticsController {
     private CategoryAxis xAxis;
     private ObservableList<String> monthNames = FXCollections.observableArrayList();
 
+	/**
+	 * Método que inicializa la ventana.
+	 */
     @FXML
     private void initialize() {
         String[] months = DateFormatSymbols.getInstance(Locale.getDefault()).getMonths();
@@ -28,6 +36,11 @@ public class StatisticsController {
         xAxis.setTickLabelRotation(75.0);
     }
 
+	/**
+	 * Método que toma los datos desde la base de datos y los vuelca en la gráfica.
+	 *
+	 * @param bookings Lista de reservas.
+	 */
     public void setBookingData(List<Booking> bookings) {
         int[] monthCounter = new int[12];
         for (Booking booking : bookings) {

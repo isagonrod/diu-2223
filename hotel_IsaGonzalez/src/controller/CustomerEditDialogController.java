@@ -7,6 +7,11 @@ import model.HotelModel;
 import javafx.scene.control.*;
 import org.controlsfx.dialog.Dialogs;
 
+/**
+ * Controlador de la ventana de edición y creación de clientes.
+ *
+ * @author Isa Gonzalez
+ */
 public class CustomerEditDialogController {
     @FXML
     private TextField dniField;
@@ -47,10 +52,20 @@ public class CustomerEditDialogController {
         }
     }
 
+	/**
+	 * Método que comprueba si se ha pulsado o no el botón de editar.
+	 *
+	 * @return 'true' si se ha pulsado 'Editar', 'false' si se ha pulsado 'Nuevo'.
+	 */
     public boolean isOkClicked() {
         return okClicked;
     }
 
+	/**
+	 * Método que controla si se ha pulsado el botón 'OK' después de introducir o cambiar los datos del cliente.
+	 * Comprueba, antes de cerrar la ventana, si es un nuevo cliente (entonces lo guarda en la base de datos) o
+	 * si el cliente ya existe (entonces lo modifica en la base de datos).
+	 */
     @FXML
     public void pushOk() {
         if (isInputValid()) {
@@ -74,11 +89,19 @@ public class CustomerEditDialogController {
         }
     }
 
+	/**
+	 * Método que controla si se ha pulsado el botón 'Cancelar', cerrando la ventana sin guardar ningún cambio.
+	 */
     @FXML
     public void pushCancel() {
         dialogStage.close();
     }
 
+	/**
+	 * Método para controlar que los datos se han introducido de forma correcta.
+	 *
+	 * @return 'true' si se han introducido bien los datos, 'false' si hay algún error en algún campo.
+	 */
     public boolean isInputValid() {
         String errorMessage = "";
         if (dniField.getText() == null || dniField.getText().length() == 0) {

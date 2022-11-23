@@ -11,6 +11,13 @@ import javax.swing.text.html.ImageView;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Controlador de la ventana de la Galería de fotos, donde se muestra una imagen de cada uno de los cuatro tipos
+ * de habitación que existe en el hotel con un indicador de progreso debajo, que muestra el porcentaje de ocupación
+ * de cada uno de los tipos de habitación.
+ *
+ * @author Isa Gonzalez
+ */
 public class PhotoGalleryController {
 	@FXML
 	ImageView image1;
@@ -29,6 +36,9 @@ public class PhotoGalleryController {
 	@FXML
 	ProgressIndicator porc4;
 
+	/**
+	 * Método para inicializar la ventana.
+	 */
 	@FXML
 	private void initialize() {
 		Image doble_individual = new Image(Objects.requireNonNull(getClass().getResourceAsStream("resources/doble_individual.jpg")));
@@ -44,6 +54,11 @@ public class PhotoGalleryController {
 		this.image4 = new ImageView((Element) suite);
 	}
 
+	/**
+	 * Método para comprobar los datos de las reservas en la base de datos.
+	 *
+	 * @param bookings Lista de reservas.
+	 */
 	public void setBookingData(List<Booking> bookings) {
 		int dobleIndividualCounter = 0;
 		int dobleCounter = 0;
@@ -62,9 +77,9 @@ public class PhotoGalleryController {
 				dobleIndividualCounter++;
 			}
 		}
-		this.porc1 = new ProgressIndicator(dobleIndividualCounter / 20);
-		this.porc2 = new ProgressIndicator(dobleCounter / 80);
-		this.porc3 = new ProgressIndicator(suiteJuniorCounter / 15);
-		this.porc4 = new ProgressIndicator(suiteCounter / 5);
+		this.porc1 = new ProgressIndicator((float)dobleIndividualCounter / 20);
+		this.porc2 = new ProgressIndicator((float)dobleCounter / 80);
+		this.porc3 = new ProgressIndicator((float)suiteJuniorCounter / 15);
+		this.porc4 = new ProgressIndicator((float)suiteCounter / 5);
 	}
 }

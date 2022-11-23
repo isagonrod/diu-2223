@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Interfaz que define cómo implementar el repositorio del hotel.
  *
- * @author Isa González
+ * @author Isa Gonzalez
  */
 public interface HotelRepository {
 
