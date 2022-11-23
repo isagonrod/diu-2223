@@ -5,17 +5,20 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" stylesheets="" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RootLayoutController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
+            prefWidth="1000.0" stylesheets="" xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RootLayoutController">
 
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
                 <Menu mnemonicParsing="false" text="Aplicación">
-                    <MenuItem mnemonicParsing="false" onAction="#handleShowJavadoc" text="Ver Javadoc" />
+                    <MenuItem mnemonicParsing="false" onAction="#handleShowJavadoc" text="Ver Javadoc"/>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Gestión">
-                    <MenuItem mnemonicParsing="false" onAction="#handleShowStatistics" text="Estadísticas de ocupación por meses" />
-                    <MenuItem mnemonicParsing="false" onAction="#handleShowPhotoGallery" text="Galería de Fotos" />
+                    <MenuItem mnemonicParsing="false" onAction="#handleShowStatistics"
+                              text="Estadísticas de ocupación por meses"/>
+                    <MenuItem mnemonicParsing="false" onAction="#handleShowPhotoGallery" text="Galería de Fotos"/>
                 </Menu>
             </menus>
         </MenuBar>
