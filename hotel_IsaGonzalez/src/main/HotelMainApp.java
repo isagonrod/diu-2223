@@ -20,9 +20,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.*;
 import model.repository.impl.HotelRepositoryImpl;
-import org.controlsfx.dialog.Dialogs;
 import util.BookingParse;
 import util.CustomerParse;
+import util.ModalDialog;
 
 import java.io.IOException;
 import java.util.List;
@@ -55,12 +55,9 @@ public class HotelMainApp extends Application {
 			}
 			repository.closeConnection();
 		} catch (CommunicationsException ex) {
-			System.out.println("Base de datos no disponible. Por favor conecte la base de datos y vuelva a ejecutar la aplicación.");
-			/*Dialogs.create()
-					.title("Error de conectividad")
-					.masthead("Base de datos no disponible")
-					.message("Por favor conecte la base de datos y vuelva a ejecutar la aplicación.")
-					.showError();*/
+			ModalDialog.createError("Error de conectividad",
+					"Base de datos no disponible",
+					"Por favor conecte la base de datos y vuelva a ejecutar la aplicación.");
 		} catch (CustomerException | BookingException ex) {
 			throw new RuntimeException(ex);
 		}

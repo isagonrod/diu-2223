@@ -15,7 +15,7 @@ import model.Booking;
 import javafx.scene.control.TableView;
 import model.BookingException;
 import model.HotelModel;
-import org.controlsfx.dialog.Dialogs;
+import util.ModalDialog;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -92,20 +92,16 @@ public class BookingOverviewController {
 				bookingTable.getItems().remove(selectedIndex);
 				model.getRepository().closeConnection();
 			} catch (CommunicationsException ex) {
-				Dialogs.create()
-						.title("Error de conectividad")
-						.masthead("Base de datos no disponible")
-						.message("Por favor conecte la base de datos y vuelva a ejecutar la aplicación.")
-						.showError();
+				ModalDialog.createError("Error de conectividad",
+						"Base de datos no disponible",
+						"Por favor conecte la base de datos y vuelva a ejecutar la aplicación.");
 			} catch (BookingException ex) {
 				throw new RuntimeException(ex);
 			}
 		} else {
-			Dialogs.create()
-					.title("No selection")
-					.masthead("No booking selected")
-					.message("Please select a booking in the table")
-					.showWarning();
+			ModalDialog.createWarning("Acción vacía",
+					"No se ha seleccionado ninguna reserva",
+					"Por favor seleccione una reserva en la tabla.");
 		}
 	}
 
@@ -137,11 +133,9 @@ public class BookingOverviewController {
 				showBookingDetails(selectedBooking);
 			}
 		} else {
-			Dialogs.create()
-					.title("No selection")
-					.masthead("No booking selected")
-					.message("Please select a booking in the table")
-					.showWarning();
+			ModalDialog.createWarning("Acción vacía",
+					"No se ha seleccionado ninguna reserva",
+					"Por favor seleccione una reserva en la tabla.");
 		}
 	}
 
@@ -181,16 +175,7 @@ public class BookingOverviewController {
 	}
 
 	public void setHotelMainApp(HotelMainApp mainApp) {
-		// TODO: Revisar para que se inicialice la app aunque esté la base de datos apagada
-		try {
-			this.mainApp = mainApp;
-			bookingTable.setItems(mainApp.getBookings());
-		} catch (Exception ex) {
-			Dialogs.create()
-					.title("No database")
-					.masthead("Not found any database")
-					.message("Please connect some database")
-					.showWarning();
-		}
+		this.mainApp = mainApp;
+		bookingTable.setItems(mainApp.getBookings());
 	}
 }

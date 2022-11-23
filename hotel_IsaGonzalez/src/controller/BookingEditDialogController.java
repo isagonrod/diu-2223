@@ -8,7 +8,8 @@ import javafx.scene.control.Spinner;
 import javafx.stage.Stage;
 import model.Booking;
 import model.HotelModel;
-import org.controlsfx.dialog.Dialogs;
+import util.ModalDialog;
+
 import java.awt.*;
 
 /**
@@ -89,11 +90,9 @@ public class BookingEditDialogController {
                 }
                 model.getRepository().closeConnection();
             } catch (CommunicationsException ex) {
-                Dialogs.create()
-                        .title("Error de conectividad")
-                        .masthead("Base de datos no disponible")
-                        .message("Por favor conecte la base de datos y vuelva a ejecutar la aplicación.")
-                        .showError();
+                ModalDialog.createError("Error de conectividad",
+                        "Base de datos no disponible",
+                        "Por favor conecte la base de datos y vuelva a ejecutar la aplicación.");
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
@@ -141,11 +140,9 @@ public class BookingEditDialogController {
         if (errorMessage.length() == 0) {
             return true;
         } else {
-            Dialogs.create()
-                    .title("Campos inválidos")
-                    .masthead("Por favor, corrija los campos inválidos")
-                    .message(errorMessage)
-                    .showError();
+            ModalDialog.createError("Campos inválidos",
+                    "Por favor, corrija los campos inválidos",
+                    errorMessage);
             return false;
         }
     }

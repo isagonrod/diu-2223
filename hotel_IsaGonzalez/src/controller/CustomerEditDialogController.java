@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 import model.Customer;
 import model.HotelModel;
 import javafx.scene.control.*;
-import org.controlsfx.dialog.Dialogs;
+import util.ModalDialog;
 
 /**
  * Controlador de la ventana de edición y creación de clientes.
@@ -87,11 +87,9 @@ public class CustomerEditDialogController {
                 dialogStage.close();
                 model.getRepository().closeConnection();
             } catch (CommunicationsException ex) {
-                Dialogs.create()
-                        .title("Error de conectividad")
-                        .masthead("Base de datos no disponible")
-                        .message("Por favor conecte la base de datos y vuelva a ejecutar la aplicación.")
-                        .showError();
+                ModalDialog.createError("Error de conectividad",
+                        "Base de datos no disponible",
+                        "Por favor conecte la base de datos y vuelva a ejecutar la aplicación.");
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
@@ -134,11 +132,9 @@ public class CustomerEditDialogController {
         if (errorMessage.length() == 0) {
             return true;
         } else {
-            Dialogs.create()
-                    .title("Campos inválidos")
-                    .masthead("Por favor, corrige los campos inválidos")
-                    .message(errorMessage)
-                    .showError();
+            ModalDialog.createError("Campos inválidos",
+                    "Por favor, corrija los campos inválidos",
+                    errorMessage);
             return false;
         }
     }
