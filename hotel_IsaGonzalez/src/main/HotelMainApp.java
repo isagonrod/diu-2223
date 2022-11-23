@@ -1,5 +1,6 @@
 package main;
 
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import controller.CustomerOverviewController;
 import controller.PhotoGalleryController;
 import controller.RootLayoutController;
@@ -19,6 +20,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.*;
 import model.repository.impl.HotelRepositoryImpl;
+import org.controlsfx.dialog.Dialogs;
 import util.BookingParse;
 import util.CustomerParse;
 
@@ -41,8 +43,8 @@ public class HotelMainApp extends Application {
 	 * Constructor de la aplicación principal.
 	 */
 	public HotelMainApp() {
-		HotelRepositoryImpl repository = new HotelRepositoryImpl();
 		try {
+			HotelRepositoryImpl repository = new HotelRepositoryImpl();
 			List<CustomerVO> customerVOList = repository.loadCustomerList();
 			for (CustomerVO customerVO : customerVOList) {
 				this.customers.add(CustomerParse.parseToCustomer(customerVO));
@@ -51,6 +53,14 @@ public class HotelMainApp extends Application {
 			for (BookingVO bookingVO : bookingVOList) {
 				this.bookings.add(BookingParse.parseToBooking(bookingVO));
 			}
+			repository.closeConnection();
+		} catch (CommunicationsException ex) {
+			System.out.println("Base de datos no disponible. Por favor conecte la base de datos y vuelva a ejecutar la aplicación.");
+			/*Dialogs.create()
+					.title("Error de conectividad")
+					.masthead("Base de datos no disponible")
+					.message("Por favor conecte la base de datos y vuelva a ejecutar la aplicación.")
+					.showError();*/
 		} catch (CustomerException | BookingException ex) {
 			throw new RuntimeException(ex);
 		}

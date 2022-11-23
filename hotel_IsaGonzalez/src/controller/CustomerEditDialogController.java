@@ -1,5 +1,6 @@
 package controller;
 
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import model.Customer;
@@ -70,6 +71,7 @@ public class CustomerEditDialogController {
     public void pushOk() {
         if (isInputValid()) {
             try {
+                HotelModel model = new HotelModel();
                 customer.setDni(dniField.getText());
                 customer.setNombre(nombreField.getText());
                 customer.setApellidos(apellidosField.getText());
@@ -77,12 +79,19 @@ public class CustomerEditDialogController {
                 customer.setLocalidad(localidadField.getText());
                 customer.setProvincia(provinciaField.getText());
                 if (isNew) {
-                    new HotelModel().saveCustomer(customer);
+                    model.saveCustomer(customer);
                 } else {
-                    new HotelModel().editCustomer(customer);
+                    model.editCustomer(customer);
                 }
                 this.okClicked = true;
                 dialogStage.close();
+                model.getRepository().closeConnection();
+            } catch (CommunicationsException ex) {
+                Dialogs.create()
+                        .title("Error de conectividad")
+                        .masthead("Base de datos no disponible")
+                        .message("Por favor conecte la base de datos y vuelva a ejecutar la aplicación.")
+                        .showError();
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }

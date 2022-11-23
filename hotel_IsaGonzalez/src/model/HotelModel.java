@@ -1,5 +1,6 @@
 package model;
 
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import model.repository.HotelRepository;
 import model.repository.impl.HotelRepositoryImpl;
 import util.BookingParse;
@@ -8,7 +9,7 @@ import util.CustomerParse;
 public class HotelModel {
     private HotelRepository repository;
 
-    public HotelModel() {
+    public HotelModel() throws CommunicationsException {
         this.repository = new HotelRepositoryImpl();
     }
 

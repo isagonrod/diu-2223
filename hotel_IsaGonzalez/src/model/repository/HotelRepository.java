@@ -13,6 +13,10 @@ import java.util.List;
  * @author Isa Gonzalez
  */
 public interface HotelRepository {
+	/**
+	 * Libera recursos mediante el cierre de la sentencia y la conexión usados por esta instancia del repositorio.
+	 */
+	void closeConnection();
 
 	/**
 	 * Abre una conexión a la base de datos e inserta una nueva reserva.

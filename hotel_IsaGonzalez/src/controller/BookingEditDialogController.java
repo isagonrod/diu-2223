@@ -1,5 +1,6 @@
 package controller;
 
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -73,6 +74,7 @@ public class BookingEditDialogController {
     private void pushOk() {
         if (isInputValid()) {
             try {
+                HotelModel model = new HotelModel();
                 booking.setCodReserva(Integer.parseInt(codReservaField.getText()));
                 booking.setFechaLlegada(fechaLlegadaField.getValue());
                 booking.setFechaSalida(fechaSalidaField.getValue());
@@ -81,10 +83,17 @@ public class BookingEditDialogController {
                 booking.setFumador(fumadorField.getState());
                 booking.setRegimenAlojamiento(regimenAlojamientoField.getText());
                 if (isNew) {
-                    new HotelModel().saveBooking(booking);
+                    model.saveBooking(booking);
                 } else {
-                    new HotelModel().editBooking(booking);
+                    model.editBooking(booking);
                 }
+                model.getRepository().closeConnection();
+            } catch (CommunicationsException ex) {
+                Dialogs.create()
+                        .title("Error de conectividad")
+                        .masthead("Base de datos no disponible")
+                        .message("Por favor conecte la base de datos y vuelva a ejecutar la aplicación.")
+                        .showError();
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }

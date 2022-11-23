@@ -1,5 +1,6 @@
 package model.repository.impl;
 
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import model.*;
 import model.repository.HotelRepository;
 import util.DatabaseConnection;
@@ -23,7 +24,7 @@ public class HotelRepositoryImpl implements HotelRepository {
 	/**
 	 * Constructor por defecto, donde se inicializa la conexión con la base de datos.
 	 */
-    public HotelRepositoryImpl() {
+    public HotelRepositoryImpl() throws CommunicationsException {
         this.connection = new MySqlConnection();
         this.connection.connectToDataBase();
         this.statement = this.connection.getNewStatement();
@@ -158,5 +159,11 @@ public class HotelRepositoryImpl implements HotelRepository {
             throw new CustomerException("Error al listar los clientes");
         }
         return result;
+    }
+
+    @Override
+    public void closeConnection() {
+        this.statement.closeStatement();
+        this.connection.closeDataBase();
     }
 }

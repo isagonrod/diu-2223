@@ -1,5 +1,6 @@
 package controller;
 
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -85,9 +86,17 @@ public class BookingOverviewController {
 		int selectedIndex = bookingTable.getSelectionModel().getSelectedIndex();
 		if (selectedIndex >= 0) {
 			try {
+				HotelModel model = new HotelModel();
 				Booking bookingToDelete = bookingTable.getItems().get(selectedIndex);
-				new HotelModel().deleteBooking(bookingToDelete);
+				model.deleteBooking(bookingToDelete);
 				bookingTable.getItems().remove(selectedIndex);
+				model.getRepository().closeConnection();
+			} catch (CommunicationsException ex) {
+				Dialogs.create()
+						.title("Error de conectividad")
+						.masthead("Base de datos no disponible")
+						.message("Por favor conecte la base de datos y vuelva a ejecutar la aplicación.")
+						.showError();
 			} catch (BookingException ex) {
 				throw new RuntimeException(ex);
 			}

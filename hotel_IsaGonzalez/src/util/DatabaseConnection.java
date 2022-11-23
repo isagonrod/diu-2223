@@ -1,5 +1,7 @@
 package util;
 
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
+
 import java.io.*;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -40,7 +42,7 @@ public abstract class DatabaseConnection {
         this.dbPassword = dbPassword;
     }
 
-    public void connectToDataBase() {
+    public void connectToDataBase() throws CommunicationsException {
         try {
             Class.forName(className);
         } catch (Exception ex) {

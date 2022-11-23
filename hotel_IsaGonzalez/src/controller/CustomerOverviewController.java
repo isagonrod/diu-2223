@@ -1,5 +1,6 @@
 package controller;
 
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -114,9 +115,17 @@ public class CustomerOverviewController {
 		int selectedIndex = customerTable.getSelectionModel().getSelectedIndex();
 		if (selectedIndex >= 0) {
 			try {
+				HotelModel model = new HotelModel();
 				Customer customerToDelete = customerTable.getItems().get(selectedIndex);
-				new HotelModel().deleteCustomer(customerToDelete);
+				model.deleteCustomer(customerToDelete);
 				customerTable.getItems().remove(selectedIndex);
+				model.getRepository().closeConnection();
+			} catch (CommunicationsException ex) {
+				Dialogs.create()
+						.title("Error de conectividad")
+						.masthead("Base de datos no disponible")
+						.message("Por favor conecte la base de datos y vuelva a ejecutar la aplicación.")
+						.showError();
 			} catch (CustomerException ex) {
 				throw new RuntimeException(ex);
 			}
@@ -254,7 +263,8 @@ public class CustomerOverviewController {
 	public void showCustomerSearchedByDNI(KeyEvent event) {
 		if (event.getCode() == KeyCode.ENTER) {
 			try {
-				Customer customer = new HotelModel().getCustomer(dniSearch.getText());
+				HotelModel model = new HotelModel();
+				Customer customer = model.getCustomer(dniSearch.getText());
 				if (customer != null) {
 					showCustomerDetails(customer);
 				} else {
@@ -264,6 +274,13 @@ public class CustomerOverviewController {
 							.message("No DNI matching the text")
 							.showWarning();
 				}
+				model.getRepository().closeConnection();
+			} catch (CommunicationsException ex) {
+				Dialogs.create()
+						.title("Error de conectividad")
+						.masthead("Base de datos no disponible")
+						.message("Por favor conecte la base de datos y vuelva a ejecutar la aplicación.")
+						.showError();
 			} catch (CustomerException ex) {
 				throw new RuntimeException(ex);
 			}
