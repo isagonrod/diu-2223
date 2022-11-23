@@ -143,13 +143,13 @@
             <children>
                 <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="101.0" layoutY="6.0" onMouseClicked="#pushOk">
                     <image>
-                        <Image url="@../../resources/ok.jpg"/>
+                        <Image url="@../resources/img/ok.jpg"/>
                     </image>
                 </ImageView>
                 <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="202.0" layoutY="6.0"
                            onMouseClicked="#pushCancel">
                     <image>
-                        <Image url="@../../resources/ko.jpg"/>
+                        <Image url="@../resources/img/ko.jpg"/>
                     </image>
                 </ImageView>
             </children>

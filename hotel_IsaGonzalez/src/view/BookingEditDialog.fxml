@@ -170,19 +170,19 @@
                 <ImageView accessibleRole="BUTTON" fitHeight="54.0" fitWidth="121.0" nodeOrientation="INHERIT"
                            GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                     <image>
-                        <Image url="@../../resources/clean.png"/>
+                        <Image url="@../resources/img/clean.png"/>
                     </image>
                 </ImageView>
                 <ImageView accessibleRole="BUTTON" fitHeight="70.0" fitWidth="70.0" GridPane.columnIndex="1"
                            GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                     <image>
-                        <Image url="@../../resources/ok.jpg"/>
+                        <Image url="@../resources/img/ok.jpg"/>
                     </image>
                 </ImageView>
                 <ImageView fitHeight="70.0" fitWidth="70.0" GridPane.columnIndex="2" GridPane.halignment="CENTER"
                            GridPane.rowIndex="6" GridPane.valignment="CENTER">
                     <image>
-                        <Image url="@../../resources/ko.jpg"/>
+                        <Image url="@../resources/img/ko.jpg"/>
                     </image>
                 </ImageView>
             </children>

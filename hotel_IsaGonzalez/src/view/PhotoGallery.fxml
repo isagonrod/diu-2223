@@ -39,7 +39,7 @@
                      <children>
                         <ImageView fitHeight="361.0" fitWidth="500.0" GridPane.rowIndex="1">
                            <image>
-                              <Image url="@../../resources/suite_junior.jpg" />
+                              <Image url="@../resources/img/suite_junior.jpg" />
                            </image>
                            <GridPane.margin>
                               <Insets top="5.0" />
@@ -47,17 +47,17 @@
                         </ImageView>
                         <ImageView fitHeight="358.0" fitWidth="499.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <image>
-                              <Image url="@../../resources/suite.jpg" />
+                              <Image url="@../resources/img/suite.jpg" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="356.0" fitWidth="500.0" GridPane.columnIndex="1">
                            <image>
-                              <Image url="@../../resources/doble.jpg" />
+                              <Image url="@../resources/img/doble.jpg" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="357.0" fitWidth="500.0">
                            <image>
-                              <Image url="@../../resources/doble_individual.jpg" />
+                              <Image url="@../resources/img/doble_individual.jpg" />
                            </image>
                         </ImageView>
                         <Label alignment="BOTTOM_RIGHT" contentDisplay="BOTTOM" prefHeight="356.0" prefWidth="502.0" text="Habitación Doble de uso Individual" textFill="WHITE">

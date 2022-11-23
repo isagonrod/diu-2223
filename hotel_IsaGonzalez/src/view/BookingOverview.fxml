@@ -103,19 +103,19 @@
                                 <ImageView accessibleRole="BUTTON" fitHeight="140.0" fitWidth="140.0"
                                            onMouseClicked="#handleNewBooking">
                                     <image>
-                                        <Image url="@../../resources/add.png"/>
+                                        <Image url="@../resources/img/add.png"/>
                                     </image>
                                 </ImageView>
                                 <ImageView accessibleRole="BUTTON" fitHeight="140.0" fitWidth="140.0" layoutX="221.0"
                                            onMouseClicked="#handleEditBooking">
                                     <image>
-                                        <Image url="@../../resources/edit.png"/>
+                                        <Image url="@../resources/img/edit.png"/>
                                     </image>
                                 </ImageView>
                                 <ImageView accessibleRole="BUTTON" fitHeight="140.0" fitWidth="140.0" layoutX="443.0"
                                            onMouseClicked="#handleDeleteBooking">
                                     <image>
-                                        <Image url="@../../resources/delete.jpeg"/>
+                                        <Image url="@../resources/img/delete.jpeg"/>
                                     </image>
                                 </ImageView>
                             </children>

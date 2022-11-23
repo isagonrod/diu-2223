@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.Image;
@@ -41,16 +40,16 @@ public class PhotoGalleryController {
 	 */
 	@FXML
 	private void initialize() {
-		Image doble_individual = new Image(Objects.requireNonNull(getClass().getResourceAsStream("resources/doble_individual.jpg")));
+		Image doble_individual = new Image(Objects.requireNonNull(getClass().getResourceAsStream("img/doble_individual.jpg")));
 		this.image1 = new ImageView((Element) doble_individual);
 
-		Image doble = new Image(Objects.requireNonNull(getClass().getResourceAsStream("resources/doble.jpg")));
+		Image doble = new Image(Objects.requireNonNull(getClass().getResourceAsStream("img/doble.jpg")));
 		this.image2 = new ImageView((Element) doble);
 
-		Image suite_junior = new Image(Objects.requireNonNull(getClass().getResourceAsStream("resources/suite_junior.jpg")));
+		Image suite_junior = new Image(Objects.requireNonNull(getClass().getResourceAsStream("img/suite_junior.jpg")));
 		this.image3 = new ImageView((Element) suite_junior);
 
-		Image suite = new Image(Objects.requireNonNull(getClass().getResourceAsStream("resources/suite.jpg")));
+		Image suite = new Image(Objects.requireNonNull(getClass().getResourceAsStream("img/suite.jpg")));
 		this.image4 = new ImageView((Element) suite);
 	}
 
