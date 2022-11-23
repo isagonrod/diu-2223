@@ -185,7 +185,7 @@ public class HotelMainApp extends Application {
 		WebView webView = new WebView();
 
 		WebEngine webEngine = webView.getEngine();
-		webEngine.load("resources/javadoc/index.html");
+		webEngine.load("docs/index.html");
 
 		StackPane root = new StackPane();
 		root.getChildren().add(webView);
