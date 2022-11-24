@@ -162,7 +162,7 @@ public class HotelMainApp extends Application {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(HotelMainApp.class.getResource("../view/PhotoGallery.fxml"));
-			// TODO: Revisar porque falla al cargar la ventana
+
 			AnchorPane pane = loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Galería de fotos");
