@@ -3,10 +3,9 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.Booking;
 
-import javax.swing.text.Element;
-import javax.swing.text.html.ImageView;
 import java.util.List;
 import java.util.Objects;
 
@@ -41,16 +40,16 @@ public class PhotoGalleryController {
 	@FXML
 	private void initialize() {
 		Image doble_individual = new Image(Objects.requireNonNull(getClass().getResourceAsStream("../resources/img/doble_individual.jpg")));
-		this.image1 = new ImageView((Element) doble_individual);
+		this.image1 = new ImageView(doble_individual);
 
 		Image doble = new Image(Objects.requireNonNull(getClass().getResourceAsStream("../resources/img/doble.jpg")));
-		this.image2 = new ImageView((Element) doble);
+		this.image2 = new ImageView(doble);
 
 		Image suite_junior = new Image(Objects.requireNonNull(getClass().getResourceAsStream("../resources/img/suite_junior.jpg")));
-		this.image3 = new ImageView((Element) suite_junior);
+		this.image3 = new ImageView(suite_junior);
 
 		Image suite = new Image(Objects.requireNonNull(getClass().getResourceAsStream("../resources/img/suite.jpg")));
-		this.image4 = new ImageView((Element) suite);
+		this.image4 = new ImageView(suite);
 	}
 
 	/**
