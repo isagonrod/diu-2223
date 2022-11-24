@@ -7,6 +7,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Spinner;
 import javafx.stage.Stage;
 import model.Booking;
+import model.Customer;
 import model.HotelModel;
 import util.ModalDialog;
 
@@ -15,10 +16,25 @@ import java.awt.*;
 /**
  * Controlador de la ventana de edición y creación de reservas.
  *
- * @author Isa Gonzalez
+ * @author Isa González
  */
 public class BookingEditDialogController {
-    private TextField codReservaField;
+	// Datos del cliente
+	@FXML
+    private TextField dniField;
+	@FXML
+	private TextField nombreField;
+	@FXML
+	private TextField apellidosField;
+	@FXML
+	private TextField direccionField;
+	@FXML
+	private TextField localidadField;
+	@FXML
+	private TextField provinciaField;
+
+	// Campos vacíos para la nueva reserva o para editar una reserva
+	private TextField codReservaField;
     @FXML
     private DatePicker fechaLlegadaField;
     @FXML
@@ -146,4 +162,14 @@ public class BookingEditDialogController {
             return false;
         }
     }
+
+	// TODO: Método que rellene los campos del cliente con los datos del que se seleccionó en la ventana anterior
+	private void addFieldsCustomer(Customer customer) {
+		this.dniField.setText(customer.getDni());
+		this.nombreField.setText(customer.getNombre());
+		this.apellidosField.setText(customer.getApellidos());
+		this.direccionField.setText(customer.getDireccion());
+		this.localidadField.setText(customer.getLocalidad());
+		this.provinciaField.setText(customer.getProvincia());
+	}
 }

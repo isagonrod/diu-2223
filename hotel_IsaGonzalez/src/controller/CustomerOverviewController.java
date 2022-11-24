@@ -26,7 +26,7 @@ import java.io.IOException;
  * Controlador de la ventana principal del cliente, en la que se muestra una tabla en la parte izquierda
  * y los datos de un cliente concreto seleccionado de dicha tabla en la parte derecha.
  *
- * @author Isa Gonzalez
+ * @author Isa González
  */
 public class CustomerOverviewController {
     @FXML

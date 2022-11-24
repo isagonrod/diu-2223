@@ -4,6 +4,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Clase para crear el Statement necesario para hacer las consultas y modificaciones en la base de datos.
+ *
+ * @author Isa González
+ */
 public class DatabaseStatement {
     private Statement stmt;
 

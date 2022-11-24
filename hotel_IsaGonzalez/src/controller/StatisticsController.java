@@ -16,7 +16,7 @@ import java.util.Locale;
 /**
  * Controlador de la ventana de Estadísticas, donde se muestra una gráfica con los datos de ocupación por meses.
  *
- * @author Isa Gonzalez
+ * @author Isa González
  */
 public class StatisticsController {
     @FXML

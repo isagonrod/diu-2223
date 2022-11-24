@@ -3,6 +3,11 @@ package util;
 import model.Customer;
 import model.CustomerVO;
 
+/**
+ * Clase para convertir un objeto de la clase Customer en otro de la clase CustomerVO, y viceversa.
+ *
+ * @author Isa González
+ */
 public class CustomerParse {
     public static CustomerVO parseToCustomerVO(Customer customer) {
         CustomerVO customerVO = new CustomerVO();

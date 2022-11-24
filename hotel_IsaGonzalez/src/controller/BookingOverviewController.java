@@ -23,7 +23,7 @@ import java.time.LocalDate;
 /**
  * Controlador para cargar la ventana de reservas de un cliente determinado.
  *
- * @author Isa Gonzalez
+ * @author Isa González
  */
 public class BookingOverviewController {
 	@FXML

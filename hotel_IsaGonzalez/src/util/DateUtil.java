@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Clase para formatear la fecha.
+ */
 public class DateUtil {
     private static final String DATE_PATTERN = "dd-MM-yyyy";
     private static final DateTimeFormatter DATE_FORMATER = DateTimeFormatter.ofPattern(DATE_PATTERN);

@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * Clase VO (Value Object) de Customer.
+ *
+ * @author Isa González
+ */
 public class CustomerVO {
     private String dni;
     private String nombre;

@@ -7,6 +7,11 @@ import javafx.scene.layout.StackPane;
 
 import java.time.LocalDate;
 
+/**
+ * Clase VO (Value Object) de Booking.
+ *
+ * @author Isa González
+ */
 public class BookingVO {
     private int codReserva;
     private LocalDate fechaLlegada;

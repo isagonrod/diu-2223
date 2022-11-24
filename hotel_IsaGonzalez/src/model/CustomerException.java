@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * Clase que controla las excepciones de la clase Customer (cliente).
+ *
+ * @author Isa González
+ */
 public class CustomerException extends Exception {
     private String message;
 

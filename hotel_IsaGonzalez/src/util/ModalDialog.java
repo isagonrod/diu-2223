@@ -7,7 +7,13 @@ import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import java.util.Map;
 
+/**
+ * Clase que sirve para crear ventanas modales.
+ *
+ * @author Isa González
+ */
 public class ModalDialog {
+
     /**
      * Crea un modal de aviso con un solo botón.
      *

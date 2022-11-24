@@ -15,7 +15,7 @@ import java.util.Objects;
  * de habitación que existe en el hotel con un indicador de progreso debajo, que muestra el porcentaje de ocupación
  * de cada uno de los tipos de habitación.
  *
- * @author Isa Gonzalez
+ * @author Isa González
  */
 public class PhotoGalleryController {
 	@FXML

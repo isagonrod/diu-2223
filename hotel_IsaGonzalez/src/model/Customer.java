@@ -3,6 +3,11 @@ package model;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * Clase para los clientes, donde se indican los 'properties' de sus atributos.
+ *
+ * @author Isa González
+ */
 public class Customer {
     private StringProperty dni;
     private StringProperty nombre;

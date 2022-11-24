@@ -7,6 +7,11 @@ import util.LocalDateAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 
+/**
+ * Clase para las reservas, donde se indican los 'properties' en sus atributos.
+ *
+ * @author Isa González
+ */
 public class Booking {
     private IntegerProperty codReserva;
     @XmlJavaTypeAdapter(LocalDateAdapter.class)

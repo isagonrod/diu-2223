@@ -1,10 +1,7 @@
 package main;
 
 import com.mysql.cj.jdbc.exceptions.CommunicationsException;
-import controller.CustomerOverviewController;
-import controller.PhotoGalleryController;
-import controller.RootLayoutController;
-import controller.StatisticsController;
+import controller.*;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,7 +28,7 @@ import java.util.List;
  * Aplicación principal para la gestión del hotel.
  * Contiene el método MAIN y lanza el 'framework' o ventana principal de gestión.
  *
- * @author Isa Gonzalez
+ * @author Isa González
  */
 public class HotelMainApp extends Application {
     private Stage primaryStage;
@@ -188,20 +185,12 @@ public class HotelMainApp extends Application {
 	 * del menú situado en la barra superior, en la pestaña Aplicación.
 	 */
 	public void showJavadoc() {
-		// TODO: Usar WebView
-		WebView webView = new WebView();
+		// TODO: Revisar
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(HotelMainApp.class.getResource("../view/Javadoc.fxml"));
 
-		WebEngine webEngine = webView.getEngine();
-		webEngine.load("docs/index.html");
-
-		StackPane root = new StackPane();
-		root.getChildren().add(webView);
-
-		Scene scene = new Scene(root, 800, 1000);
-
-		primaryStage.setTitle("Javadoc");
-		primaryStage.setScene(scene);
-		primaryStage.show();
+		JavadocController controller = loader.getController();
+		controller.loadPage();
 	}
 
 	public Stage getPrimaryStage() {

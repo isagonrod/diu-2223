@@ -3,6 +3,11 @@ package util;
 import model.Booking;
 import model.BookingVO;
 
+/**
+ * Clase para convertir un objeto de la clase Booking en otro de la clase BookingVO, y viceversa.
+ *
+ * @author Isa González
+ */
 public class BookingParse {
     public static BookingVO parseToBookingVO(Booking booking) {
         BookingVO bookingVO = new BookingVO();

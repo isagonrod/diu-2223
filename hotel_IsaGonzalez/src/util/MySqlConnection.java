@@ -6,6 +6,11 @@ import java.nio.file.Paths;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * Clase para hacer la conexión con una base de datos en MySQL.
+ *
+ * @author Isa González
+ */
 public class MySqlConnection extends DatabaseConnection {
     public MySqlConnection() {
         super("com.mysql.cj.jdbc.Driver", Paths.get("src/util/.MySqlConfig").toAbsolutePath().normalize().toString());

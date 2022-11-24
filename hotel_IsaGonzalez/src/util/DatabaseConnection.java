@@ -9,6 +9,12 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Clase abstracta que sirve para hacer la conexión con la base de datos, independientemente de la escogida,
+ * ya que está pensada para que sirva para cualquier tipo.
+ *
+ * @author Isa González
+ */
 public abstract class DatabaseConnection {
     protected Connection conn;
     protected String dbHost;

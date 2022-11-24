@@ -6,6 +6,12 @@ import model.repository.impl.HotelRepositoryImpl;
 import util.BookingParse;
 import util.CustomerParse;
 
+/**
+ * Clase MODELO de la arquitectura MVO (Modelo-Vista-Controlador). Aquí se realizan las acciones de relacionadas
+ * con el resto de clases (Customer y Booking), y las relaciona con el repositorio.
+ *
+ * @author Isa González
+ */
 public class HotelModel {
     private HotelRepository repository;
 

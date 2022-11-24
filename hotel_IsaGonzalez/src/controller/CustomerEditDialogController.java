@@ -11,7 +11,7 @@ import util.ModalDialog;
 /**
  * Controlador de la ventana de edición y creación de clientes.
  *
- * @author Isa Gonzalez
+ * @author Isa González
  */
 public class CustomerEditDialogController {
     @FXML
