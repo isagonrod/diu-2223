@@ -10,12 +10,13 @@ public class JavadocController {
 	private WebEngine engine;
 
 	@FXML
-	public void initialize() {
-		engine = webView.getEngine();
-		loadPage();
-	}
+	public void initialize() {}
 
 	public void loadPage() {
-		engine.load("docs/index.html");
+		engine = webView.getEngine();
+		String path = System.getProperty("user.dir");
+		path.replace("\\\\", "/");
+		path += "/docs/index.html";
+		engine.load("file:///" + path);
 	}
 }

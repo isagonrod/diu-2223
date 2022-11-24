@@ -199,7 +199,7 @@ public class HotelMainApp extends Application {
 			dialogStage.setScene(scene);
 
 			JavadocController controller = loader.getController();
-			//controller.setDialogStage(dialogStage);/
+			controller.loadPage();
 
 			dialogStage.showAndWait();
 		} catch (IOException ex) {
