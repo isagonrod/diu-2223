@@ -186,11 +186,25 @@ public class HotelMainApp extends Application {
 	 */
 	public void showJavadoc() {
 		// TODO: Revisar
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(HotelMainApp.class.getResource("../view/Javadoc.fxml"));
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(HotelMainApp.class.getResource("../view/Javadoc.fxml"));
+			AnchorPane pane = loader.load();
 
-		JavadocController controller = loader.getController();
-		controller.loadPage();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("JavaDocs");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(this.getPrimaryStage());
+			Scene scene = new Scene(pane);
+			dialogStage.setScene(scene);
+
+			JavadocController controller = loader.getController();
+			//controller.setDialogStage(dialogStage);/
+
+			dialogStage.showAndWait();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	public Stage getPrimaryStage() {

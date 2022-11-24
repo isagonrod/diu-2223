@@ -40,16 +40,16 @@ public class PhotoGalleryController {
 	 */
 	@FXML
 	private void initialize() {
-		Image doble_individual = new Image(Objects.requireNonNull(getClass().getResourceAsStream("img/doble_individual.jpg")));
+		Image doble_individual = new Image(Objects.requireNonNull(getClass().getResourceAsStream("../resources/img/doble_individual.jpg")));
 		this.image1 = new ImageView((Element) doble_individual);
 
-		Image doble = new Image(Objects.requireNonNull(getClass().getResourceAsStream("img/doble.jpg")));
+		Image doble = new Image(Objects.requireNonNull(getClass().getResourceAsStream("../resources/img/doble.jpg")));
 		this.image2 = new ImageView((Element) doble);
 
-		Image suite_junior = new Image(Objects.requireNonNull(getClass().getResourceAsStream("img/suite_junior.jpg")));
+		Image suite_junior = new Image(Objects.requireNonNull(getClass().getResourceAsStream("../resources/img/suite_junior.jpg")));
 		this.image3 = new ImageView((Element) suite_junior);
 
-		Image suite = new Image(Objects.requireNonNull(getClass().getResourceAsStream("img/suite.jpg")));
+		Image suite = new Image(Objects.requireNonNull(getClass().getResourceAsStream("../resources/img/suite.jpg")));
 		this.image4 = new ImageView((Element) suite);
 	}
 

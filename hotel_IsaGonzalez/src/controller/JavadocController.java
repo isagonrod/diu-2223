@@ -8,13 +8,13 @@ import javafx.scene.web.WebView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class JavadocController implements Initializable {
+public class JavadocController {
 	@FXML
 	private WebView webView;
 	private WebEngine engine;
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	@FXML
+	public void initialize() {
 		engine = webView.getEngine();
 		loadPage();
 	}
