@@ -75,9 +75,9 @@ public class PhotoGalleryController {
 				dobleIndividualCounter++;
 			}
 		}
-		this.porc1 = new ProgressIndicator((float)dobleIndividualCounter / 20);
-		this.porc2 = new ProgressIndicator((float)dobleCounter / 80);
-		this.porc3 = new ProgressIndicator((float)suiteJuniorCounter / 15);
-		this.porc4 = new ProgressIndicator((float)suiteCounter / 5);
+		this.porc1.setProgress((float)dobleIndividualCounter / 20);
+		this.porc2.setProgress((float)dobleCounter / 80);
+		this.porc3.setProgress((float)suiteJuniorCounter / 15);
+		this.porc4.setProgress((float)suiteCounter / 5);
 	}
 }

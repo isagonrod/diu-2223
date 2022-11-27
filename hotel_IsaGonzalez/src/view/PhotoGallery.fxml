@@ -68,7 +68,7 @@
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </GridPane.margin>
                         </Label>
-                        <ProgressIndicator progress="0.0" style="-fx-background-color: white;" GridPane.valignment="BOTTOM">
+                        <ProgressIndicator fx:id="porc1" progress="0.0" style="-fx-background-color: white;" GridPane.valignment="BOTTOM">
                            <GridPane.margin>
                               <Insets bottom="20.0" left="20.0" />
                            </GridPane.margin>
@@ -81,7 +81,7 @@
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </GridPane.margin>
                         </Label>
-                        <ProgressIndicator progress="0.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
+                        <ProgressIndicator fx:id="porc2" progress="0.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
                            <GridPane.margin>
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </GridPane.margin>
@@ -94,7 +94,7 @@
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </GridPane.margin>
                         </Label>
-                        <ProgressIndicator progress="0.0" style="-fx-background-color: white;" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                        <ProgressIndicator fx:id="porc3" progress="0.0" style="-fx-background-color: white;" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                            <GridPane.margin>
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </GridPane.margin>
@@ -107,7 +107,7 @@
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </GridPane.margin>
                         </Label>
-                        <ProgressIndicator progress="0.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                        <ProgressIndicator fx:id="porc4" progress="0.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                            <GridPane.margin>
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </GridPane.margin>
