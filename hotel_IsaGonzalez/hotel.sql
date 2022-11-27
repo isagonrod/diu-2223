@@ -18,8 +18,8 @@ CREATE TABLE reserva (
     fechaSalida DATE,
     numHabitaciones INT,
     tipoHabitacion VARCHAR(50),
-    fumador BOOLEAN, /* FALSE = 0, TRUE != 0 */
-    regimenAlojamiento VARCHAR(10),
+    fumador BIT, /* FALSE = 0, TRUE != 0 */
+    regimenAlojamiento VARCHAR(50),
     dniCliente VARCHAR(9),
     PRIMARY KEY(codReserva),
     FOREIGN KEY(dniCliente) REFERENCES cliente(dni)

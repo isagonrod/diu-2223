@@ -115,7 +115,6 @@ public class BookingEditDialogController {
         if (isInputValid()) {
             try {
                 HotelModel model = new HotelModel();
-                booking.setCodReserva(Integer.parseInt(codReservaField.getText()));
                 booking.setFechaLlegada(fechaLlegadaField.getValue());
                 booking.setFechaSalida(fechaSalidaField.getValue());
                 booking.setNumHabitaciones(Integer.parseInt(numHabitacionesField.getText()));
@@ -125,8 +124,9 @@ public class BookingEditDialogController {
                         ((RadioButton)regimenAlojamientoGroup.selectedToggleProperty().getValue()).getText()
                 );
                 if (isNew) {
-                    model.saveBooking(booking);
+                    booking.setCodReserva(model.saveBooking(booking));
                 } else {
+                    booking.setCodReserva(Integer.parseInt(codReservaField.getText()));
                     model.editBooking(booking);
                 }
                 model.getRepository().closeConnection();
@@ -158,22 +158,22 @@ public class BookingEditDialogController {
     private boolean isInputValid() {
         String errorMessage = "";
         if (fechaLlegadaField.getValue() == null) {
-            errorMessage += "Fecha de llegada no válida";
+            errorMessage += "Fecha de llegada no válida\n";
         }
         if (fechaLlegadaField.getValue() == null) {
-            errorMessage += "Fecha de salida no válida";
+            errorMessage += "Fecha de salida no válida\n";
         }
         if (numHabitacionesField.getText() == null || numHabitacionesField.getText().equals("")) {
-            errorMessage += "Número de habitaciones no válido";
+            errorMessage += "Número de habitaciones no válido\n";
         }
         if (tipoHabitacionField.getValue() == null || tipoHabitacionField.getValue().length() == 0) {
-            errorMessage += "Tipo de habitación no válido";
+            errorMessage += "Tipo de habitación no válido\n";
         }
         if (!fumadorField.isSelected()) {
-            errorMessage += "Elección de fumador no válida";
+            errorMessage += "Elección de fumador no válida\n";
         }
         if (regimenAlojamientoGroup.selectedToggleProperty() == null) {
-            errorMessage += "Régimen de alojamiento no válido";
+            errorMessage += "Régimen de alojamiento no válido\n";
         }
         if (errorMessage.length() == 0) {
             return true;

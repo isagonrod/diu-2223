@@ -26,8 +26,12 @@ public class Customer {
     }
 
     public Customer(StringProperty nombre, StringProperty apellidos) {
+        this.dni = new SimpleStringProperty("");
         this.nombre = nombre;
         this.apellidos = apellidos;
+        this.direccion = new SimpleStringProperty("");
+        this.localidad = new SimpleStringProperty("");
+        this.provincia = new SimpleStringProperty("");
     }
 
     public String getDni() {

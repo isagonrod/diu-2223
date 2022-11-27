@@ -1,7 +1,6 @@
 package model;
 
 import javafx.beans.property.*;
-import javafx.scene.control.SpinnerValueFactory;
 import util.LocalDateAdapter;
 
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -24,11 +23,26 @@ public class Booking {
     private StringProperty regimenAlojamiento;
     private StringProperty dniCliente;
 
-    public Booking() {}
+    public Booking() {
+        this.codReserva = new SimpleIntegerProperty();
+        this.fechaLlegada = new SimpleObjectProperty<>();
+        this.fechaSalida = new SimpleObjectProperty<>();
+        this.numHabitaciones = new SimpleIntegerProperty();
+        this.tipoHabitacion = new SimpleStringProperty();
+        this.fumador = new SimpleBooleanProperty();
+        this.regimenAlojamiento = new SimpleStringProperty();
+        this.dniCliente = new SimpleStringProperty();
+    }
 
     public Booking(int codReserva, LocalDate fechaEntrada) {
         this.codReserva = new SimpleIntegerProperty(codReserva);
         this.fechaLlegada = new SimpleObjectProperty<>(fechaEntrada);
+        this.fechaSalida = new SimpleObjectProperty<>();
+        this.numHabitaciones = new SimpleIntegerProperty();
+        this.tipoHabitacion = new SimpleStringProperty();
+        this.fumador = new SimpleBooleanProperty();
+        this.regimenAlojamiento = new SimpleStringProperty();
+        this.dniCliente = new SimpleStringProperty();
     }
 
     public int getCodReserva() {

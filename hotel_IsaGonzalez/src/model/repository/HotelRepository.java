@@ -22,9 +22,10 @@ public interface HotelRepository {
 	 * Abre una conexión a la base de datos e inserta una nueva reserva.
 	 *
 	 * @param newBooking Objeto BookingVO con los datos de la nueva reserva
+	 * @return El identificador autogenerado de la nueva reserva
 	 * @throws BookingException Excepción lanzada si ocurre un error controlado
 	 */
-    void saveBooking(BookingVO newBooking) throws BookingException;
+    int saveBooking(BookingVO newBooking) throws BookingException;
 
 	/**
 	 * Abre una conexión a la base de datos y borra una reserva especificada por su identificador.

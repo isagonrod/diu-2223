@@ -31,16 +31,19 @@ public class HotelRepositoryImpl implements HotelRepository {
     }
 
     @Override
-    public void saveBooking(BookingVO newBooking) throws BookingException {
-        String fields = "codReserva, fechaLlega, fechaSalida, numHabitaciones, tipoHabitacion, fumador, regimenAlojamiento";
-        newBooking.setCodReserva(this.statement.getNextCodReserva("reserva", "codReserva"));
+    public int saveBooking(BookingVO newBooking) throws BookingException {
+        String fields = "codReserva, fechaLlegada, fechaSalida, numHabitaciones, tipoHabitacion, fumador, regimenAlojamiento";
+        int nextCodReserva = this.statement.getNextCodReserva("reserva", "codReserva");
+        newBooking.setCodReserva(nextCodReserva);
         String values = String.format("%d, '%s', '%s', %d, '%s', '%s', '%s'",
                 newBooking.getCodReserva(), newBooking.getFechaLlegada(), newBooking.getFechaSalida(),
-                newBooking.getNumHabitaciones(), newBooking.getTipoHabitacion(), newBooking.isFumador(),
+                newBooking.getNumHabitaciones(), newBooking.getTipoHabitacion(), newBooking.isFumador() ? 1 : 0,
                 newBooking.getRegimenAlojamiento());
         if (this.statement.insert(fields, values, "reserva") == -1) {
             throw new BookingException("Error al guardar la reserva");
         }
+
+        return nextCodReserva;
     }
 
     @Override

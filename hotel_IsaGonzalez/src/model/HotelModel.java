@@ -47,8 +47,8 @@ public class HotelModel {
         repository.deleteCustomer(customer.getDni());
     }
 
-    public void saveBooking(Booking booking) throws BookingException {
-        repository.saveBooking(BookingParse.parseToBookingVO(booking));
+    public int saveBooking(Booking booking) throws BookingException {
+        return repository.saveBooking(BookingParse.parseToBookingVO(booking));
     }
 
     public void editBooking(Booking booking) throws BookingException {
