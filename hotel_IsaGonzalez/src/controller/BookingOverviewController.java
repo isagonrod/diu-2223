@@ -144,7 +144,11 @@ public class BookingOverviewController {
 	@FXML
 	private void handleEditBooking() {
 		Booking selectedBooking = bookingTable.getSelectionModel().getSelectedItem();
-		if (selectedBooking != null) {
+		if (selectedBooking.getFechaSalida().isBefore(LocalDate.now())) {
+			ModalDialog.createWarning("Reserva cerrada",
+					"No se pueden editar reservas anteriores a la fecha actual",
+					"Por favor seleccione una reserva posterior al día de hoy.");
+		} else if (selectedBooking != null) {
 			boolean okClicked = this.showBookingEditDialog(selectedBooking, this.currentCustomer, false);
 			if (okClicked) {
 				showBookingDetails(selectedBooking);
