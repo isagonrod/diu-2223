@@ -130,8 +130,7 @@ public class BookingOverviewController {
 	@FXML
 	private void handleNewBooking() {
 		Booking tempBooking = new Booking();
-		Customer tempCustomer = new Customer();
-		boolean okClicked = this.showBookingEditDialog(tempBooking, tempCustomer, true);
+		boolean okClicked = this.showBookingEditDialog(tempBooking, this.currentCustomer, true);
 		if (okClicked) {
 			mainApp.getBookings().add(tempBooking);
 		}

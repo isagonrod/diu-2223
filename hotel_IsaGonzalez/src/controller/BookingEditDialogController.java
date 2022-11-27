@@ -2,11 +2,7 @@ package controller;
 
 import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.TextField;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.Booking;
 import model.Customer;
@@ -40,13 +36,19 @@ public class BookingEditDialogController {
     @FXML
     private DatePicker fechaSalidaField;
     @FXML
-    private Spinner numHabitacionesField;
+    private TextField numHabitacionesField;
     @FXML
     private ComboBox<String> tipoHabitacionField;
     @FXML
     private CheckBox fumadorField;
     @FXML
-    private TextField regimenAlojamientoField;
+    private ToggleGroup regimenAlojamientoGroup;
+    @FXML
+    private RadioButton regimenAlojamientoRadio1;
+    @FXML
+    private RadioButton regimenAlojamientoRadio2;
+    @FXML
+    private RadioButton regimenAlojamientoRadio3;
 
     private Stage dialogStage;
     private Booking booking;
@@ -54,7 +56,12 @@ public class BookingEditDialogController {
     private boolean isNew;
 
 	@FXML
-    private void initialize() {}
+    private void initialize() {
+        this.tipoHabitacionField.getItems().add("Doble de uso individual");
+        this.tipoHabitacionField.getItems().add("Doble");
+        this.tipoHabitacionField.getItems().add("Junior Suite");
+        this.tipoHabitacionField.getItems().add("Suite");
+    }
 
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
@@ -68,10 +75,17 @@ public class BookingEditDialogController {
             codReservaField.setText(String.valueOf(booking.getCodReserva()));
             fechaLlegadaField.setValue(booking.getFechaLlegada());
             fechaSalidaField.setValue(booking.getFechaSalida());
-            numHabitacionesField.getValueFactory().setValue(booking.getNumHabitaciones());
+            numHabitacionesField.setText(String.valueOf(booking.getNumHabitaciones()));
             tipoHabitacionField.setValue(booking.getTipoHabitacion());
             fumadorField.setSelected(booking.isFumador());
-            regimenAlojamientoField.setText(booking.getRegimenAlojamiento());
+            switch (booking.getRegimenAlojamiento()) {
+                case "Alojamiento y desayuno" -> regimenAlojamientoRadio1.setSelected(true);
+                case "Media pensión" -> regimenAlojamientoRadio2.setSelected(true);
+                case "Pensión completa" -> regimenAlojamientoRadio3.setSelected(true);
+            }
+        }
+        else {
+            numHabitacionesField.setText("0");
         }
 
         this.dniField.setText(customer.getDni());
@@ -104,10 +118,12 @@ public class BookingEditDialogController {
                 booking.setCodReserva(Integer.parseInt(codReservaField.getText()));
                 booking.setFechaLlegada(fechaLlegadaField.getValue());
                 booking.setFechaSalida(fechaSalidaField.getValue());
-                booking.setNumHabitaciones(Integer.parseInt(String.valueOf(numHabitacionesField.getValueFactory())));
+                booking.setNumHabitaciones(Integer.parseInt(numHabitacionesField.getText()));
                 booking.setTipoHabitacion(tipoHabitacionField.getValue());
                 booking.setFumador(fumadorField.isSelected());
-                booking.setRegimenAlojamiento(regimenAlojamientoField.getText());
+                booking.setRegimenAlojamiento(
+                        ((RadioButton)regimenAlojamientoGroup.selectedToggleProperty().getValue()).getText()
+                );
                 if (isNew) {
                     model.saveBooking(booking);
                 } else {
@@ -141,16 +157,13 @@ public class BookingEditDialogController {
 	 */
     private boolean isInputValid() {
         String errorMessage = "";
-        if (codReservaField.getText() == null || codReservaField.getText().length() == 0) {
-            errorMessage += "Código de reserva no válido";
-        }
-        if (fechaLlegadaField.getValue() == null || fechaLlegadaField.getValue().equals('0')) {
+        if (fechaLlegadaField.getValue() == null) {
             errorMessage += "Fecha de llegada no válida";
         }
-        if (fechaLlegadaField.getValue() == null || fechaSalidaField.getValue().equals('0')) {
+        if (fechaLlegadaField.getValue() == null) {
             errorMessage += "Fecha de salida no válida";
         }
-        if (numHabitacionesField.getValueFactory() == null || numHabitacionesField.getValueFactory().equals('0')) {
+        if (numHabitacionesField.getText() == null || numHabitacionesField.getText().equals("")) {
             errorMessage += "Número de habitaciones no válido";
         }
         if (tipoHabitacionField.getValue() == null || tipoHabitacionField.getValue().length() == 0) {
@@ -159,7 +172,7 @@ public class BookingEditDialogController {
         if (!fumadorField.isSelected()) {
             errorMessage += "Elección de fumador no válida";
         }
-        if (regimenAlojamientoField.getText() == null || regimenAlojamientoField.getText().length() == 0) {
+        if (regimenAlojamientoGroup.selectedToggleProperty() == null) {
             errorMessage += "Régimen de alojamiento no válido";
         }
         if (errorMessage.length() == 0) {
