@@ -158,6 +158,12 @@ public class BookingOverviewController {
 	}
 
 	/**
+	 * Método para volver a la ventana anterior del cliente.
+	 */
+	@FXML
+	private void handleReturn() {}
+
+	/**
 	 * Método para mostrar la ventana de edición y creación de una nueva reserva.
 	 *
 	 * @param booking Reserva.
