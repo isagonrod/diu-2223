@@ -147,7 +147,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </GridPane.margin>
                 </CheckBox>
-                <Label cache="true" prefHeight="85.0" prefWidth="225.0" text="En virtud de la ley de sanidad se informa a los clientes de que solo podrán fumar en las habitaciones reservadas para tal fin." GridPane.columnIndex="2" GridPane.rowIndex="4" GridPane.rowSpan="2">
+                <Label fx:id="fumadorText" cache="true" prefHeight="85.0" prefWidth="225.0" text="En virtud de la ley de sanidad se informa a los clientes de que solo podrán fumar en las habitaciones reservadas para tal fin." GridPane.columnIndex="2" GridPane.rowIndex="4" GridPane.rowSpan="2">
                     <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </GridPane.margin>

@@ -1,6 +1,7 @@
 package controller;
 
 import com.mysql.cj.jdbc.exceptions.CommunicationsException;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -41,6 +42,8 @@ public class BookingEditDialogController {
     @FXML
     private CheckBox fumadorField;
     @FXML
+    private Label fumadorText;
+    @FXML
     private ToggleGroup regimenAlojamientoGroup;
     @FXML
     private RadioButton regimenAlojamientoRadio1;
@@ -60,6 +63,12 @@ public class BookingEditDialogController {
         this.tipoHabitacionField.getItems().add("Doble");
         this.tipoHabitacionField.getItems().add("Junior Suite");
         this.tipoHabitacionField.getItems().add("Suite");
+
+        fumadorField.selectedProperty().addListener(
+            (ObservableValue<? extends Boolean> ov, Boolean old_val, Boolean new_val) -> {
+                fumadorText.setVisible(new_val);
+            }
+        );
     }
 
     /**
@@ -87,6 +96,7 @@ public class BookingEditDialogController {
             numHabitacionesField.setText(String.valueOf(booking.getNumHabitaciones()));
             tipoHabitacionField.setValue(booking.getTipoHabitacion());
             fumadorField.setSelected(booking.isFumador());
+            fumadorText.setVisible(booking.isFumador());
             switch (booking.getRegimenAlojamiento()) {
                 case "Alojamiento y desayuno" -> regimenAlojamientoRadio1.setSelected(true);
                 case "Media pensión" -> regimenAlojamientoRadio2.setSelected(true);
@@ -95,6 +105,7 @@ public class BookingEditDialogController {
         }
         else {
             numHabitacionesField.setText("0");
+            fumadorText.setVisible(false);
         }
 
         this.dniField.setText(customer.getDni());
