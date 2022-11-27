@@ -185,7 +185,6 @@ public class HotelMainApp extends Application {
 	 * del menú situado en la barra superior, en la pestaña Aplicación.
 	 */
 	public void showJavadoc() {
-		// TODO: Revisar
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(HotelMainApp.class.getResource("../view/Javadoc.fxml"));
