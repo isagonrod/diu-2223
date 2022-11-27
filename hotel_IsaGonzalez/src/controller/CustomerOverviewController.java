@@ -169,8 +169,7 @@ public class CustomerOverviewController {
     private void handleBookings() {
         Customer selectedCustomer = customerTable.getSelectionModel().getSelectedItem();
         if (selectedCustomer != null) {
-            // TODO: Mandar a la ventana de BookingOverview
-            boolean okClicked = this.showBookingOverview(selectedCustomer, false);
+            boolean okClicked = this.showBookingOverview(selectedCustomer);
         } else {
             ModalDialog.createWarning("Acción vacía",
                     "No se ha seleccionado ningún cliente",
@@ -217,20 +216,18 @@ public class CustomerOverviewController {
      * Método para mostrar la venta de reservas.
      *
      * @param customer Cliente seleccionado.
-     * @param isNew    'false' si ya está en la base de datos, 'true' si es nuevo.
      * @return ?
      */
-    public boolean showBookingOverview(Customer customer, boolean isNew) {
-        // TODO: Mostrar ventana de BookingOverview
+    public boolean showBookingOverview(Customer customer) {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(HotelMainApp.class.getResource("../view/BookingOverview.fxml"));
             AnchorPane bookingOverview = loader.load();
-            BorderPane rootLayout = null;
-            assert false;
+            BorderPane rootLayout = mainApp.getRootLayout();
             rootLayout.setCenter(bookingOverview);
             BookingOverviewController controller = loader.getController();
             controller.setHotelMainApp(mainApp);
+            controller.setCurrentCustomer(customer);
         } catch (IOException ex) {
             ex.printStackTrace();
         }

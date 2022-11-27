@@ -60,7 +60,7 @@ public class BookingEditDialogController {
         this.dialogStage = dialogStage;
     }
 
-    public void setBooking(Booking booking, boolean isNew) {
+    public void setBooking(Booking booking, Customer customer, boolean isNew) {
         this.booking = booking;
         this.isNew = isNew;
 
@@ -71,6 +71,13 @@ public class BookingEditDialogController {
         tipoHabitacionField.setValue(booking.getTipoHabitacion());
         fumadorField.setState(booking.isFumador());
         regimenAlojamientoField.setText(booking.getRegimenAlojamiento());
+
+        this.dniField.setText(customer.getDni());
+        this.nombreField.setText(customer.getNombre());
+        this.apellidosField.setText(customer.getApellidos());
+        this.direccionField.setText(customer.getDireccion());
+        this.localidadField.setText(customer.getLocalidad());
+        this.provinciaField.setText(customer.getProvincia());
     }
 
 	/**
@@ -162,14 +169,4 @@ public class BookingEditDialogController {
             return false;
         }
     }
-
-	// TODO: Método que rellene los campos del cliente con los datos del que se seleccionó en la ventana anterior
-	private void addFieldsCustomer(Customer customer) {
-		this.dniField.setText(customer.getDni());
-		this.nombreField.setText(customer.getNombre());
-		this.apellidosField.setText(customer.getApellidos());
-		this.direccionField.setText(customer.getDireccion());
-		this.localidadField.setText(customer.getLocalidad());
-		this.provinciaField.setText(customer.getProvincia());
-	}
 }

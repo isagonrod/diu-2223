@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -14,6 +15,7 @@ import model.Booking;
 
 import javafx.scene.control.TableView;
 import model.BookingException;
+import model.Customer;
 import model.HotelModel;
 import util.ModalDialog;
 
@@ -48,7 +50,22 @@ public class BookingOverviewController {
 	@FXML
 	private Label regimenAlojamientoLabel;
 
+	@FXML
+	private TextField dniField;
+	@FXML
+	private TextField nombreField;
+	@FXML
+	private TextField apellidosField;
+	@FXML
+	private TextField direccionField;
+	@FXML
+	private TextField localidadField;
+	@FXML
+	private TextField provinciaField;
+
 	private HotelMainApp mainApp;
+
+	private Customer currentCustomer;
 
 	@FXML
 	private void initialize() {
@@ -113,7 +130,8 @@ public class BookingOverviewController {
 	@FXML
 	private void handleNewBooking() {
 		Booking tempBooking = new Booking();
-		boolean okClicked = this.showBookingEditDialog(tempBooking, true);
+		Customer tempCustomer = new Customer();
+		boolean okClicked = this.showBookingEditDialog(tempBooking, tempCustomer, true);
 		if (okClicked) {
 			mainApp.getBookings().add(tempBooking);
 		}
@@ -128,7 +146,7 @@ public class BookingOverviewController {
 	private void handleEditBooking() {
 		Booking selectedBooking = bookingTable.getSelectionModel().getSelectedItem();
 		if (selectedBooking != null) {
-			boolean okClicked = this.showBookingEditDialog(selectedBooking, false);
+			boolean okClicked = this.showBookingEditDialog(selectedBooking, this.currentCustomer, false);
 			if (okClicked) {
 				showBookingDetails(selectedBooking);
 			}
@@ -146,7 +164,7 @@ public class BookingOverviewController {
 	 * @param isNew Si es nueva o no.
 	 * @return Si se ha pulsado sobre el botón OK.
 	 */
-	public boolean showBookingEditDialog(Booking booking, boolean isNew) {
+	public boolean showBookingEditDialog(Booking booking, Customer customer, boolean isNew) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(HotelMainApp.class.getResource("../view/BookingEditDialog.fxml"));
@@ -161,7 +179,7 @@ public class BookingOverviewController {
 
 			BookingEditDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
-			controller.setBooking(booking, isNew);
+			controller.setBooking(booking, customer, isNew);
 			booking.codReservaProperty();
 			booking.getFechaLlegada();
 
@@ -172,6 +190,17 @@ public class BookingOverviewController {
 			ex.printStackTrace();
 			return false;
 		}
+	}
+
+	public void setCurrentCustomer(Customer currentCustomer) {
+		this.currentCustomer = currentCustomer;
+
+		dniField.setText(currentCustomer.getDni());
+		nombreField.setText(currentCustomer.getNombre());
+		apellidosField.setText(currentCustomer.getApellidos());
+		direccionField.setText(currentCustomer.getDireccion());
+		localidadField.setText(currentCustomer.getLocalidad());
+		provinciaField.setText(currentCustomer.getProvincia());
 	}
 
 	public void setHotelMainApp(HotelMainApp mainApp) {

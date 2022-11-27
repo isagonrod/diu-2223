@@ -10,9 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.*;
@@ -210,7 +207,11 @@ public class HotelMainApp extends Application {
 		return primaryStage;
 	}
 
-    public static void main(String[] args) {
+	public BorderPane getRootLayout() {
+		return rootLayout;
+	}
+
+	public static void main(String[] args) {
         launch(args);
     }
 }
