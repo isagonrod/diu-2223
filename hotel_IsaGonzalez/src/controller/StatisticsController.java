@@ -44,7 +44,7 @@ public class StatisticsController {
     public void setBookingData(List<Booking> bookings) {
         int[] monthCounter = new int[12];
         for (Booking booking : bookings) {
-            int monthBooking = booking.getNumHabitaciones();
+            int monthBooking = booking.getFechaSalida().getMonthValue() - 1;
             monthCounter[monthBooking]++;
         }
         XYChart.Series<String, Integer> series = new XYChart.Series<>();
