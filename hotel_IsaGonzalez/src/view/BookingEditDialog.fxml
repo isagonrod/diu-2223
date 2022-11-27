@@ -159,7 +159,7 @@
                 <RadioButton fx:id="regimenAlojamientoRadio1" mnemonicParsing="false" text="Alojamiento y desayuno" GridPane.columnIndex="3" GridPane.rowIndex="4" toggleGroup="$regimenAlojamientoGroup" />
                 <RadioButton fx:id="regimenAlojamientoRadio2" mnemonicParsing="false" text="Media pensión" GridPane.columnIndex="3" GridPane.rowIndex="5" toggleGroup="$regimenAlojamientoGroup" />
                 <RadioButton fx:id="regimenAlojamientoRadio3" mnemonicParsing="false" text="Pensión completa" GridPane.columnIndex="3" GridPane.rowIndex="6" toggleGroup="$regimenAlojamientoGroup" />
-                <ImageView accessibleRole="BUTTON" fitHeight="54.0" fitWidth="121.0" nodeOrientation="INHERIT" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                <ImageView accessibleRole="BUTTON" fitHeight="54.0" fitWidth="121.0" onMouseClicked="#pushClearForm" nodeOrientation="INHERIT" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                     <image>
                         <Image url="@../resources/img/clean.png" />
                     </image>

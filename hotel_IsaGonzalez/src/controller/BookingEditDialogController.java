@@ -62,10 +62,21 @@ public class BookingEditDialogController {
         this.tipoHabitacionField.getItems().add("Suite");
     }
 
+    /**
+     *
+     * @param dialogStage El escenario a utilizar en la pantalla.
+     */
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }
 
+    /**
+     * Método para colocar los valores de cliente y reserva.
+     *
+     * @param booking La reserva con la que trabajar en la pantalla
+     * @param customer El cliente al que pertenece la reserva
+     * @param isNew Si la reserva es nueva o no
+     */
     public void setBooking(Booking booking, Customer customer, boolean isNew) {
         this.booking = booking;
         this.isNew = isNew;
@@ -145,6 +156,21 @@ public class BookingEditDialogController {
 	@FXML
     private void pushCancel() {
         dialogStage.close();
+    }
+
+    /**
+     * Método que controla que se despeje el contenido de los valores del formulario al hacer clic en el botón.
+     */
+    @FXML
+    private void pushClearForm() {
+        fechaLlegadaField.setValue(null);
+        fechaSalidaField.setValue(null);
+        numHabitacionesField.setText("0");
+        tipoHabitacionField.setValue("");
+        fumadorField.setSelected(false);
+        regimenAlojamientoRadio1.setSelected(false);
+        regimenAlojamientoRadio2.setSelected(false);
+        regimenAlojamientoRadio3.setSelected(false);
     }
 
 	/**
