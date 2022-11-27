@@ -197,16 +197,13 @@ public class BookingEditDialogController {
         if (fechaLlegadaField.getValue() == null) {
             errorMessage += "Fecha de salida no válida\n";
         }
-        if (numHabitacionesField.getText() == null || numHabitacionesField.getText().equals("")) {
+        if (numHabitacionesField.getText() == null || numHabitacionesField.getText().length() == 0) {
             errorMessage += "Número de habitaciones no válido\n";
         }
         if (tipoHabitacionField.getValue() == null || tipoHabitacionField.getValue().length() == 0) {
             errorMessage += "Tipo de habitación no válido\n";
         }
-        if (!fumadorField.isSelected()) {
-            errorMessage += "Elección de fumador no válida\n";
-        }
-        if (regimenAlojamientoGroup.selectedToggleProperty() == null) {
+        if (!regimenAlojamientoRadio1.isSelected() && !regimenAlojamientoRadio2.isSelected() && !regimenAlojamientoRadio3.isSelected() ) {
             errorMessage += "Régimen de alojamiento no válido\n";
         }
         if (errorMessage.length() == 0) {
