@@ -30,7 +30,6 @@ public class BookingEditDialogController {
 	private TextField provinciaField;
 
 	// Campos vacíos para la nueva reserva o para editar una reserva
-	private TextField codReservaField;
     @FXML
     private DatePicker fechaLlegadaField;
     @FXML
@@ -72,7 +71,6 @@ public class BookingEditDialogController {
         this.isNew = isNew;
 
         if (!isNew){
-            codReservaField.setText(String.valueOf(booking.getCodReserva()));
             fechaLlegadaField.setValue(booking.getFechaLlegada());
             fechaSalidaField.setValue(booking.getFechaSalida());
             numHabitacionesField.setText(String.valueOf(booking.getNumHabitaciones()));
@@ -126,7 +124,6 @@ public class BookingEditDialogController {
                 if (isNew) {
                     booking.setCodReserva(model.saveBooking(booking));
                 } else {
-                    booking.setCodReserva(Integer.parseInt(codReservaField.getText()));
                     model.editBooking(booking);
                 }
                 model.getRepository().closeConnection();

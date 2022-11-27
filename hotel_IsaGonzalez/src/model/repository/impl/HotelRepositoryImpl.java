@@ -57,7 +57,7 @@ public class HotelRepositoryImpl implements HotelRepository {
     public void editBooking(BookingVO booking) throws BookingException {
         String fields = String.format("codReserva=%d, fechaLlegada='%s', fechaSalida='%s', numHabitaciones=%d, tipoHabitacion='%s', fumador='%s', regimenAlojamiento='%s'",
                 booking.getCodReserva(), booking.getFechaLlegada(), booking.getFechaSalida(), booking.getNumHabitaciones(),
-                booking.getTipoHabitacion(), booking.isFumador(), booking.getRegimenAlojamiento());
+                booking.getTipoHabitacion(), booking.isFumador() ? 1 : 0, booking.getRegimenAlojamiento());
         if (this.statement.update(fields, "reserva", "codReserva=" + booking.getCodReserva()) == -1) {
             throw new BookingException("Error al editar la reserva");
         }
