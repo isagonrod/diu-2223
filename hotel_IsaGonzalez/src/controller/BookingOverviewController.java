@@ -188,8 +188,6 @@ public class BookingOverviewController {
 			BookingEditDialogController controller = loader.getController();
 			controller.setDialogStage(dialogStage);
 			controller.setBooking(booking, customer, isNew);
-			booking.codReservaProperty();
-			booking.getFechaLlegada();
 
 			dialogStage.showAndWait();
 

@@ -200,8 +200,6 @@ public class CustomerOverviewController {
             CustomerEditDialogController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setCustomer(customer, isNew);
-            customer.apellidosProperty();
-            customer.nombreProperty();
 
             dialogStage.showAndWait();
 

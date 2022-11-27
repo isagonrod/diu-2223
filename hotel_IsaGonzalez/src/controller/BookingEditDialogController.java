@@ -5,13 +5,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Spinner;
+import javafx.scene.control.TextField;
+import javafx.scene.control.CheckBox;
 import javafx.stage.Stage;
 import model.Booking;
 import model.Customer;
 import model.HotelModel;
 import util.ModalDialog;
-
-import java.awt.*;
 
 /**
  * Controlador de la ventana de edición y creación de reservas.
@@ -44,7 +44,7 @@ public class BookingEditDialogController {
     @FXML
     private ComboBox<String> tipoHabitacionField;
     @FXML
-    private Checkbox fumadorField;
+    private CheckBox fumadorField;
     @FXML
     private TextField regimenAlojamientoField;
 
@@ -64,13 +64,15 @@ public class BookingEditDialogController {
         this.booking = booking;
         this.isNew = isNew;
 
-        codReservaField.setText(String.valueOf(booking.getCodReserva()));
-        fechaLlegadaField.setValue(booking.getFechaLlegada());
-        fechaSalidaField.setValue(booking.getFechaSalida());
-        numHabitacionesField.getValueFactory().setValue(booking.getNumHabitaciones());
-        tipoHabitacionField.setValue(booking.getTipoHabitacion());
-        fumadorField.setState(booking.isFumador());
-        regimenAlojamientoField.setText(booking.getRegimenAlojamiento());
+        if (!isNew){
+            codReservaField.setText(String.valueOf(booking.getCodReserva()));
+            fechaLlegadaField.setValue(booking.getFechaLlegada());
+            fechaSalidaField.setValue(booking.getFechaSalida());
+            numHabitacionesField.getValueFactory().setValue(booking.getNumHabitaciones());
+            tipoHabitacionField.setValue(booking.getTipoHabitacion());
+            fumadorField.setSelected(booking.isFumador());
+            regimenAlojamientoField.setText(booking.getRegimenAlojamiento());
+        }
 
         this.dniField.setText(customer.getDni());
         this.nombreField.setText(customer.getNombre());
@@ -104,7 +106,7 @@ public class BookingEditDialogController {
                 booking.setFechaSalida(fechaSalidaField.getValue());
                 booking.setNumHabitaciones(Integer.parseInt(String.valueOf(numHabitacionesField.getValueFactory())));
                 booking.setTipoHabitacion(tipoHabitacionField.getValue());
-                booking.setFumador(fumadorField.getState());
+                booking.setFumador(fumadorField.isSelected());
                 booking.setRegimenAlojamiento(regimenAlojamientoField.getText());
                 if (isNew) {
                     model.saveBooking(booking);
@@ -154,7 +156,7 @@ public class BookingEditDialogController {
         if (tipoHabitacionField.getValue() == null || tipoHabitacionField.getValue().length() == 0) {
             errorMessage += "Tipo de habitación no válido";
         }
-        if (!fumadorField.getState()) {
+        if (!fumadorField.isSelected()) {
             errorMessage += "Elección de fumador no válida";
         }
         if (regimenAlojamientoField.getText() == null || regimenAlojamientoField.getText().length() == 0) {
