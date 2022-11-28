@@ -3,36 +3,72 @@ package main;
 import Modelo.*;
 import Modelo.repository.impl.MonedaRepositoryImpl;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import main.model.MonedaModelo;
+import main.controller.RootLayoutController;
+import main.util.ConversorVO;
+import main.model.Moneda;
 
-import java.util.Iterator;
+import java.io.IOException;
+import java.util.List;
 
 public class MonedaMain extends Application {
+    private Stage primaryStage;
+    private BorderPane rootLayout;
+
+    private ObservableList<Moneda> monedasDatos = FXCollections.observableArrayList();
+
+    public MonedaMain() {
+        MonedaRepositoryImpl repository = new MonedaRepositoryImpl();
+        try {
+            List<MonedaVO> bd = repository.loadMonedaList();
+            for (MonedaVO monedaVO : bd) {
+                this.monedasDatos.add(ConversorVO.parseToMoneda(monedaVO));
+            }
+        } catch (ExcepcionMoneda ex) {
+            throw new RuntimeException();
+        }
+    }
+
+    public ObservableList<Moneda> getMonedasDatos() {
+        return monedasDatos;
+    }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        MonedaRepositoryImpl repository = new MonedaRepositoryImpl();
+    public void start(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+        this.primaryStage.setTitle("Monedas");
 
-        MonedaVO nuevaMoneda = new MonedaVO("Yen", '1');
-        nuevaMoneda.setCodigo(3);
-        repository.addMoneda(nuevaMoneda);
+        initRootLayout();
+    }
 
-        MonedaModelo monedaModelo = new MonedaModelo();
-        monedaModelo.setRepository(repository);
-        Iterator it = monedaModelo.obtenerListaMonedas().iterator();
+    public void initRootLayout() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MonedaMain.class.getResource("view/RootLayout.fxml"));
+            rootLayout = loader.load();
 
-        do {
-            System.out.println("$ " + ((MonedaVO) it.next()).getNombre());
-        } while (it.hasNext());
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
 
-//        Parent root;
-//        root = FXMLLoader.load(getClass().getResource("view/sample.fxml"));
-//        primaryStage.setTitle("Hello world");
-//        primaryStage.setScene(new Scene(root, 300, 275));
-//        primaryStage.show();
+            RootLayoutController controller = loader.getController();
+            controller.setMainApp(this);
+
+            primaryStage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }
