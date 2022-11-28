@@ -175,7 +175,7 @@
                                 </ImageView>
                                 <ImageView accessibleRole="BUTTON" fitHeight="140.0" fitWidth="140.0" layoutX="292.0" onMouseClicked="#handleDeleteBooking">
                                     <image>
-                                        <Image url="@../resources/img/delete.jpeg" />
+                                        <Image url="@../resources/img/delete.png" />
                                     </image>
                                 </ImageView>
                                 <ImageView accessibleRole="BUTTON" fitHeight="140.0" fitWidth="140.0" layoutX="432.0" layoutY="-1.0" onMouseClicked="#handleReturn">
