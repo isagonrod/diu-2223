@@ -18,7 +18,7 @@ CREATE TABLE reserva (
     fechaSalida DATE,
     numHabitaciones INT,
     tipoHabitacion VARCHAR(50),
-    fumador BIT, /* FALSE = 0, TRUE != 0 */
+    fumador TINYINT(1), /* FALSE = 0, TRUE != 0 */
     regimenAlojamiento VARCHAR(50),
     dniCliente VARCHAR(9),
     PRIMARY KEY(codReserva),
