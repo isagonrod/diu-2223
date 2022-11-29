@@ -1,6 +1,6 @@
-CREATE DATABASE monedas;
+CREATE DATABASE conversor;
 
-USE monedas;
+USE conversor;
 
 CREATE TABLE IF NOT EXISTS moneda (
     codigo INT NOT NULL AUTO_INCREMENT,

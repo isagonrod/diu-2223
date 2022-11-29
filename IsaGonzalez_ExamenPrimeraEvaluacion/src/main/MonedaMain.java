@@ -24,14 +24,14 @@ public class MonedaMain extends Application {
 
     public MonedaMain() {
         MonedaRepositoryImpl repository = new MonedaRepositoryImpl();
-        try {
-            List<MonedaVO> bd = repository.loadMonedaList();
-            for (MonedaVO monedaVO : bd) {
-                this.monedasDatos.add(ConversorVO.parseToMoneda(monedaVO));
-            }
-        } catch (ExcepcionMoneda ex) {
-            throw new RuntimeException();
-        }
+//        try {
+//            List<MonedaVO> bd = repository.ObtenerListaMonedas();
+//            for (MonedaVO monedaVO : bd) {
+//                this.monedasDatos.add(ConversorVO.parseToMoneda(monedaVO));
+//            }
+//        } catch (ExcepcionMoneda ex) {
+//            throw new RuntimeException();
+//        }
     }
 
     public ObservableList<Moneda> getMonedasDatos() {

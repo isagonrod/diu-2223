@@ -1,7 +1,6 @@
 package main.model.repository.impl;
 
 import Modelo.ExcepcionMoneda;
-import com.mysql.cj.protocol.Resultset;
 import main.model.MonedaVO;
 import main.model.repository.MonedaRepository;
 import main.util.DatabaseConnection;
