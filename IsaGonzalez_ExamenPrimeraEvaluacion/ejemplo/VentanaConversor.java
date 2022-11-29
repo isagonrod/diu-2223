@@ -5,6 +5,7 @@ import main.controller.ControlConversor;
 import javax.swing.*;
 import java.awt.*;
 
+// VIEW
 public class VentanaConversor extends JFrame implements InterfazVista {
 	private JButton convertirApesetas;
 	private JButton convertirAeuros;

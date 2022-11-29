@@ -1,5 +1,6 @@
 package main.model;
 
+// MODEL
 public class ConversorEuros {
 	private double cambio;
 

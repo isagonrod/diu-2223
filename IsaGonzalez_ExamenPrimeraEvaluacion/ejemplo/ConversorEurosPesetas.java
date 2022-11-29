@@ -1,5 +1,6 @@
 package main.model;
 
+// MODEL
 public class ConversorEurosPesetas extends ConversorEuros {
 	public ConversorEurosPesetas() {
 		super(166.386D);

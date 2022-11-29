@@ -6,6 +6,7 @@ import main.view.InterfazVista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// CONTROLLER
 public class ControlConversor implements ActionListener {
 	private InterfazVista vista;
 	private ConversorEurosPesetas modelo;

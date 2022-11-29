@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import main.controller.RootLayoutController;
@@ -42,6 +43,8 @@ public class MonedaMain extends Application {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Monedas");
+
+        this.primaryStage.getIcons().add(new Image("file:resources/images/coin.ico"));
 
         initRootLayout();
     }

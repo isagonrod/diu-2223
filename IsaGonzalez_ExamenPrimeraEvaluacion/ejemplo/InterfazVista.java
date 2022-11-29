@@ -2,6 +2,7 @@ package main.view;
 
 import main.controller.ControlConversor;
 
+// VIEW
 public interface InterfazVista {
 	void setControlador(ControlConversor c);
 	void arranca();

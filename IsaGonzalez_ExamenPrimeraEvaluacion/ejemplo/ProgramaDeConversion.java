@@ -5,6 +5,7 @@ import main.model.ConversorEurosPesetas;
 import main.view.InterfazVista;
 import main.view.VentanaConversor;
 
+// MAIN
 public class ProgramaDeConversion {
 	public static void main(String[] args) {
 		// el modelo
