@@ -1,6 +1,4 @@
-package main.view;
-
-import main.controller.ControlConversor;
+package ejemplo_CalculadoraEurosPesetas;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +15,7 @@ public class VentanaConversor extends JFrame implements InterfazVista {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JPanel panelPrincipal = new JPanel();
-		panelPrincipal.setLayout(new BorderLayout(10,10));
+		panelPrincipal.setLayout(new BorderLayout(50,50));
 
 		cantidad = new JTextField(8);
 		JPanel panelaux = new JPanel();

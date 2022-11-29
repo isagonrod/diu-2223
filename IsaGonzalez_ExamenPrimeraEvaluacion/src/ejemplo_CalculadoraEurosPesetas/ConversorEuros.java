@@ -1,4 +1,4 @@
-package main.model;
+package ejemplo_CalculadoraEurosPesetas;
 
 // MODEL
 public class ConversorEuros {

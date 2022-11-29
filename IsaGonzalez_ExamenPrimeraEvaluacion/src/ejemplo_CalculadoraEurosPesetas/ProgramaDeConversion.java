@@ -1,9 +1,4 @@
-package main;
-
-import main.controller.ControlConversor;
-import main.model.ConversorEurosPesetas;
-import main.view.InterfazVista;
-import main.view.VentanaConversor;
+package ejemplo_CalculadoraEurosPesetas;
 
 // MAIN
 public class ProgramaDeConversion {

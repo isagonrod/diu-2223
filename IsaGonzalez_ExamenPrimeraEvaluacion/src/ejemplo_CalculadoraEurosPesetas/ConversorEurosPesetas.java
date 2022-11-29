@@ -1,4 +1,4 @@
-package main.model;
+package ejemplo_CalculadoraEurosPesetas;
 
 // MODEL
 public class ConversorEurosPesetas extends ConversorEuros {
@@ -7,7 +7,7 @@ public class ConversorEurosPesetas extends ConversorEuros {
 	}
 
 	public double eurosApesetas(double cantidad) {
-		return eurosApesetas(cantidad);
+		return euroAmoneda(cantidad);
 	}
 
 	public double pesetasAeuros(double cantidad) {

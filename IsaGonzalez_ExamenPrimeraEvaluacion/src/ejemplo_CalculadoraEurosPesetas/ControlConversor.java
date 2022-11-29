@@ -1,7 +1,4 @@
-package main.controller;
-
-import main.model.ConversorEurosPesetas;
-import main.view.InterfazVista;
+package ejemplo_CalculadoraEurosPesetas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,6 +18,8 @@ public class ControlConversor implements ActionListener {
 		double cantidad = vista.getCantidad();
 
 		if (event.getActionCommand().equals(InterfazVista.AEUROS)) {
+			vista.escribeCambio(cantidad + " pesetas son: " + modelo.pesetasAeuros(cantidad) + " €");
+		} else if (event.getActionCommand().equals(InterfazVista.APESETAS)) {
 			vista.escribeCambio(cantidad + " € son: " + modelo.eurosApesetas(cantidad) + " pesetas.");
 		} else {
 			vista.escribeCambio("ERROR");

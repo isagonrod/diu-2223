@@ -1,6 +1,4 @@
-package main.view;
-
-import main.controller.ControlConversor;
+package ejemplo_CalculadoraEurosPesetas;
 
 // VIEW
 public interface InterfazVista {
