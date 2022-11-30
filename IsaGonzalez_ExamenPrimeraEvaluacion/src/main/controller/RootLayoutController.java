@@ -22,7 +22,6 @@ import java.io.IOException;
 public class RootLayoutController {
     private MonedaMain mainApp;
     private MonedaModelo modelo;
-	private MonedaRepository repository;
 
 	@FXML
 	private ComboBox<Moneda> listaMonedas;
@@ -49,9 +48,6 @@ public class RootLayoutController {
 		this.listaMonedas.getItems().add("Lira");
 		this.listaMonedas.getItems().add("Dólar Americano");
 		this.listaMonedas.getItems().add("Libra esterlina");*/
-		Moneda patata = new Moneda();
-		patata.setNombre("puta");
-		this.listaMonedas.getItems().add(patata);
 	}
 
     public void setMainApp(MonedaMain mainApp) {
@@ -97,16 +93,16 @@ public class RootLayoutController {
 	@FXML
 	private void handleDeleteCurrency() {
 		int selectedCurrencyIndex = listaMonedas.getSelectionModel().getSelectedIndex();
-		Moneda selectedCurrency = listaMonedas.getItems().get(selectedCurrencyIndex);
-		if (selectedCurrencyIndex < 0) {
+		if (selectedCurrencyIndex >= 0) {
 			try {
+				Moneda selectedCurrency = listaMonedas.getItems().get(selectedCurrencyIndex);
 				new MonedaModelo().deleteCurrency(selectedCurrency);
 				listaMonedas.getItems().remove(selectedCurrencyIndex);
 			} catch (ExcepcionMoneda ex) {
 				throw new RuntimeException(ex);
 			}
 		} else {
-			new Alert(Alert.AlertType.WARNING, "Ninguna moneda seleccionada");
+			new Alert(Alert.AlertType.WARNING, "Ninguna moneda seleccionada").show();
 		}
 	}
 }
