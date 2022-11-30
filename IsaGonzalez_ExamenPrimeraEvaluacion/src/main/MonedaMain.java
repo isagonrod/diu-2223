@@ -36,7 +36,7 @@ public class MonedaMain extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Monedas");
 
-        this.primaryStage.getIcons().add(new Image("file:resources/images/coin.ico"));
+        this.primaryStage.getIcons().add(new Image("file:src/resources/images/coin.ico"));
 
         initRootLayout();
     }

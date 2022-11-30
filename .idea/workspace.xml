@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97cc066c-e877-416b-b200-bb83e1bab628" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/hotel_IsaGonzalez/hotel_IsaGonzalez.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel_IsaGonzalez/out/production/hotel_IsaGonzalez/util/.MySqlConfig" beforeDir="false" afterPath="$PROJECT_DIR$/hotel_IsaGonzalez/out/production/hotel_IsaGonzalez/util/.MySqlConfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel_IsaGonzalez/src/util/.MySqlConfig" beforeDir="false" afterPath="$PROJECT_DIR$/hotel_IsaGonzalez/src/util/.MySqlConfig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +23,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/2021-2022_Programación"
+    "last_opened_file_path": "C:/DESARROLLO/diu-2223/IsaGonzalez_ExamenPrimeraEvaluacion",
+    "nodejs_package_manager_path": "npm"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -34,6 +36,7 @@
       <option name="presentableId" value="Default" />
       <updated>1669570127166</updated>
       <workItem from="1669570128759" duration="41000" />
+      <workItem from="1669826405032" duration="37000" />
     </task>
     <servers />
   </component>

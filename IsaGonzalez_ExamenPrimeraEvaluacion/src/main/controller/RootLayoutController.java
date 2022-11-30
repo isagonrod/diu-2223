@@ -69,7 +69,7 @@ public class RootLayoutController {
             Scene scene = new Scene(pane);
             dialogStage.setScene(scene);
 
-            dialogStage.getIcons().add(new Image("file:resources/images/coin.ico"));
+            dialogStage.getIcons().add(new Image("file:src/resources/images/coin.ico"));
 
             dialogStage.showAndWait();
         } catch (IOException ex) {
