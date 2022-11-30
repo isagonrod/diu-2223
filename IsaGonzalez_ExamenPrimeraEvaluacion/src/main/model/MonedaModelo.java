@@ -19,15 +19,15 @@ public class MonedaModelo {
         this.repository = repository;
     }
 
-    public ArrayList<MonedaVO> getCoinList() throws ExcepcionMoneda {
+    public ArrayList<MonedaVO> getCurrencyList() throws ExcepcionMoneda {
         return this.repository.ObtenerListaMonedas();
     }
 
-	public void convertCoin(Moneda coinToConvert) throws ExcepcionMoneda {
+	public void convertCurrency(Moneda currencyToConvert) throws ExcepcionMoneda {
 		repository.ObtenerListaMonedas();
 	}
 
-	public void deleteCoin(Moneda coinToDelete) throws ExcepcionMoneda {
-		repository.deleteMoneda(coinToDelete.getCodigo());
+	public void deleteCurrency(Moneda currencyToDelete) throws ExcepcionMoneda {
+		repository.deleteMoneda(currencyToDelete.getCodigo());
 	}
 }

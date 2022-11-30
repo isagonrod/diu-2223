@@ -37,11 +37,11 @@
 				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<Button fx:id="buttonConvert" mnemonicParsing="false" onAction="#handleConvertCoin" prefHeight="128.0" prefWidth="212.0" text="CONVERTIR">
+				<Button fx:id="buttonConvert" mnemonicParsing="false" onAction="#handleConvertCurrency" prefHeight="128.0" prefWidth="212.0" text="CONVERTIR">
                <GridPane.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </GridPane.margin></Button>
-				<Button fx:id="buttonDelete" mnemonicParsing="false" onAction="#handleDeleteCoin" prefHeight="123.0" prefWidth="215.0" text="ELIMINAR" GridPane.columnIndex="1">
+				<Button fx:id="buttonDelete" mnemonicParsing="false" onAction="#handleDeleteCurrency" prefHeight="123.0" prefWidth="215.0" text="ELIMINAR" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </GridPane.margin></Button>
@@ -71,7 +71,7 @@
           <RowConstraints maxHeight="334.0" minHeight="10.0" prefHeight="327.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ComboBox fx:id="listaMonedas" prefHeight="39.0" prefWidth="160.0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <ComboBox fx:id="listaMonedas" onAction="#handleCurrencySelection" prefHeight="39.0" prefWidth="160.0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" />
                </GridPane.margin>

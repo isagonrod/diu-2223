@@ -76,12 +76,15 @@ public class RootLayoutController {
             ex.printStackTrace();
         }
     }
+	
+	@FXML
+	private void handleCurrencySelection() {
+		this.textMoneda.setText(this.listaMonedas.getValue());
+	}
 
 	@FXML
-	private void handleConvertCoin() {
+	private void handleConvertCurrency() {
 		if (!this.listaMonedas.getItems().isEmpty()) {
-			this.textMoneda.setText(this.listaMonedas.getValue());
-
 			if (this.euros == null && this.otraMoneda != null) {
 
 			}
@@ -89,14 +92,14 @@ public class RootLayoutController {
 	}
 
 	@FXML
-	private void handleDeleteCoin() {
-		int selectedCoin = listaMonedas.getSelectionModel().getSelectedIndex();
-		if (listaMonedas.getItems().get(selectedCoin).equalsIgnoreCase(repository.getClass().getName())) {
+	private void handleDeleteCurrency() {
+		int selectedCurrency = listaMonedas.getSelectionModel().getSelectedIndex();
+		if (listaMonedas.getItems().get(selectedCurrency).equalsIgnoreCase(repository.getClass().getName())) {
 			try {
-				Moneda coinToDelete = new Moneda();
-				coinToDelete.setNombre(listaMonedas.getItems().get(selectedCoin));
-				new MonedaModelo().deleteCoin(coinToDelete);
-				listaMonedas.getItems().remove(selectedCoin);
+				Moneda currencyToDelete = new Moneda();
+				currencyToDelete.setNombre(listaMonedas.getItems().get(selectedCurrency));
+				new MonedaModelo().deleteCurrency(currencyToDelete);
+				listaMonedas.getItems().remove(selectedCurrency);
 			} catch (ExcepcionMoneda ex) {
 				throw new RuntimeException(ex);
 			}
