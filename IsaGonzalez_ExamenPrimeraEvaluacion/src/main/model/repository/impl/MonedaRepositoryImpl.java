@@ -23,17 +23,17 @@ public class MonedaRepositoryImpl implements MonedaRepository {
     }
 
     @Override
-    public List<MonedaVO> loadMonedaList() throws ExcepcionMoneda {
+    public List<Modelo.MonedaVO> obtenerListaMonedas() throws ExcepcionMoneda {
         ResultSet rs = this.stmt.select("*", "moneda", null, null);
-        List<MonedaVO> result = new ArrayList<>();
-        MonedaVO tmp;
+        List<Modelo.MonedaVO> result = new ArrayList<>();
+        Modelo.MonedaVO tmp;
 
         try {
             while (rs.next()) {
-                tmp = new MonedaVO();
-                tmp.setCodigo(rs.getInt("codigo"));
-                tmp.setNombre(rs.getString("nombre"));
-                tmp.setMultiplicador(rs.getFloat("multiplicador"));
+                tmp = new Modelo.MonedaVO(
+                        rs.getString("nombre"),
+                        rs.getFloat("multiplicador"),
+                        rs.getInt("codigo"));
                 result.add(tmp);
             }
             rs.close();
@@ -48,5 +48,22 @@ public class MonedaRepositoryImpl implements MonedaRepository {
         this.conn.closeDataBase();
 
         return result;
+    }
+
+    @Override
+    public void addMoneda(Modelo.MonedaVO var1) throws ExcepcionMoneda {
+    }
+
+    @Override
+    public void deleteMoneda(Integer var1) throws ExcepcionMoneda {
+    }
+
+    @Override
+    public void editMoneda(Modelo.MonedaVO var1) throws ExcepcionMoneda {
+    }
+
+    @Override
+    public int lastId() throws ExcepcionMoneda {
+        return -1;
     }
 }

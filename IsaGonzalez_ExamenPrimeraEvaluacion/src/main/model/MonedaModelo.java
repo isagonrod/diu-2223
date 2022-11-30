@@ -3,8 +3,10 @@ package main.model;
 import Modelo.ExcepcionMoneda;
 import Modelo.MonedaVO;
 import Modelo.repository.MonedaRepository;
+import main.util.ConversorVO;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MonedaModelo {
     private MonedaRepository repository;
@@ -19,8 +21,15 @@ public class MonedaModelo {
         this.repository = repository;
     }
 
-    public ArrayList<MonedaVO> getCurrencyList() throws ExcepcionMoneda {
-        return this.repository.ObtenerListaMonedas();
+    public List<Moneda> getCurrencyList() throws ExcepcionMoneda {
+        List<MonedaVO> lista = this.repository.ObtenerListaMonedas();
+        List<Moneda> listaParseada = new ArrayList<>();
+
+        for (MonedaVO moneda : lista) {
+            listaParseada.add(ConversorVO.parseToMoneda(moneda));
+        }
+
+        return listaParseada;
     }
 
 	public void convertCurrency(Moneda currencyToConvert) throws ExcepcionMoneda {

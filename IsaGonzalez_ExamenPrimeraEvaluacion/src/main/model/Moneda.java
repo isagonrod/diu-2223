@@ -53,4 +53,9 @@ public class Moneda {
     public void setMultiplicador(float multiplicador) {
         this.multiplicador.set(multiplicador);
     }
+
+    @Override
+    public String toString() {
+        return nombre.getValue();
+    }
 }

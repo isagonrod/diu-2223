@@ -1,6 +1,7 @@
 package main.controller;
 
 import Modelo.ExcepcionMoneda;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,7 +22,6 @@ import java.io.IOException;
 
 public class RootLayoutController {
     private MonedaMain mainApp;
-    private MonedaModelo modelo;
 
 	@FXML
 	private ComboBox<Moneda> listaMonedas;
@@ -34,25 +34,16 @@ public class RootLayoutController {
 
     public RootLayoutController() {}
 
-    public MonedaModelo getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(MonedaModelo modelo) {
-        this.modelo = modelo;
-    }
-
     @FXML
-    private void initialize() {
-		/*this.listaMonedas.getItems().add("Yen");
-		this.listaMonedas.getItems().add("Lira");
-		this.listaMonedas.getItems().add("Dólar Americano");
-		this.listaMonedas.getItems().add("Libra esterlina");*/
-	}
+    private void initialize() {}
 
     public void setMainApp(MonedaMain mainApp) {
         this.mainApp = mainApp;
     }
+
+	public void setListaMonedas(ObservableList<Moneda> list) {
+		listaMonedas.setItems(list);
+	}
 
     @FXML
     private void showNewWindow() {
@@ -96,8 +87,9 @@ public class RootLayoutController {
 		if (selectedCurrencyIndex >= 0) {
 			try {
 				Moneda selectedCurrency = listaMonedas.getItems().get(selectedCurrencyIndex);
-				new MonedaModelo().deleteCurrency(selectedCurrency);
-				listaMonedas.getItems().remove(selectedCurrencyIndex);
+				this.mainApp.getModelo().deleteCurrency(selectedCurrency); //borrar de bbdd
+				this.mainApp.getMonedasDatos().remove(selectedCurrency); //borrar del observable
+				//listaMonedas.getItems().remove(selectedCurrencyIndex); //borrar del combobox
 			} catch (ExcepcionMoneda ex) {
 				throw new RuntimeException(ex);
 			}
