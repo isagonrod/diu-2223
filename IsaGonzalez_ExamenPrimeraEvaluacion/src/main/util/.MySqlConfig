@@ -2,4 +2,4 @@ dbHost=localhost
 dbPort=3306
 dbSchema=conversor
 dbUser=root
-dbPassword=
+dbPassword

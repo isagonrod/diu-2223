@@ -1,0 +1,23 @@
+Button {
+    -fx-background-color: blue;
+    -fx-text-fill: white;
+    -fx-end-margin: 20px;
+    -fx-start-margin: 20px;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+Label {
+    -fx-font-size: 15px;
+    -fx-text-fill: black;
+}
+
+ComboBox {
+    -fx-background-color: lightblue;
+    -fx-font-size: 20px;
+}
+
+MenuBar {
+    -fx-background-color: violet;
+    -fx-text-fill: black;
+}
