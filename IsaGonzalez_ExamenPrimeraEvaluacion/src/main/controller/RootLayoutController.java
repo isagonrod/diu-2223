@@ -25,7 +25,7 @@ public class RootLayoutController {
 	private MonedaRepository repository;
 
 	@FXML
-	private ComboBox<String> listaMonedas;
+	private ComboBox<Moneda> listaMonedas;
 	@FXML
 	private TextField euros;
 	@FXML
@@ -45,10 +45,13 @@ public class RootLayoutController {
 
     @FXML
     private void initialize() {
-		this.listaMonedas.getItems().add("Yen");
+		/*this.listaMonedas.getItems().add("Yen");
 		this.listaMonedas.getItems().add("Lira");
 		this.listaMonedas.getItems().add("Dólar Americano");
-		this.listaMonedas.getItems().add("Libra esterlina");
+		this.listaMonedas.getItems().add("Libra esterlina");*/
+		Moneda patata = new Moneda();
+		patata.setNombre("puta");
+		this.listaMonedas.getItems().add(patata);
 	}
 
     public void setMainApp(MonedaMain mainApp) {
@@ -79,7 +82,7 @@ public class RootLayoutController {
 	
 	@FXML
 	private void handleCurrencySelection() {
-		this.textMoneda.setText(this.listaMonedas.getValue());
+		this.textMoneda.setText(this.listaMonedas.getValue().getNombre());
 	}
 
 	@FXML
@@ -93,13 +96,12 @@ public class RootLayoutController {
 
 	@FXML
 	private void handleDeleteCurrency() {
-		int selectedCurrency = listaMonedas.getSelectionModel().getSelectedIndex();
-		if (listaMonedas.getItems().get(selectedCurrency).equalsIgnoreCase(repository.getClass().getName())) {
+		int selectedCurrencyIndex = listaMonedas.getSelectionModel().getSelectedIndex();
+		Moneda selectedCurrency = listaMonedas.getItems().get(selectedCurrencyIndex);
+		if (selectedCurrencyIndex < 0) {
 			try {
-				Moneda currencyToDelete = new Moneda();
-				currencyToDelete.setNombre(listaMonedas.getItems().get(selectedCurrency));
-				new MonedaModelo().deleteCurrency(currencyToDelete);
-				listaMonedas.getItems().remove(selectedCurrency);
+				new MonedaModelo().deleteCurrency(selectedCurrency);
+				listaMonedas.getItems().remove(selectedCurrencyIndex);
 			} catch (ExcepcionMoneda ex) {
 				throw new RuntimeException(ex);
 			}
