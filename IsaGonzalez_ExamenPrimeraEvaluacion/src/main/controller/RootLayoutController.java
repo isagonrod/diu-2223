@@ -74,27 +74,45 @@ public class RootLayoutController {
 
 	@FXML
 	private void handleConvertCurrency() {
-		if (!this.listaMonedas.getItems().isEmpty()) {
-			if (this.euros == null && this.otraMoneda != null) {
-
+		Moneda selectedCurrency;
+		try {
+			selectedCurrency = this.getCurrentCurrency();
+			if (!this.listaMonedas.getItems().isEmpty()) {
+				if (this.euros.getText().length() == 0 && this.otraMoneda.getText().length() != 0) {
+					this.euros.setText(String.valueOf(Float.parseFloat(this.otraMoneda.getText()) * (2 - selectedCurrency.getMultiplicador())));
+				} else if (this.euros.getText().length() != 0 && this.otraMoneda.getText().length() == 0) {
+					this.otraMoneda.setText(String.valueOf(Float.parseFloat(this.euros.getText()) * selectedCurrency.getMultiplicador()));
+				} else {
+					new Alert(Alert.AlertType.WARNING, "Ningún sentido de cambio especificado").show();
+				}
 			}
+		} catch (ExcepcionMoneda e) {
+			throw new RuntimeException(e);
 		}
 	}
 
 	@FXML
 	private void handleDeleteCurrency() {
+		try {
+			Moneda selectedCurrency = this.getCurrentCurrency();
+			this.mainApp.getModelo().deleteCurrency(selectedCurrency); //borrar de bbdd
+			this.mainApp.getMonedasDatos().remove(selectedCurrency); //borrar del observable (y del combobox)
+		} catch (ExcepcionMoneda ex) {
+			throw new RuntimeException(ex);
+		}
+	}
+
+	private Moneda getCurrentCurrency() throws ExcepcionMoneda {
+		Moneda selectedCurrency = null;
+
 		int selectedCurrencyIndex = listaMonedas.getSelectionModel().getSelectedIndex();
 		if (selectedCurrencyIndex >= 0) {
-			try {
-				Moneda selectedCurrency = listaMonedas.getItems().get(selectedCurrencyIndex);
-				this.mainApp.getModelo().deleteCurrency(selectedCurrency); //borrar de bbdd
-				this.mainApp.getMonedasDatos().remove(selectedCurrency); //borrar del observable
-				//listaMonedas.getItems().remove(selectedCurrencyIndex); //borrar del combobox
-			} catch (ExcepcionMoneda ex) {
-				throw new RuntimeException(ex);
-			}
+			selectedCurrency = listaMonedas.getItems().get(selectedCurrencyIndex);
 		} else {
 			new Alert(Alert.AlertType.WARNING, "Ninguna moneda seleccionada").show();
+			throw new ExcepcionMoneda("Ninguna moneda seleccionada");
 		}
+
+		return selectedCurrency;
 	}
 }
