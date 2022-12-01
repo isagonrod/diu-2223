@@ -15,13 +15,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.MonedaMain;
 import main.model.Moneda;
-import main.model.MonedaModelo;
-import main.model.repository.MonedaRepository;
 
 import java.io.IOException;
 
 public class RootLayoutController {
-    private MonedaMain mainApp;
+	private MonedaMain mainApp;
 
 	@FXML
 	private ComboBox<Moneda> listaMonedas;
@@ -32,45 +30,47 @@ public class RootLayoutController {
 	@FXML
 	private Label textMoneda;
 
-    public RootLayoutController() {}
+	public RootLayoutController() {}
 
-    @FXML
-    private void initialize() {}
+	@FXML
+	private void initialize() {}
 
-    public void setMainApp(MonedaMain mainApp) {
-        this.mainApp = mainApp;
-    }
+	public void setMainApp(MonedaMain mainApp) {
+		this.mainApp = mainApp;
+	}
 
 	public void setListaMonedas(ObservableList<Moneda> list) {
 		listaMonedas.setItems(list);
 	}
 
-    @FXML
-    private void showNewWindow() {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MonedaMain.class.getResource("view/MonedaVentana.fxml"));
-            AnchorPane pane = loader.load();
+	@FXML
+	private void showNewWindow() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MonedaMain.class.getResource("view/MonedaVentana.fxml"));
+			AnchorPane pane = loader.load();
 
-            Stage dialogStage = new Stage();
-            dialogStage.setTitle("Monedas");
-            dialogStage.initModality(Modality.NONE);
-            dialogStage.initOwner(mainApp.getPrimaryStage());
-            Scene scene = new Scene(pane);
-            dialogStage.setScene(scene);
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Monedas");
+			dialogStage.initModality(Modality.NONE);
+			dialogStage.initOwner(mainApp.getPrimaryStage());
+			Scene scene = new Scene(pane);
+			dialogStage.setScene(scene);
 
-            dialogStage.getIcons().add(new Image("file:src/resources/images/coin.ico"));
+			dialogStage.getIcons().add(new Image("file:src/resources/images/coin.ico"));
 
-            dialogStage.showAndWait();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-	
+			dialogStage.showAndWait();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+	}
+
 	@FXML
 	private void handleCurrencySelection() {
 		this.textMoneda.setText(this.listaMonedas.getValue().getNombre());
 	}
+
+	// Falta el método para que funcione la conversión utilizando la tecla ENTER
 
 	@FXML
 	private void handleConvertCurrency() {
@@ -83,7 +83,7 @@ public class RootLayoutController {
 				} else if (this.euros.getText().length() != 0 && this.otraMoneda.getText().length() == 0) {
 					this.otraMoneda.setText(String.valueOf(Float.parseFloat(this.euros.getText()) * selectedCurrency.getMultiplicador()));
 				} else {
-					new Alert(Alert.AlertType.WARNING, "Ningún sentido de cambio especificado").show();
+					new Alert(Alert.AlertType.INFORMATION, "Borra el campo de la otra moneda").show();
 				}
 			}
 		} catch (ExcepcionMoneda e) {
@@ -95,15 +95,15 @@ public class RootLayoutController {
 	private void handleDeleteCurrency() {
 		try {
 			Moneda selectedCurrency = this.getCurrentCurrency();
-			this.mainApp.getModelo().deleteCurrency(selectedCurrency); //borrar de bbdd
-			this.mainApp.getMonedasDatos().remove(selectedCurrency); //borrar del observable (y del combobox)
+			this.mainApp.getModelo().deleteCurrency(selectedCurrency); //borra de bbdd
+			this.mainApp.getMonedasDatos().remove(selectedCurrency); //borra del observable (y del combobox)
 		} catch (ExcepcionMoneda ex) {
-			throw new RuntimeException(ex);
+			ex.printStackTrace();
 		}
 	}
 
 	private Moneda getCurrentCurrency() throws ExcepcionMoneda {
-		Moneda selectedCurrency = null;
+		Moneda selectedCurrency;
 
 		int selectedCurrencyIndex = listaMonedas.getSelectionModel().getSelectedIndex();
 		if (selectedCurrencyIndex >= 0) {

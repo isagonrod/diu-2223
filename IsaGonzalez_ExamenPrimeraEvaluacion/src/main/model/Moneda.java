@@ -1,11 +1,6 @@
 package main.model;
 
-import javafx.beans.property.FloatProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.StringProperty;
-import javafx.beans.property.SimpleFloatProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.*;
 
 public class Moneda {
     private IntegerProperty codigo;
@@ -13,10 +8,10 @@ public class Moneda {
     private FloatProperty multiplicador;
 
     public Moneda() {
-        this.codigo = new SimpleIntegerProperty();
-        this.nombre = new SimpleStringProperty();
-        this.multiplicador = new SimpleFloatProperty();
-    }
+		this.codigo = new SimpleIntegerProperty();
+		this.nombre = new SimpleStringProperty();
+		this.multiplicador = new SimpleFloatProperty();
+	}
 
     public int getCodigo() {
         return codigo.get();
@@ -54,8 +49,8 @@ public class Moneda {
         this.multiplicador.set(multiplicador);
     }
 
-    @Override
-    public String toString() {
-        return nombre.getValue();
-    }
+	@Override
+	public String toString() {
+		return nombre.getValue();
+	}
 }

@@ -9,28 +9,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MonedaModelo {
-    private MonedaRepository repository;
+	private MonedaRepository repository;
 
-    public MonedaModelo() {}
+	public MonedaModelo() {}
 
-    public MonedaRepository getRepository() {
-        return repository;
-    }
+	public MonedaRepository getRepository() {
+		return repository;
+	}
 
-    public void setRepository(MonedaRepository repository) {
-        this.repository = repository;
-    }
+	public void setRepository(MonedaRepository repository) {
+		this.repository = repository;
+	}
 
-    public List<Moneda> getCurrencyList() throws ExcepcionMoneda {
-        List<MonedaVO> lista = this.repository.ObtenerListaMonedas();
-        List<Moneda> listaParseada = new ArrayList<>();
+	public List<Moneda> getCurrencyList() throws ExcepcionMoneda {
+		List<MonedaVO> lista = this.repository.ObtenerListaMonedas();
+		List<Moneda> listaParseada = new ArrayList<>();
 
-        for (MonedaVO moneda : lista) {
-            listaParseada.add(ConversorVO.parseToMoneda(moneda));
-        }
+		for (MonedaVO moneda : lista) {
+			listaParseada.add(ConversorVO.parseToMoneda(moneda));
+		}
 
-        return listaParseada;
-    }
+		return listaParseada;
+	}
 
 	public void convertCurrency(Moneda currencyToConvert) throws ExcepcionMoneda {
 		repository.ObtenerListaMonedas();
