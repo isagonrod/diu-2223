@@ -1,19 +1,10 @@
 import React, {Component} from "react";
 import logo from './logo.svg';
 import './App.css';
+import HelloComponentFunction from "./components/HelloComponentFunction";
+import InputComponentFunction from "./components/InputComponentFunction";
 import HelloComponent from "./components/HelloComponent";
 import InputComponent from "./components/InputComponent";
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <HelloComponent></HelloComponent>
-//       </header>
-//     </div>
-//   );
-// }
 
 class App extends Component {
 	constructor() {
@@ -34,8 +25,8 @@ class App extends Component {
 			<div className="App">
 				<header className="App-header">
 					<img src={logo} className="App-logo" alt="logo"/>
-					<HelloComponent nombre={this.state.name}/>
-					<InputComponent nombre={this.state.name} cambiarNombre={this.changeName} />
+					<HelloComponent></HelloComponent>
+					<InputComponent nombre={this.state.name} cambiarNombre={this.changeName}></InputComponent>
 				</header>
 			</div>
 		)
