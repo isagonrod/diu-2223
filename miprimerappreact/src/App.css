@@ -43,3 +43,8 @@ button {
     font-size: 20px;
     margin: 10px;
 }
+
+.buttonsRed {
+    background-color: red;
+    color: white;
+}
