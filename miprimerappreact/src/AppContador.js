@@ -12,12 +12,6 @@ class AppContador extends Component {
 		}
 	}
 
-	changeNum = (event) => {
-		this.setState({
-			num: event.target.value
-		})
-	}
-
 	incrementNum = (event) => {
 		this.setState({
 			num: event.target.value++

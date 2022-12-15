@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import AppContador from "./AppContador";
+import AppHook from "./AppHook";
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppContador/>
+    <AppHook/>
   </React.StrictMode>
 );
 
