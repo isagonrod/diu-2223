@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+	width: 100vh;
+	height: 100vh;
+}
+
+button {
+	width: 25vh;
+	height: 15vh;
+	font-size: 8vh;
+	border-color: black;
+}
+
+.dobleAncho {
+	width: 50vh;
+}
+
+.operacion {
+	background-color: orangered;
+	color: white;
+}
+
+.result {
+	width: 95vh;
+	height: 15vh;
+	margin-top: 5vh;
+	background-color: grey;
+	color: white;
+	border-color: black;
+	font-size: 10vh;
+	text-align: right;
+	padding-right: 5vh;
+}
