@@ -4,7 +4,7 @@ import Display from "./components/Display";
 import CalculatorButtons from "./components/CalculatorButtons";
 import calculate from "./logic/calculate";
 
-class App {
+export default class App {
     state = {
         total: null,
         operation: null
@@ -25,6 +25,8 @@ class App {
             </div>
         );
     }
-}
 
-export default App;
+    set setState(value) {
+        this.state = value;
+    }
+}
