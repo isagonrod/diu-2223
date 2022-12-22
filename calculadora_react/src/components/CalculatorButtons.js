@@ -1,40 +1,49 @@
-import React from "react";
-import calculate from "../logic/calculate";
-import isNumber from "../logic/isNumber";
+import React, {Component} from "react";
+import PropTypes from "prop-types";
+import Buttons from "./Buttons";
 
-export default function CalculatorButtons(props) {
-	return (
-		<div className="container">
-			<div>
-				<button onClick={calculate(props, this)} name="AC">AC</button>
-				<button onClick={calculate(props, this)} name="+/-">+/-</button>
-				<button onClick={calculate(props, this)} name="%">%</button>
-				<button className="operation" onClick={calculate(props, this)} name="÷">÷</button>
-			</div>
-			<div>
-				<button onClick={isNumber()} name="7">7</button>
-				<button onClick={isNumber()} name="8">8</button>
-				<button onClick={isNumber()} name="9">9</button>
-				<button className="operation" onClick={calculate(props, this)} name="x">x</button>
-			</div>
-			<div>
-				<button onClick={isNumber()} name="4">4</button>
-				<button onClick={isNumber()} name="5">5</button>
-				<button onClick={isNumber()} name="6">6</button>
-				<button className="operation" onClick={calculate(props, this)} name="-">-</button>
-			</div>
-			<div>
-				<button onClick={isNumber()} name="1">1</button>
-				<button onClick={isNumber()} name="2">2</button>
-				<button onClick={isNumber()} name="3">3</button>
-				<button className="operation" onClick={calculate(props, this)} name="+">+</button>
-			</div>
-			<div>
-				<button className="dobleAncho" onClick={isNumber()} name="0">0</button>
-				<button onClick={calculate(props, this)} name="punto">.</button>
-				<button className="operation" onClick={calculate(props, this)} name="=">=</button>
-			</div>
-		</div>
+export default class CalculatorButtons extends Component {
+	static propTypes = {
+		clickHandler: PropTypes.func,
+	};
 
-	)
+	handleClick = buttonName => {
+		this.props.clickHandler(buttonName);
+	};
+
+	render() {
+		return (
+			<div className="calculatorButtons">
+				<div>
+					<Buttons name="AC" clickHandler={this.handleClick} />
+					<Buttons name="+/-" clickHandler={this.handleClick} />
+					<Buttons name="%" clickHandler={this.handleClick} />
+					<Buttons name="÷" clickHandler={this.handleClick} orange />
+				</div>
+				<div>
+					<Buttons name="7" clickHandler={this.handleClick} />
+					<Buttons name="8" clickHandler={this.handleClick} />
+					<Buttons name="9" clickHandler={this.handleClick} />
+					<Buttons name="x" clickHandler={this.handleClick} orange />
+				</div>
+				<div>
+					<Buttons name="4" clickHandler={this.handleClick} />
+					<Buttons name="5" clickHandler={this.handleClick} />
+					<Buttons name="6" clickHandler={this.handleClick} />
+					<Buttons name="-" clickHandler={this.handleClick} orange />
+				</div>
+				<div>
+					<Buttons name="1" clickHandler={this.handleClick} />
+					<Buttons name="2" clickHandler={this.handleClick} />
+					<Buttons name="3" clickHandler={this.handleClick} />
+					<Buttons name="+" clickHandler={this.handleClick} orange />
+				</div>
+				<div>
+					<Buttons name="0" clickHandler={this.handleClick} wide />
+					<Buttons name="." clickHandler={this.handleClick} />
+					<Buttons name="=" clickHandler={this.handleClick} orange />
+				</div>
+			</div>
+		);
+	}
 }
