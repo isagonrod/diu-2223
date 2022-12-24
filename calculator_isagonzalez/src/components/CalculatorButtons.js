@@ -15,7 +15,7 @@ export default class CalculatorButtons extends React.Component {
 
     render() {
         return (
-            <div className="component-button-calculator">
+            <div className="component-calculator-button">
                 <div>
                     <Button name="AC" clickHandler={this.handleClick} />
                     <Button name="+/-" clickHandler={this.handleClick} />
