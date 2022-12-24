@@ -9,12 +9,12 @@
 }
 
 .component-button button {
-    background-color: antiquewhite;
+    background-color: mediumpurple;
     border: 0;
-    font-size: 1.5rem;
+    font-size: 3rem;
     margin: 0 1px 0 0;
     flex: 1 0 auto;
-    padding: 0;
+    padding: 2rem;
 }
 
 .component-button:last-child button {
