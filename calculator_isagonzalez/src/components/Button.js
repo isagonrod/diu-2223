@@ -1,8 +1,8 @@
-import React from "react";
+import React, {Component} from "react";
 import PropTypes from "prop-types";
 import "../css/Button.css";
 
-export default class Button extends React.Component {
+export default class Button extends Component {
     static propTypes = {
         name: PropTypes.string,
         orange: PropTypes.bool,

@@ -1,10 +1,10 @@
-import Button from "./Button";
-import React from "react";
+import React, {Component} from "react";
 import PropTypes from "prop-types";
+import Button from "../components/Button.js";
 
 import "../css/CalculatorButtons.css";
 
-export default class CalculatorButtons extends React.Component {
+export default class CalculatorButtons extends Component {
     static propTypes = {
         clickHandler: PropTypes.func,
     };
