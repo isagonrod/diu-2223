@@ -1,10 +1,10 @@
-import React from "react";
+import React, {Component} from "react";
 import './css/App.css';
 import calculate from "./logic/calculate";
 import CalculatorDisplay from "./components/CalculatorDisplay";
 import CalculatorButtons from "./components/CalculatorButtons";
 
-export default class App {
+export default class App extends Component {
     state = {
         total: null,
         next: null,
