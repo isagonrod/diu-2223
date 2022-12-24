@@ -10,7 +10,7 @@ export default class CalculatorDisplay extends React.Component {
 
     render() {
         return (
-            <div className="component-display">
+            <div className="component-calculator-display">
                 <div>{this.props.value}</div>
             </div>
         );

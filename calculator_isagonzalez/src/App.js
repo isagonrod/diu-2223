@@ -4,7 +4,7 @@ import calculate from "./logic/calculate";
 import CalculatorDisplay from "./components/CalculatorDisplay";
 import CalculatorButtons from "./components/CalculatorButtons";
 
-class App {
+export default class App {
     state = {
         total: null,
         next: null,
@@ -24,5 +24,3 @@ class App {
         );
     }
 }
-
-export default App;
