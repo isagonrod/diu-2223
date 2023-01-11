@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {Row, Col, Container} from 'react-bootstrap';
+import FormApp from "./components/FormApp";
+import TableApp from "./components/TableApp";
 
 class App extends Component {
 	constructor() {
-		super();
+		super()
 		this.state = {
-			data: [],
-			artist: '',
-			title: '',
-			lyrics: ''
+			word: '',
+			data: []
 		}
 	}
 
@@ -19,17 +19,17 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		fetch('https://api.lyrics.ovh/v1/{artist}/{title}')
-			.then((response) => {
-				if (response.ok) {
-					return response.json();
-				} else {
-					throw new Error(response.statusText);
-				}
-			})
-			.then((data) => {
-				this.setState({data: data})
-			});
+	// 	fetch('https://api.dictionaryapi.dev/api/v2/entries/en/')
+	// 		.then((response) => {
+	// 			if (response.ok) {
+	// 				return response.json();
+	// 			} else {
+	// 				throw new Error(response.statusText);
+	// 			}
+	// 		})
+	// 		.then((data) => {
+	// 			this.setState({data: data})
+	// 		});
 	}
 
 	render() {
@@ -52,3 +52,5 @@ class App extends Component {
 		);
 	}
 }
+
+export default App;
