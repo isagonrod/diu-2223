@@ -2,10 +2,12 @@ import React, {Component} from 'react';
 import {Row, Col, Container} from 'react-bootstrap';
 import FormApp from "./components/FormApp";
 import TableApp from "./components/TableApp";
+import "bootstrap/dist/css/bootstrap.min.css"
+import './App.css';
 
 class App extends Component {
-	constructor() {
-		super()
+	constructor(props) {
+		super(props)
 		this.state = {
 			word: '',
 			data: []
@@ -42,7 +44,7 @@ class App extends Component {
 				</Row>
 				<Row>
 					<Col>
-						<TableApp data={this.state.data}/>
+						<TableApp className="table" data={this.state.data}/>
 					</Col>
 				</Row>
 			</Container>
