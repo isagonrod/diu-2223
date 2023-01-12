@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Form, Button, Row, Col, FormLabel, FormControl, FormGroup} from 'react-bootstrap';
 import '../App.css';
+import button from "bootstrap/js/src/button";
 
 class FormApp extends Component {
     constructor(props) {
@@ -20,10 +21,6 @@ class FormApp extends Component {
         event.preventDefault();
         let url = 'https://api.dictionaryapi.dev/api/v2/entries/en/' + this.state.word;
         fetch(url, {
-            // method: 'GET',
-            // body: JSON.stringify({
-            // 	word: this.state.word
-            // }),
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
             }

@@ -21,17 +21,6 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-	// 	fetch('https://api.dictionaryapi.dev/api/v2/entries/en/')
-	// 		.then((response) => {
-	// 			if (response.ok) {
-	// 				return response.json();
-	// 			} else {
-	// 				throw new Error(response.statusText);
-	// 			}
-	// 		})
-	// 		.then((data) => {
-	// 			this.setState({data: data})
-	// 		});
 	}
 
 	render() {
