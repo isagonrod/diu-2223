@@ -9,19 +9,17 @@ class TableApp extends Component {
 	renderData(data, index) {
 		return (
 			<tr key={index}>
-				<td>{data.word}</td>
-				<td>{data['phonetics'][1].text}</td>
-				<td>{data['meanings'][1]['definitions'][1].definition}</td>
+				<td>{data[0].phonetics[1].text}</td>
+				<td>{data[0].meanings[0].definitions[0].definition}</td>
 			</tr>
 		)
 	}
 
 	render() {
 		return (
-			<Table responsive striped border hover size="sm">
+			<Table responsive striped bordered hover size="sm">
 				<thead>
 					<tr>
-						<th>WORD</th>
 						<th>PHONETIC</th>
 						<th>DEFINITION</th>
 					</tr>

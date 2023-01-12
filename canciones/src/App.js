@@ -35,19 +35,16 @@ class App extends Component {
 	render() {
 		return (
 			<Container>
-				<Col>
-					<Row>
+				<Row>
+					<Col>
 						<FormApp passParams={this.passParams}/>
-					</Row>
-					<Row>
+					</Col>
+				</Row>
+				<Row>
+					<Col>
 						<TableApp data={this.state.data}/>
-					</Row>
-				</Col>
-				<Col>
-					<Row>
-
-					</Row>
-				</Col>
+					</Col>
+				</Row>
 			</Container>
 		);
 	}

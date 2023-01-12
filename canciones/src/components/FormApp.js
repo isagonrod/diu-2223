@@ -17,11 +17,12 @@ class FormApp extends Component {
 
 	handleSubmit = event => {
 		event.preventDefault();
-		fetch('https://api.dictionaryapi.dev/api/v2/entries/en/', {
-			method: 'GET',
-			body: JSON.stringify({
-				word: this.state.word
-			}),
+		let url = 'https://api.dictionaryapi.dev/api/v2/entries/en/' + this.state.word;
+		fetch(url, {
+			// method: 'GET',
+			// body: JSON.stringify({
+			// 	word: this.state.word
+			// }),
 			headers: {
 				"Content-type": "application/json; charset=UTF-8"
 			}
@@ -40,18 +41,20 @@ class FormApp extends Component {
 
 	render() {
 		return (
-			<Form onSumit={this.handleSubmit}>
+			<Form onSubmit={this.handleSubmit}>
 				<Row>
 					<Col>
 						<FormGroup>
 							<Form.Label>WORD</Form.Label>
-							<Form.Control placeholder="Enter an english word" name="word"
+							<Form.Control required placeholder="Enter an english word" name="word"
 										  value={this.state.word} onChange={this.handleChange} />
 						</FormGroup>
 					</Col>
+				</Row>
+				<Row>
 					<Col>
 						<FormGroup>
-							<Button type="submit">ENTER</Button>
+							<Button type="submit">SEARCH</Button>
 						</FormGroup>
 					</Col>
 				</Row>
