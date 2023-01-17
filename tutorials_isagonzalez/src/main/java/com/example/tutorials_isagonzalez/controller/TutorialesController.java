@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:8082")
 public class TutorialesController {
     @Autowired
     private TutorialesService service;
