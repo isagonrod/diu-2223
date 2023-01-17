@@ -1,9 +1,6 @@
 package com.example.tutorials_isagonzalez.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,10 +9,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "tutorial")
 public class TutorialesVO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String ID;
+    @Column(nullable = false)
+    private String id;
     private String title;
     private String description;
     private Boolean published;

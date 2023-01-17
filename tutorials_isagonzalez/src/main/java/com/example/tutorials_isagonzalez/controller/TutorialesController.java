@@ -27,10 +27,10 @@ public class TutorialesController {
         return ResponseEntity.ok(service.getTutorialById(id));
     }
 
-//    @GetMapping("/tutorials/{published}")
-//    public ResponseEntity<?> getTutorialsByPublished(@PathVariable Boolean published) {
-//        return ResponseEntity.ok(service.getTutorialsByPublished(published));
-//    }
+    @GetMapping("/tutorials/{published}")
+    public ResponseEntity<?> getTutorialsByPublished(@PathVariable Boolean published) {
+        return ResponseEntity.ok(service.getTutorialsByPublished(published));
+    }
 
     @PostMapping("/tutorials")
     public ResponseEntity<TutorialesDTO> saveTutorial(@Validated @RequestBody TutorialesVO tutorial) {
@@ -39,7 +39,7 @@ public class TutorialesController {
 
     @PutMapping("/tutorials/{id}")
     public ResponseEntity<?> updateTutorial(@RequestBody TutorialesVO tutorial, @PathVariable String id) {
-        tutorial.setID(id);
+        tutorial.setId(id);
         return ResponseEntity.ok(service.saveTutorial(tutorial));
     }
 

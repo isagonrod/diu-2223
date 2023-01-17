@@ -23,9 +23,9 @@ public class TutorialesService {
         return TutorialesDTOConverter.convertToDto(repository.findById(id));
     }
 
-//    public List<TutorialesDTO> getTutorialByPublished(Boolean published) {
-//        return TutorialesDTOConverter.convertListToDto(repository.findBy(published));
-//    }
+    public List<TutorialesDTO> getTutorialsByPublished(Boolean published) {
+        return TutorialesDTOConverter.convertListToDto(repository.findAllByPublished(published));
+    }
 
     public TutorialesDTO saveTutorial(TutorialesVO tutorial) {
         return TutorialesDTOConverter.convertToDto(repository.save(tutorial));
