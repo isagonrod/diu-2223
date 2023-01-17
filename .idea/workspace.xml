@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="97cc066c-e877-416b-b200-bb83e1bab628" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/hotel_IsaGonzalez/out/production/hotel_IsaGonzalez/util/.MySqlConfig" beforeDir="false" afterPath="$PROJECT_DIR$/hotel_IsaGonzalez/out/production/hotel_IsaGonzalez/util/.MySqlConfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotel_IsaGonzalez/src/util/.MySqlConfig" beforeDir="false" afterPath="$PROJECT_DIR$/hotel_IsaGonzalez/src/util/.MySqlConfig" afterDir="false" />
-    </list>
+    <list default="true" id="97cc066c-e877-416b-b200-bb83e1bab628" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -23,8 +23,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/DESARROLLO/diu-2223/IsaGonzalez_ExamenPrimeraEvaluacion",
-    "nodejs_package_manager_path": "npm"
+    "last_opened_file_path": "C:/DESARROLLO/diu-2223/calculator_isagonzalez",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -37,6 +38,7 @@
       <updated>1669570127166</updated>
       <workItem from="1669570128759" duration="41000" />
       <workItem from="1669826405032" duration="37000" />
+      <workItem from="1671883651764" duration="24000" />
     </task>
     <servers />
   </component>
