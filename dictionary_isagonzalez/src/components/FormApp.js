@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {Form, Button, Row, Col, FormLabel, FormControl, FormGroup} from 'react-bootstrap';
 import '../App.css';
-import button from "bootstrap/js/src/button";
 
 class FormApp extends Component {
     constructor(props) {
@@ -18,6 +17,9 @@ class FormApp extends Component {
     }
 
     handleSubmit = event => {
+        document.querySelector('#button').disabled = true;
+        document.querySelector('#button').innerHTML = 'SEARCHING...';
+
         event.preventDefault();
         let url = 'https://api.dictionaryapi.dev/api/v2/entries/en/' + this.state.word;
         fetch(url, {
@@ -29,11 +31,15 @@ class FormApp extends Component {
                 if (response.ok) {
                     return response.json();
                 } else {
+                    document.querySelector('#button').disabled = false;
+                    document.querySelector('#button').innerHTML = 'SEARCH';
                     throw new Error(response.statusText);
                 }
             })
             .then(data => {
                 this.props.passParams(data);
+                document.querySelector('#button').disabled = false;
+                document.querySelector('#button').innerHTML = 'SEARCH';
             })
     }
 
@@ -48,7 +54,7 @@ class FormApp extends Component {
                                          value={this.state.word} onChange={this.handleChange} />
                         </Col>
                         <Col>
-                            <Button type="submit" className="button">SEARCH</Button>
+                            <Button id="button" type="submit" className="button">SEARCH</Button>
                         </Col>
                     </Row>
                 </FormGroup>
