@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "tutorial")
 public class TutorialesVO {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private String id;
     private String title;
