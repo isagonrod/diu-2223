@@ -1,7 +1,7 @@
-package com.example.tutoriales.model.dto.converter;
+package com.example.tutorials_isagonzalez.model.dto.converter;
 
-import com.example.tutoriales.model.TutorialesVO;
-import com.example.tutoriales.model.dto.TutorialesDTO;
+import com.example.tutorials_isagonzalez.model.TutorialesVO;
+import com.example.tutorials_isagonzalez.model.dto.TutorialesDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.modelmapper.ModelMapper;

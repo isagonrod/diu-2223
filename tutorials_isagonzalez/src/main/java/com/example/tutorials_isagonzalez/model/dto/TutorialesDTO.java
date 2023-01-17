@@ -1,4 +1,4 @@
-package com.example.tutoriales.model.dto;
+package com.example.tutorials_isagonzalez.model.dto;
 
 import lombok.Getter;
 import lombok.Setter;

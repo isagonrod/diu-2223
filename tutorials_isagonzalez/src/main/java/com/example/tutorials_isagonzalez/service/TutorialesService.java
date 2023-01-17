@@ -1,9 +1,9 @@
-package com.example.tutoriales.service;
+package com.example.tutorials_isagonzalez.service;
 
-import com.example.tutoriales.model.TutorialesVO;
-import com.example.tutoriales.model.dto.TutorialesDTO;
-import com.example.tutoriales.model.dto.converter.TutorialesDTOConverter;
-import com.example.tutoriales.repository.TutorialesRepository;
+import com.example.tutorials_isagonzalez.model.TutorialesVO;
+import com.example.tutorials_isagonzalez.model.dto.TutorialesDTO;
+import com.example.tutorials_isagonzalez.model.dto.converter.TutorialesDTOConverter;
+import com.example.tutorials_isagonzalez.repository.TutorialesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,9 +23,9 @@ public class TutorialesService {
         return TutorialesDTOConverter.convertToDto(repository.findById(id));
     }
 
-    public List<TutorialesDTO> getTutorialByPublished(Boolean published) {
-        return TutorialesDTOConverter.convertToDto(repository.findBy(published));
-    }
+//    public List<TutorialesDTO> getTutorialByPublished(Boolean published) {
+//        return TutorialesDTOConverter.convertListToDto(repository.findBy(published));
+//    }
 
     public TutorialesDTO saveTutorial(TutorialesVO tutorial) {
         return TutorialesDTOConverter.convertToDto(repository.save(tutorial));

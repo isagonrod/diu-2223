@@ -1,9 +1,8 @@
-package com.example.tutoriales.controller;
+package com.example.tutorials_isagonzalez.controller;
 
-import com.example.tutoriales.model.TutorialesVO;
-import com.example.tutoriales.model.dto.TutorialesDTO;
-import com.example.tutoriales.repository.TutorialesRepository;
-import com.example.tutoriales.service.TutorialesService;
+import com.example.tutorials_isagonzalez.model.TutorialesVO;
+import com.example.tutorials_isagonzalez.model.dto.TutorialesDTO;
+import com.example.tutorials_isagonzalez.service.TutorialesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,10 +27,10 @@ public class TutorialesController {
         return ResponseEntity.ok(service.getTutorialById(id));
     }
 
-    @GetMapping("/tutorials/{published}")
-    public ResponseEntity<?> getTutorialsByPublished(@PathVariable Boolean published) {
-        return ResponseEntity.ok(service.getTutorialsByPublished(published));
-    }
+//    @GetMapping("/tutorials/{published}")
+//    public ResponseEntity<?> getTutorialsByPublished(@PathVariable Boolean published) {
+//        return ResponseEntity.ok(service.getTutorialsByPublished(published));
+//    }
 
     @PostMapping("/tutorials")
     public ResponseEntity<TutorialesDTO> saveTutorial(@Validated @RequestBody TutorialesVO tutorial) {
