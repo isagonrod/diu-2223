@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/diu")
 @CrossOrigin(origins = "http://localhost:8082")
 public class TutorialesController {
     @Autowired
@@ -26,6 +27,11 @@ public class TutorialesController {
     @GetMapping("/tutorials/{id}")
     public ResponseEntity<?> getTutorialById(@PathVariable String id) {
         return ResponseEntity.ok(service.getTutorialById(id));
+    }
+
+    @GetMapping("/tutorials/{title}")
+    public ResponseEntity<?> getTutorialsByTitle(@PathVariable String title) {
+        return ResponseEntity.ok(service.getTutorialsByTitle(title));
     }
 
     @GetMapping("/tutorials/{published}")

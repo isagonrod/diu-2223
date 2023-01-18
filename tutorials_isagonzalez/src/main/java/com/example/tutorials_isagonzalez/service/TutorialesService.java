@@ -23,6 +23,10 @@ public class TutorialesService {
         return TutorialesDTOConverter.convertToDto(repository.findById(id));
     }
 
+    public List<TutorialesDTO> getTutorialsByTitle(String title) {
+        return TutorialesDTOConverter.convertListToDto(repository.findAllByTitle(title));
+    }
+
     public List<TutorialesDTO> getTutorialsByPublished(Boolean published) {
         return TutorialesDTOConverter.convertListToDto(repository.findAllByPublished(published));
     }
