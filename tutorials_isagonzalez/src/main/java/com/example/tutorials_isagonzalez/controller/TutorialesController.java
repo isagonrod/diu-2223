@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @Controller
 @RequiredArgsConstructor
 @CrossOrigin(origins = "http://localhost:8081")
@@ -19,23 +21,21 @@ public class TutorialesController {
     private TutorialesService service;
 
     @GetMapping("/tutorials")
-    public ResponseEntity<?> getAllTutorials() {
-        return ResponseEntity.ok(service.getAllTutorials());
+    public ResponseEntity<?> getAllTutorials(@RequestParam(value="title") Optional<String> title, @RequestParam(value="published") Optional<Boolean> published) {
+        ResponseEntity<?> result;
+        if (title.isPresent()) {
+            result = ResponseEntity.ok(service.getTutorialsByTitle(title.get()));
+        } else if (published.isPresent()) {
+            result = ResponseEntity.ok(service.getTutorialsByPublished(published.get()));
+        } else {
+            result = ResponseEntity.ok(service.getAllTutorials());
+        }
+        return result;
     }
 
     @GetMapping("/tutorials/{id}")
     public ResponseEntity<?> getTutorialById(@PathVariable String id) {
         return ResponseEntity.ok(service.getTutorialById(id));
-    }
-
-    @GetMapping("/tutorials/{title}")
-    public ResponseEntity<?> getTutorialsByTitle(@PathVariable String title) {
-        return ResponseEntity.ok(service.getTutorialsByTitle(title));
-    }
-
-    @GetMapping("/tutorials/{published}")
-    public ResponseEntity<?> getTutorialsByPublished(@PathVariable Boolean published) {
-        return ResponseEntity.ok(service.getTutorialsByPublished(published));
     }
 
     @PostMapping("/tutorials")

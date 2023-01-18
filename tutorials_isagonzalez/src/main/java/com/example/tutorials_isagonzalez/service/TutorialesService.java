@@ -24,7 +24,7 @@ public class TutorialesService {
     }
 
     public List<TutorialesDTO> getTutorialsByTitle(String title) {
-        return TutorialesDTOConverter.convertListToDto(repository.findAllByTitle(title));
+        return TutorialesDTOConverter.convertListToDto(repository.findAllByTitleContaining(title));
     }
 
     public List<TutorialesDTO> getTutorialsByPublished(Boolean published) {

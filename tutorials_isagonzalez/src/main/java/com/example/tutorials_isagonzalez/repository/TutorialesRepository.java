@@ -9,5 +9,5 @@ public interface TutorialesRepository extends JpaRepository<TutorialesVO, String
 
     List<TutorialesVO> findAllByPublished(Boolean published);
 
-    List<TutorialesVO> findAllByTitle(String title);
+    List<TutorialesVO> findAllByTitleContaining(String title);
 }
