@@ -1,34 +1,59 @@
 version: '3'
-networks:
-  mired2:
-    ipam:
-      config:
-        - subnet: 182.28.0.0/16
-          gateway: 182.28.0.1
-
+#networks:
+#  mired2:
+#    ipam:
+#      config:
+#        - subnet: 182.28.0.0/16
+#          gateway: 182.28.0.1
+#
+#services:
+#  db:
+#    image: mysql
+#    container_name: mysql-local-2
+#    networks:
+#      mired2:
+#        - ipv4_address: 182.28.0.12
+#      ports:
+#        -
+#    expose:
+#      - 3306
+#    ports:
+#      - "3306:3306"
+#
+#  tutorials:
+#    image: igr1985/tutorials
+#    container_name: tutorials
+#    networks:
+#      mired2:
+#        - ipv4_address: 182.28.0.12
+#      expose:
+#        - 8081
+#      ports:
+#        - "8081:8081"
+#      depends on:
+#        - db
 services:
-  db:
-    image: mysql
-    container_name: mysql-local-2
-    networks:
-      mired2:
-        - ipv4_address: 182.28.0.12
-      ports:
-        -
-    expose:
-      - 3306
+  main:
+    image: 'igr1985/tutorials_isagonzalez'
+    container_name: tutorials-main
+    environment:
+      spring.datasource.url: ${MYSQL_DATASOURCE_URL}
+      spring.datasource.password: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "8081:8081"
+    depends_on:
+      - database
+    links:
+      - database:mysql
+  database:
+    image: mysql:latest
+    container_name: tutorials-database
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
     ports:
       - "3306:3306"
-
-  tutorials:
-    image: igr1985/tutorials
-    container_name: tutorials
-    networks:
-      mired2:
-        - ipv4_address: 182.28.0.12
-      expose:
-        - 8081
-      ports:
-        - "8081:8081"
-      depends on:
-        - db
+    volumes:
+      - tutorials-mysql_data:/var/lib/mysql
+volumes:
+  tutorials-mysql_data:
