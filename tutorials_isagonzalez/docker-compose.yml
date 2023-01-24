@@ -16,11 +16,9 @@ services:
       ports:
         -
     expose:
-      - 27017
+      - 3306
     ports:
-      - "27017:27017"
-    depends_on:
-      - db
+      - "3306:3306"
 
   tutorials:
     image: igr1985/tutorials
