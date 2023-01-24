@@ -1,0 +1,36 @@
+version: '2'
+networks:
+  mired2:
+    ipam:
+      config:
+        - subnet: 182.28.0.0/16
+          gateway: 182.28.0.1
+
+services:
+  db:
+    image: mysql
+    container_name: mysql-local-2
+    networks:
+      mired2:
+        - ipv4_address: 182.28.0.12
+      ports:
+        -
+    expose:
+      - 27017
+    ports:
+      - "27017:27017"
+    depends_on:
+      - db
+
+  tutorials:
+    image: igr1985/tutorials
+    container_name: tutorials
+    networks:
+      mired2:
+        - ipv4_address: 182.28.0.12
+      expose:
+        - 8081
+      ports:
+        - "8081:8080"
+      depends on:
+        - db
