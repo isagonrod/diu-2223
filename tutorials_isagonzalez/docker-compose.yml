@@ -40,9 +40,9 @@ services:
       spring.datasource.url: ${MYSQL_DATASOURCE_URL}
       spring.datasource.password: ${MYSQL_ROOT_PASSWORD}
     expose:
-      - 80
+      - 8081
     ports:
-      - "80:8081"
+      - "8081:8081"
     depends_on:
       - database
     links:
