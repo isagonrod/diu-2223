@@ -7,10 +7,12 @@ import "./App.css";
 import Tutorial from "./components/tutorial.component";
 import TutorialsList from "./components/tutorials-list.component";
 
+
 class App extends Component {
     render() {
         return (
             <div>
+                {/*Barra de navegación*/}
                 <nav className="navbar navbar-expand navbar-dark bg-dark">
                     <Link to={"/tutorials"} className="navbar-brand">
                         Tutoriales

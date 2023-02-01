@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "firebase": "^9.16.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-router-dom": "^5.1.2",
@@ -33,5 +34,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "For more detail, please visit: > [React (Components) CRUD example to consume Web API](https://bezkoder.com/react-crud-web-api/)",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }
