@@ -1,0 +1,127 @@
+pipeline{
+  agent {
+    node{    
+      label 'master'
+      }
+  }
+  tools {
+    maven 'maven'
+    jdk 'jdk-jenkins'
+    }
+
+  environment{  
+    //path donde se encuentra nuestro dockerfile y demás archivos de configuración
+    conf_filePath= "/var/lib/jenkins/dockerfiles"
+    //nombre del archivo dockerfile
+    dockerfile_name= "Dockerfile"
+    registry= "igr1985/tutorials_isagonzalez"
+    //credencials dockerhub
+    registryCredential= 'dockerhub'
+    //Nombre de nuestro repositorio
+    repo_name='isagonrod/diu-tutorials.git'
+    //Nombre del Workspace
+    workspace_name='/var/lib/jenkins/workspace/prueba'
+    //Nombre del direcorio de almacena el proyecto dentro del workspace
+    projectdir_name='diu-tutorials'
+   
+  }
+
+  stages {    
+    stage('Test'){
+      steps{
+          script{
+             //Si la carpeta del proyecto ya existe, la borramos antes del clone
+             if (fileExists('/var/lib/jenkins/workspace/prueba/diu-tutorials')){
+				//en Windows seria algo tal que asi: /d/Jenkins/installed/.jenkins/workspace/prueba/diu-tutorials
+				sh 'rm -rf /var/lib/jenkins/workspace/prueba/diu-tutorials'
+             }
+		 }
+        //Nos descargamos la rama master  
+		sh 'git clone --branch master https://github.com/${repo_name}'
+		//copiamos el archivo properties con la configuración del servidor develop de BBDD
+		//sh 'mkdir ${projectdir_name}/src/main/resources'
+		//sh 'cp ${conf_filePath}/bbdd_conf_dev.txt ${projectdir_name}/src/main/resources/application.properties'
+	      
+	    //Cambiamos a la carpeta del proyecto, y ejecutamos los test
+	    script{
+	     dir('diu-tutorials') {
+          
+          //Al colocar los test dentro de un try nos permite avanzar al siguiente paso del pipeline
+          //aunque fallen
+          try{
+              sh 'echo haciendo test'
+             //Descomentar esta linea para ejecutar los test
+             //sh 'mvn test'
+	      }catch(Exception e){
+            sh 'Los tests han fallado'  
+          }
+          //Vamos a subir a la ramma pro el contenido de la rama master
+          //Aunque el repositorio es público, para hacer el push necesitamos las credenciales
+          //Cada uno pondrá en el ID el que haya creado previamente en el proceso de configuración
+          withCredentials([string(credentialsId:'github', variable: 'TOKEN')]) {
+            //Eliminamos la rama pro actual
+            sh 'git push https://$TOKEN@github.com/${repo_name} -d pro'
+            //Volvemos a crearla con el contenido de la rama master
+            sh 'git checkout -b pro master'
+          }
+          
+          
+	    }
+	    }
+	    
+	    
+            
+          //Si pasamos los tests copiamos la configuracion de producción de BBDD a la carpeta del proyecto
+	      //y hacemos el push la rama de producción. recordemos que este archivo no se subirá al repositorio
+	      //porque está dentro del .gitignore
+          //sh 'cp ${conf_filePath}/bbdd_conf_prod.txt ${projectdir_name}/src/main/resources/application.properties'
+          script{
+          dir('diu-tutorials') {
+            withCredentials([string(credentialsId:'github', variable: 'TOKEN')]) {
+                sh 'git push --set-upstream https://$TOKEN@github.com/${repo_name} pro'
+          }
+          }
+          }
+       
+	      
+       
+      } 
+	   
+      }
+      
+    
+
+     stage('Build Docker'){
+      steps{
+        //sh'chmod -R 777 ../'
+        sh 'mvn -DskipTests -f ${projectdir_name}/ clean package'
+        script{
+         dockerImage= docker.build(registry, "-f ${conf_filePath}/${dockerfile_name} ${workspace_name}/${projectdir_name}/target")
+          
+        }
+      }
+    }
+
+    stage('Push Docker'){
+      steps{
+        script{
+          docker.withRegistry('', registryCredential){
+          dockerImage.push()
+          }        
+        }    
+      }
+    }
+
+    stage('Run Docker'){
+      steps{
+        sh 'docker run -d -p 91:8080 ${registry}'
+      }
+    }
+    stage('Deploy app en AWS'){
+      steps{
+        sh 'aws s3 cp /var/lib/jenkins/dockerfiles/docker-compose.yml  s3://elasticbeanstalk-us-east-1-587942130445'
+        sh 'aws elasticbeanstalk create-application-version --application-name tutorials --version-label 4 --source-bundle S3Bucket=elasticbeanstalk-us-east-1-587942130445,S3Key=docker-compose.yml --region us-east-1'
+      }
+    }
+  }
+}
