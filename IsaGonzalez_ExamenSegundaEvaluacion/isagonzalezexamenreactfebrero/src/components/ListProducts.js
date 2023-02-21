@@ -32,35 +32,38 @@ const ListProducts = () => {
     return (
         <div className="container">
             <h2 className="text-center">PRODUCTS</h2>
-            <Link to="/add-product" className="btn btn-primary mb-2">
-                {/*ADD PRODUCT*/}
-                <img src="src/images/add-product.png" />
+            <Link to="/add-product" className="btn">
+                <img
+                    src="https://img.icons8.com/color/600/000000/add-product.png"
+                    alt="ADD PRODUCT"/>
             </Link>
             <table className="table table-bordered table-striped">
                 <thead>
-                    <th>ID</th>
-                    <th>NAME</th>
-                    <th>STOCK</th>
-                    <th>PRICE</th>
-                    <th>ACTIONS</th>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>STOCK</th>
+                <th>PRICE</th>
+                <th>ACTIONS</th>
                 </thead>
                 <tbody>
                 {
                     products.map(
                         product =>
-                            <tr key = {product.id}>
+                            <tr key={product.id}>
                                 <td>{product.id}</td>
                                 <td>{product.name}</td>
                                 <td>{product.stock}</td>
                                 <td>{product.price}</td>
                                 <td>
-                                    <Link className="btn btn-info" to={`/edit-product/${product.id}`}>
-                                        {/*EDIT*/}
-                                        <img src="src/images/edit-product.png"/>
+                                    <Link className="btn" to={`/edit-product/${product.id}`}>
+                                        <img
+                                            src="https://www.graphicsfuel.com/wp-content/uploads/2012/07/pencil-icon-512.png"
+                                            alt="EDIT"/>
                                     </Link>
-                                    <button className="btn btn-danger m1-2" onClick={() => deleteProduct(product.id)}>
-                                        {/*DELETE*/}
-                                        <img src="src/images/delete-product.png"/>
+                                    <button className="btn" onClick={() => deleteProduct(product.id)}>
+                                        <img
+                                            src="https://cdn-icons-png.flaticon.com/512/3221/3221845.png"
+                                            alt="DELETE" />
                                     </button>
                                 </td>
                             </tr>

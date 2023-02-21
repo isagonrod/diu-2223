@@ -79,8 +79,16 @@ const AddProduct = () => {
                                     <input type="text" placeholder="Enter product price" name="price" className="form-control" value={price} onChange={(e) => setPrice(e.target.value)}/>
                                 </div>
                                 <div className="text-center">
-                                    <button className="btn btn-success text-center w-25" onClick={(e) => saveOrUpdateProduct(e)}>SAVE</button>
-                                    <Link to="/products" className="btn btn-danger text-center m1-2 w-25">CANCEL</Link>
+                                    <button className="btn" onClick={(e) => saveOrUpdateProduct(e)}>
+                                        <img
+                                            src="https://www.freeiconspng.com/uploads/save-download-icon-10.png"
+                                            alt="SAVE" />
+                                    </button>
+                                    <Link to="/products" className="btn">
+                                        <img
+                                            src="https://www.freeiconspng.com/thumbs/remove-icon-png/remove-icon-png-8.png"
+                                            alt="CANCEL" />
+                                    </Link>
                                 </div>
                             </form>
                         </div>

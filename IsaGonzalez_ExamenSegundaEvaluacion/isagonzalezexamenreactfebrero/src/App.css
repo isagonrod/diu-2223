@@ -39,13 +39,11 @@
 
 img {
     margin: 1vh;
+    width: 4vh;
+    height: 4vh;
 }
 
 thead, tbody {
     text-align: center;
     font-size: 3vh;
-}
-
-div {
-    color: #ff0088;
 }
