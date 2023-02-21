@@ -32,7 +32,10 @@ const ListProducts = () => {
     return (
         <div className="container">
             <h2 className="text-center">PRODUCTS</h2>
-            <Link to="/add-product" className="btn btn-primary mb-2">ADD PRODUCT</Link>
+            <Link to="/add-product" className="btn btn-primary mb-2">
+                {/*ADD PRODUCT*/}
+                <img src="src/images/add-product.png" />
+            </Link>
             <table className="table table-bordered table-striped">
                 <thead>
                     <th>ID</th>
@@ -51,8 +54,14 @@ const ListProducts = () => {
                                 <td>{product.stock}</td>
                                 <td>{product.price}</td>
                                 <td>
-                                    <Link className="btn btn-info" to={`/edit-product/${product.id}`}>EDIT</Link>
-                                    <button className="btn btn-danger m1-2" onClick={() => deleteProduct(product.id)}>DELETE</button>
+                                    <Link className="btn btn-info" to={`/edit-product/${product.id}`}>
+                                        {/*EDIT*/}
+                                        <img src="src/images/edit-product.png"/>
+                                    </Link>
+                                    <button className="btn btn-danger m1-2" onClick={() => deleteProduct(product.id)}>
+                                        {/*DELETE*/}
+                                        <img src="src/images/delete-product.png"/>
+                                    </button>
                                 </td>
                             </tr>
                     )
