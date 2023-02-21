@@ -41,8 +41,10 @@ const ListProducts = () => {
                 <thead>
                 <th>ID</th>
                 <th>NAME</th>
+                <th>BRAND</th>
                 <th>STOCK</th>
                 <th>PRICE</th>
+                <th>ACTIVE</th>
                 <th>ACTIONS</th>
                 </thead>
                 <tbody>
@@ -52,8 +54,10 @@ const ListProducts = () => {
                             <tr key={product.id}>
                                 <td>{product.id}</td>
                                 <td>{product.name}</td>
+                                <td>{product.brand}</td>
                                 <td>{product.stock}</td>
                                 <td>{product.price}</td>
+                                <td>{product.active}</td>
                                 <td>
                                     <Link className="btn" to={`/edit-product/${product.id}`}>
                                         <img

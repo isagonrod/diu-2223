@@ -8,8 +8,10 @@ const AddProduct = () => {
 
     const [id, setId] = useState('');
     const [name, setName] = useState('');
+    const [brand, setBrand] = useState('');
     const [stock, setStock] = useState('');
     const [price, setPrice] = useState('');
+    const [active, setActive] = useState('');
     const navigate = useNavigate();
     const {productId} = useParams();
 
@@ -38,8 +40,10 @@ const AddProduct = () => {
         ProductService.getProductById(productId).then((response) => {
             setId(response.data.id)
             setName(response.data.name)
+            setBrand(response.data.brand)
             setStock(response.data.stock)
             setPrice(response.data.price)
+            setActive(response.data.active)
         }).catch(error => {
             console.log(error);
         });
@@ -71,12 +75,20 @@ const AddProduct = () => {
                                     <input type="text" placeholder="Enter product name" name="name" className="form-control" value={name} onChange={(e) => setName(e.target.value)}/>
                                 </div>
                                 <div className="form-group mb-2">
+                                    <label className="form-label">BRAND:</label>
+                                    <input type="text" placeholder="Enter product brand" name="brand" className="form-control" value={brand} onChange={(e) => setBrand(e.target.value)}/>
+                                </div>
+                                <div className="form-group mb-2">
                                     <label className="form-label">STOCK:</label>
                                     <input type="text" placeholder="Enter product stock" name="stock" className="form-control" value={stock} onChange={(e) => setStock(e.target.value)}/>
                                 </div>
                                 <div className="form-group mb-2">
                                     <label className="form-label">PRICE:</label>
                                     <input type="text" placeholder="Enter product price" name="price" className="form-control" value={price} onChange={(e) => setPrice(e.target.value)}/>
+                                </div>
+                                <div className="form-group mb-2">
+                                    <label className="form-label">ACTIVE:</label>
+                                    <input type="text" placeholder="Enter true/false" name="active" className="form-control" value={active} onChange={(e) => setActive(e.target.value)}/>
                                 </div>
                                 <div className="text-center">
                                     <button className="btn" onClick={(e) => saveOrUpdateProduct(e)}>
