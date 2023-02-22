@@ -9,7 +9,7 @@ class ProductService {
     }
 
     getProductById(productId) {
-        return axios.get(PRODUCTS_API_BASE_URL + '/' + productId);
+        return axios.get(PRODUCTS_API_BASE_URL + '?id=' + productId);
     }
 
     createNewProduct(product) {

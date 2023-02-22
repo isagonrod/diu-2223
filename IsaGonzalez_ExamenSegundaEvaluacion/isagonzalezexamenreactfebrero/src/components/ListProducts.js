@@ -39,12 +39,8 @@ const ListProducts = () => {
             </Link>
             <table className="table table-bordered table-striped">
                 <thead>
-                <th>ID</th>
                 <th>NAME</th>
-                <th>BRAND</th>
-                <th>STOCK</th>
                 <th>PRICE</th>
-                <th>ACTIVE</th>
                 <th>ACTIONS</th>
                 </thead>
                 <tbody>
@@ -52,13 +48,12 @@ const ListProducts = () => {
                     products.map(
                         product =>
                             <tr key={product.id}>
-                                <td>{product.id}</td>
                                 <td>{product.name}</td>
-                                <td>{product.brand}</td>
-                                <td>{product.stock}</td>
                                 <td>{product.price}</td>
-                                <td>{product.active}</td>
-                                <td>
+                                <td>{product.active}
+                                    <Link className="btn btn-info" to={`/calculate-total/${product.id}`}>
+                                        CALCULATE TOTAL
+                                    </Link>
                                     <Link className="btn" to={`/edit-product/${product.id}`}>
                                         <img
                                             src="https://www.graphicsfuel.com/wp-content/uploads/2012/07/pencil-icon-512.png"

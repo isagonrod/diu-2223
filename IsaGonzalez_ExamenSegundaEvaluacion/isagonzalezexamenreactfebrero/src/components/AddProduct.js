@@ -18,7 +18,7 @@ const AddProduct = () => {
     const saveOrUpdateProduct = (e) => {
         e.preventDefault();
 
-        const product = {id, name, stock, price};
+        const product = {id, name, brand, stock, price, active};
 
         if (productId) {
             ProductService.updateProduct(productId, product).then(() => {
@@ -68,38 +68,49 @@ const AddProduct = () => {
                             <form>
                                 <div className="form-group mb-2">
                                     <label className="form-label">ID:</label>
-                                    <input type="text" placeholder="Enter product ID" name="id" className="form-control" value={id} onChange={(e) => setId(e.target.value)}/>
+                                    <input type="text" placeholder="Enter product ID" name="id" className="form-control"
+                                           value={id} onChange={(e) => setId(e.target.value)}/>
                                 </div>
                                 <div className="form-group mb-2">
                                     <label className="form-label">NAME:</label>
-                                    <input type="text" placeholder="Enter product name" name="name" className="form-control" value={name} onChange={(e) => setName(e.target.value)}/>
+                                    <input type="text" placeholder="Enter product name" name="name"
+                                           className="form-control" value={name}
+                                           onChange={(e) => setName(e.target.value)}/>
                                 </div>
                                 <div className="form-group mb-2">
                                     <label className="form-label">BRAND:</label>
-                                    <input type="text" placeholder="Enter product brand" name="brand" className="form-control" value={brand} onChange={(e) => setBrand(e.target.value)}/>
+                                    <input type="text" placeholder="Enter product brand" name="brand"
+                                           className="form-control" value={brand}
+                                           onChange={(e) => setBrand(e.target.value)}/>
                                 </div>
                                 <div className="form-group mb-2">
                                     <label className="form-label">STOCK:</label>
-                                    <input type="text" placeholder="Enter product stock" name="stock" className="form-control" value={stock} onChange={(e) => setStock(e.target.value)}/>
+                                    <input type="text" placeholder="Enter product stock" name="stock"
+                                           className="form-control" value={stock}
+                                           onChange={(e) => setStock(e.target.value)}/>
                                 </div>
                                 <div className="form-group mb-2">
                                     <label className="form-label">PRICE:</label>
-                                    <input type="text" placeholder="Enter product price" name="price" className="form-control" value={price} onChange={(e) => setPrice(e.target.value)}/>
+                                    <input type="text" placeholder="Enter product price" name="price"
+                                           className="form-control" value={price}
+                                           onChange={(e) => setPrice(e.target.value)}/>
                                 </div>
                                 <div className="form-group mb-2">
                                     <label className="form-label">ACTIVE:</label>
-                                    <input type="text" placeholder="Enter true/false" name="active" className="form-control" value={active} onChange={(e) => setActive(e.target.value)}/>
+                                    <input type="text" placeholder="Enter true/false" name="active"
+                                           className="form-control" value={active}
+                                           onChange={(e) => setActive(e.target.value)}/>
                                 </div>
                                 <div className="text-center">
                                     <button className="btn" onClick={(e) => saveOrUpdateProduct(e)}>
                                         <img
                                             src="https://www.freeiconspng.com/uploads/save-download-icon-10.png"
-                                            alt="SAVE" />
+                                            alt="SAVE"/>
                                     </button>
                                     <Link to="/products" className="btn">
                                         <img
                                             src="https://www.freeiconspng.com/thumbs/remove-icon-png/remove-icon-png-8.png"
-                                            alt="CANCEL" />
+                                            alt="CANCEL"/>
                                     </Link>
                                 </div>
                             </form>
