@@ -4,23 +4,31 @@ import ProductService from "../services/ProductService";
 
 const TotalPriceProduct = () => {
 
+    const [id] = useState('');
+    const [name] = useState('');
+    const [brand] = useState('');
+    let [stock, setStock] = useState('');
+    const [price] = useState('');
+    const [active] = useState('');
+
     const [units, setUnits] = useState('');
-    const [price] = useState(ProductService.getProductById.price);
     const [total, setTotal] = useState('0€');
     const {productId} = useParams();
+
+    const product = {id, name, brand, stock, price, active};
 
     const calculateTotal = (e) => {
         e.currentTarget();
 
-        if (productId && ProductService.getProductById(productId).active) {
-            if (units <= ProductService.getProductById(productId).stock) {
-                setTotal(units * price + '€');
-                ProductService.updateProduct(productId).stock -= units;
+        if (productId === id && active) {
+            if (units <= stock) {
+                setTotal(parseInt(units) * parseFloat(price) + '€');
+                ProductService.updateProduct(productId, product).stock -= units;
             }
         }
     }
 
-    useEffect((e) => {
+    useEffect(() => {
         ProductService.getProductById(productId).then((response) => {
             setUnits(response.data.stock)
             setTotal(response.data.total)
@@ -37,7 +45,8 @@ const TotalPriceProduct = () => {
 
     const incrementStock = () => {
         if (ProductService.getProductById(productId).stock < 10) {
-            ProductService.updateProduct(productId, ProductService.getProductById(productId).stock += 10);
+            setStock(stock -= units);
+            ProductService.updateProduct(productId, product);
         }
     }
 
@@ -51,6 +60,7 @@ const TotalPriceProduct = () => {
                         <div className="card-body">
                             <form>
                                 <div className="form-group mb-2">
+                                    <h4>Unidades de Stock: {stock}</h4>
                                     <label className="form-label">UNITS:</label>
                                     <input
                                         type="text"
@@ -71,13 +81,20 @@ const TotalPriceProduct = () => {
                                 <div className="text-center">
                                     <button className="btn btn-primary" onClick={(e) => calculateTotal(e)}>
                                         CALCULATE
-                                    </button>
+                                    </button>{' '}
                                     <Link to="/products" className="btn btn-danger">
                                         CANCEL
                                     </Link>
                                 </div>
                             </form>
                         </div>
+                    </div>
+                    <div className="text-center">
+                        {stock < 10 ?
+                            <h3 color="red">"Unidades bajas"</h3>
+                            :
+                            <h3 color="green">"Unidades OK"</h3>}
+                        <button className="btn btn-success" onClick={incrementStock}>OK</button>
                     </div>
                 </div>
             </div>
