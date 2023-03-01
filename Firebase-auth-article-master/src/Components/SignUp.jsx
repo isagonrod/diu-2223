@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "@reach/router";
-import { auth, signInWithGoogle, generateUserDocument } from "../firebase";
+import { auth, generateUserDocument } from "../firebase";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -12,7 +12,7 @@ const SignUp = () => {
     event.preventDefault();
     try{
       const {user} = await auth.createUserWithEmailAndPassword(email, password);
-      generateUserDocument(user, {displayName});
+      await generateUserDocument(user, {displayName});
     }
     catch(error){
       setError('Error Signing up with email and password');
@@ -84,25 +84,25 @@ const SignUp = () => {
           <button
             className="bg-green-400 hover:bg-green-500 w-full py-2 text-white"
             onClick={event => {
-              createUserWithEmailAndPasswordHandler(event, email, password);
+              createUserWithEmailAndPasswordHandler(event, email, password).then(r => "error");
             }}
           >
             Sign up
           </button>
         </form>
         <p className="text-center my-3">or</p>
-        <button
-          onClick={() => {
-            try {
-              signInWithGoogle();
-            } catch (error) {
-              console.error("Error signing in with Google", error);
-            }
-          }}
-          className="bg-red-500 hover:bg-red-600 w-full py-2 text-white"
-        >
-          Sign In with Google
-        </button>
+        {/*<button*/}
+        {/*  onClick={() => {*/}
+        {/*    try {*/}
+        {/*      signInWithGoogle();*/}
+        {/*    } catch (error) {*/}
+        {/*      console.error("Error signing in with Google", error);*/}
+        {/*    }*/}
+        {/*  }}*/}
+        {/*  className="bg-red-500 hover:bg-red-600 w-full py-2 text-white"*/}
+        {/*>*/}
+        {/*  Sign In with Google*/}
+        {/*</button>*/}
         <p className="text-center my-3">
           Already have an account?{" "}
           <Link to="/" className="text-blue-500 hover:text-blue-600">

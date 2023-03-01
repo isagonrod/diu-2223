@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Link } from "@reach/router";
-import { signInWithGoogle } from "../firebase";
+//import { signInWithGoogle } from "../firebase";
 import { auth } from "../firebase";
 
 
@@ -65,14 +65,14 @@ const SignIn = () => {
           </button>
         </form>
         <p className="text-center my-3">or</p>
-        <button
-          className="bg-red-500 hover:bg-red-600 w-full py-2 text-white"
-          onClick={() => {
-            signInWithGoogle();
-          }}
-        >
-          Sign in with Google
-        </button>
+        {/*<button*/}
+        {/*  className="bg-red-500 hover:bg-red-600 w-full py-2 text-white"*/}
+        {/*  onClick={() => {*/}
+        {/*    signInWithGoogle();*/}
+        {/*  }}*/}
+        {/*>*/}
+        {/*  Sign in with Google*/}
+        {/*</button>*/}
         <p className="text-center my-3">
           Don't have an account?{" "}
           <Link to="signUp" className="text-blue-500 hover:text-blue-600">
